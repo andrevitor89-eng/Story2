@@ -56,8 +56,10 @@ async def generate_character(
     photo_mime: str = "image/jpeg",
 ) -> bytes:
     if not settings.gemini_api_key:
-        logger.info("Offline character for %s", name)
-        return offline.placeholder_character(name)
+        if settings.offline_fallback:
+            logger.info("Offline character for %s (sem GEMINI_API_KEY)", name)
+            return offline.placeholder_character(name)
+        raise RuntimeError("GEMINI_API_KEY nao configurada no servidor")
 
     prompt = CHARACTER_PROMPT.format(
         age=age,
@@ -81,7 +83,9 @@ async def generate_scene(
     illustration_note: str,
 ) -> bytes:
     if not settings.gemini_api_key:
-        return offline.placeholder_scene(name, page, illustration_note)
+        if settings.offline_fallback:
+            return offline.placeholder_scene(name, page, illustration_note)
+        raise RuntimeError("GEMINI_API_KEY nao configurada no servidor")
 
     prompt = SCENE_PROMPT.format(
         name=name,

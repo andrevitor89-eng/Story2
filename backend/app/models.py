@@ -4,7 +4,7 @@ import enum
 import uuid
 from datetime import datetime
 
-from sqlalchemy import DateTime, Enum, ForeignKey, Integer, String, Text, func
+from sqlalchemy import DateTime, Enum, ForeignKey, Integer, LargeBinary, String, Text, func
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -42,7 +42,7 @@ class User(Base):
     name: Mapped[str] = mapped_column(String(120), default="")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
-    books: Mapped[list[Book]] = relationship(back_populates="owner")
+    books: Mapped[list["Book"]] = relationship(back_populates="owner")
 
 
 class Book(Base):
@@ -52,11 +52,11 @@ class Book(Base):
     user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     child_name: Mapped[str] = mapped_column(String(80))
     child_age: Mapped[int] = mapped_column(Integer)
-    child_gender: Mapped[str] = mapped_column(String(20))  # boy | girl | unisex
+    child_gender: Mapped[str] = mapped_column(String(20))
     story_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
-    age_band: Mapped[str | None] = mapped_column(String(16), nullable=True)  # 2-5 | 5-9 | 6-9 | 9-12
+    age_band: Mapped[str | None] = mapped_column(String(16), nullable=True)
     status: Mapped[BookStatus] = mapped_column(Enum(BookStatus), default=BookStatus.draft)
-    progress: Mapped[int] = mapped_column(Integer, default=0)  # 0-100
+    progress: Mapped[int] = mapped_column(Integer, default=0)
     progress_message: Mapped[str] = mapped_column(String(255), default="")
     error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
@@ -65,8 +65,8 @@ class Book(Base):
     )
 
     owner: Mapped[User] = relationship(back_populates="books")
-    assets: Mapped[list[Asset]] = relationship(back_populates="book", cascade="all, delete-orphan")
-    jobs: Mapped[list[Job]] = relationship(back_populates="book", cascade="all, delete-orphan")
+    assets: Mapped[list["Asset"]] = relationship(back_populates="book", cascade="all, delete-orphan")
+    jobs: Mapped[list["Job"]] = relationship(back_populates="book", cascade="all, delete-orphan")
 
 
 class Asset(Base):
@@ -95,3 +95,14 @@ class Job(Base):
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
     book: Mapped[Book] = relationship(back_populates="jobs")
+
+
+class StorageObject(Base):
+    """Persistent blob in Postgres (optional storage backend)."""
+
+    __tablename__ = "storage_objects"
+
+    key: Mapped[str] = mapped_column(String(512), primary_key=True)
+    mime_type: Mapped[str] = mapped_column(String(100), default="application/octet-stream")
+    data: Mapped[bytes] = mapped_column(LargeBinary, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

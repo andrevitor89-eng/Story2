@@ -25,11 +25,9 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: STORAGE_BACKEND
-        value: local
-      - key: STORAGE_LOCAL_PATH
-        value: /tmp/story2-storage
+        value: db
       - key: OFFLINE_FALLBACK
-        value: "true"
+        value: "false"
       - key: GEMINI_API_KEY
         sync: false
       - key: GEMINI_SSL_VERIFY

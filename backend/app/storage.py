@@ -8,6 +8,8 @@ import boto3
 from botocore.client import Config
 
 from app.config import settings
+from app.db import SessionLocal
+from app.models import StorageObject
 
 
 def _local_root() -> Path:
@@ -28,8 +30,38 @@ def _client(endpoint: str):
     )
 
 
+def _db_put(key: str, data: bytes, mime_type: str) -> None:
+    db = SessionLocal()
+    try:
+        obj = db.get(StorageObject, key)
+        if obj is None:
+            db.add(StorageObject(key=key, data=data, mime_type=mime_type))
+        else:
+            obj.data = data
+            obj.mime_type = mime_type
+        db.commit()
+    finally:
+        db.close()
+
+
+def _db_get(key: str) -> bytes:
+    db = SessionLocal()
+    try:
+        obj = db.get(StorageObject, key)
+        if obj is None:
+            raise FileNotFoundError(f"Storage key nao encontrado: {key}")
+        return bytes(obj.data)
+    finally:
+        db.close()
+
+
 def put_bytes(key: str, data: bytes, mime_type: str) -> str:
-    if settings.storage_backend == "local":
+    backend = (settings.storage_backend or "local").lower()
+    if backend == "db":
+        _db_put(key, data, mime_type)
+        return key
+
+    if backend == "local":
         path = _local_root() / key
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
@@ -45,7 +77,11 @@ def put_bytes(key: str, data: bytes, mime_type: str) -> str:
 
 
 def get_bytes(key: str) -> bytes:
-    if settings.storage_backend == "local":
+    backend = (settings.storage_backend or "local").lower()
+    if backend == "db":
+        return _db_get(key)
+
+    if backend == "local":
         path = _local_root() / key
         return path.read_bytes()
 
@@ -57,7 +93,8 @@ def get_bytes(key: str) -> bytes:
 
 def presigned_url(key: str, expires: int = 3600 * 24) -> str:
     """Assina com o host publico (ex.: localhost:9100) para o navegador validar SigV4."""
-    if settings.storage_backend == "local":
+    backend = (settings.storage_backend or "local").lower()
+    if backend in ("local", "db"):
         return key
     return _client(settings.storage_public_endpoint_url).generate_presigned_url(
         "get_object",

@@ -23,8 +23,8 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     jwt_expire_minutes: int = 60 * 24 * 7
 
-    # local = filesystem (bom para Render free sem R2); s3 = MinIO/R2
-    storage_backend: str = "local"
+    # local | db | s3  (db = Postgres LargeBinary; bom no Render free)
+    storage_backend: str = "s3"
     storage_local_path: str = "/tmp/story2-storage"
     storage_endpoint_url: str = "http://localhost:9000"
     storage_public_endpoint_url: str = "http://localhost:9000"
