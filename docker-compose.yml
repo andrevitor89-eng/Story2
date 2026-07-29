@@ -1,0 +1,121 @@
+# Story2 MVP ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â desenvolvimento local
+#   docker compose up --build
+#   API: http://localhost:8000/docs  ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â·  Web: http://localhost:5173
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: story2
+      POSTGRES_PASSWORD: story2
+      POSTGRES_DB: story2
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U story2"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7
+    ports:
+      - "6380:6379"
+
+  minio:
+    image: minio/minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: story2
+      MINIO_ROOT_PASSWORD: story2123456
+    ports:
+      - "9100:9000"
+      - "9101:9001"
+    volumes:
+      - miniodata:/data
+
+  minio-setup:
+    image: minio/mc
+    depends_on:
+      minio:
+        condition: service_started
+    restart: "no"
+    entrypoint: >
+      /bin/sh -c "
+      until /usr/bin/mc alias set local http://minio:9000 story2 story2123456; do echo waiting minio; sleep 2; done;
+      /usr/bin/mc mb -p local/story2 || true;
+      echo bucket ready
+      "
+
+  api:
+    build: ./backend
+    env_file: ./backend/.env
+    environment:
+      DATABASE_URL: postgresql+psycopg://story2:story2@db:5432/story2
+      REDIS_URL: redis://redis:6379/0
+      APP_ENV: dev
+      STORAGE_ENDPOINT_URL: http://minio:9000
+      STORAGE_PUBLIC_ENDPOINT_URL: http://localhost:9100
+      STORAGE_ACCESS_KEY: story2
+      STORAGE_SECRET_KEY: story2123456
+      STORAGE_BUCKET: story2
+      GEMINI_SSL_VERIFY: "false"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      minio:
+        condition: service_started
+    ports:
+      - "8001:8000"
+    command: >
+      sh -c "alembic upgrade head &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+    volumes:
+      - ./backend:/app
+
+  worker:
+    build: ./backend
+    env_file: ./backend/.env
+    environment:
+      DATABASE_URL: postgresql+psycopg://story2:story2@db:5432/story2
+      REDIS_URL: redis://redis:6379/0
+      APP_ENV: dev
+      STORAGE_ENDPOINT_URL: http://minio:9000
+      STORAGE_PUBLIC_ENDPOINT_URL: http://localhost:9100
+      STORAGE_ACCESS_KEY: story2
+      STORAGE_SECRET_KEY: story2123456
+      STORAGE_BUCKET: story2
+      GEMINI_SSL_VERIFY: "false"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      api:
+        condition: service_started
+      minio:
+        condition: service_started
+    command: ["python", "-m", "app.workers.runner"]
+    volumes:
+      - ./backend:/app
+
+  web:
+    build: ./apps/web
+    environment:
+      VITE_API_PROXY: http://api:8000
+    depends_on:
+      api:
+        condition: service_started
+    ports:
+      - "5174:5173"
+    volumes:
+      - ./apps/web/src:/app/src
+      - ./apps/web/index.html:/app/index.html
+      - ./apps/web/public:/app/public
+
+volumes:
+  pgdata:
+  miniodata:

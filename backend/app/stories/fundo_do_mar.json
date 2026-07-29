@@ -1,0 +1,76 @@
+{
+  "id": "fundo_do_mar",
+  "title": "{NOME} e seus amigos no fundo do mar",
+  "gender": "unisex",
+  "theme": "Educativo - cuidar do planeta",
+  "variants": {
+    "2-5": {
+      "pages": [
+        {"page": 1, "text": "Para os pequenos coracoes: cuidem do oceano!", "illustration_note": "Dedicatoria: ondas suaves e bolhas com coracoes."},
+        {"page": 2, "text": "{NOME} e uma sereiazinha. Mora num recife colorido.", "illustration_note": "{NOME} sereia (cauda colorida) diante de recife vibrante."},
+        {"page": 3, "text": "Todo dia ela nada e da oi para os amigos.", "illustration_note": "{NOME} nadando e acenando para peixinhos, tartaruga e cavalo-marinho."},
+        {"page": 4, "text": "Uma correnteza a leva para um lugar novo. Opa!", "illustration_note": "Correnteza levando {NOME} para area nova e mais escura."},
+        {"page": 5, "text": "La tem lixo! Garrafas, sacolas e latas. Que triste.", "illustration_note": "Recife com lixo sobre os corais; cores apagadas."},
+        {"page": 6, "text": "Um peixinho doente aparece. O lixo machuca.", "illustration_note": "Peixinho palido saindo de tras de uma lata; {NOME} preocupada."},
+        {"page": 7, "text": "{NOME} fica triste e chama os amigos para ajudar.", "illustration_note": "{NOME} nadando veloz, rastro de bolhas."},
+        {"page": 8, "text": "Baiacu, polvo e peixinha veloz: equipe de limpeza!", "illustration_note": "Tres amigos em fila, prontos como equipe de limpeza."},
+        {"page": 9, "text": "Cada um junta uma coisa. Trabalhando juntos!", "illustration_note": "Mutirao: cada amigo com sua tarefa."},
+        {"page": 10, "text": "O mar fica limpo. A agua brilha de novo!", "illustration_note": "Recife recuperando as cores, raios de sol."},
+        {"page": 11, "text": "Os peixes saem felizes. O peixinho ja esta melhor!", "illustration_note": "Peixinhos saindo dos corais coloridos."},
+        {"page": 12, "text": "Todos brincam entre bolhas num mar limpinho.", "illustration_note": "Todos brincando entre bolhas num recife vibrante."},
+        {"page": 13, "text": "Jogue o lixo no lugar certo. O mar precisa de carinho!", "illustration_note": "{NOME} e amigos em volta de coracao de bolhas; lixeirinha na areia."}
+      ]
+    },
+    "5-9": {
+      "pages": [
+        {"page": 1, "text": "A todos os pequenos coracoes: que cuidem do oceano inteiro.", "illustration_note": "Dedicatoria: ondas suaves e bolhas com coracoes."},
+        {"page": 2, "text": "{NOME} e uma sereiazinha que vive num recife cheio de cores.", "illustration_note": "{NOME} sereia (cauda colorida) diante de recife vibrante."},
+        {"page": 3, "text": "Todos os dias nada pelo recife, dando oi para os amigos.", "illustration_note": "{NOME} nadando e acenando para peixinhos, tartaruga e cavalo-marinho."},
+        {"page": 4, "text": "Um dia, uma correnteza a desvia um pouquinho do caminho. {NOME} ve partes do recife que nao conhecia.", "illustration_note": "Correnteza levando {NOME} para area nova e mais escura."},
+        {"page": 5, "text": "Algo a surpreende: ha lixo por toda parte. Garrafas, sacolas e latas cobrem as casinhas dos peixinhos.", "illustration_note": "Recife com lixo sobre os corais; cores apagadas."},
+        {"page": 6, "text": "Um peixinho pequeno aparece devagarinho. Ele conta que esta doente por causa do lixo.", "illustration_note": "Peixinho palido saindo de tras de uma lata; {NOME} preocupada."},
+        {"page": 7, "text": "{NOME} fica muito triste, e nada rapido para chamar seus amigos para ajudar.", "illustration_note": "{NOME} nadando veloz, rastro de bolhas."},
+        {"page": 8, "text": "O baiacu, o polvo e a peixinha veloz se arrumam rapidinho para limpar o mar.", "illustration_note": "Tres amigos em fila, prontos como equipe de limpeza."},
+        {"page": 9, "text": "{NOME} junta os papeis. O polvo junta as latas. O baiacu empurra as garrafas com sua barriguinha redonda, e a peixinha junta o que e pequenininho.", "illustration_note": "Mutirao: cada amigo com sua tarefa."},
+        {"page": 10, "text": "Pouco a pouco, o mar fica mais limpo. A agua comeca a brilhar de novo!", "illustration_note": "Recife recuperando as cores, raios de sol."},
+        {"page": 11, "text": "Os peixes saem de suas casinhas limpas. O peixinho doente ja se sente bem melhor.", "illustration_note": "Peixinhos saindo dos corais coloridos."},
+        {"page": 12, "text": "E brincam todos felizes entre as bolhas, num mar limpo, colorido e brilhante.", "illustration_note": "Todos brincando entre bolhas num recife vibrante."},
+        {"page": 13, "text": "Cada pequena acao conta. Se jogamos o lixo no lugar certo e cuidamos dos nossos mares, ajudamos os peixes e todos os animais marinhos a terem um lar limpo e feliz. O mar tambem precisa do nosso carinho!", "illustration_note": "{NOME} e amigos em volta de coracao de bolhas; lixeirinha na areia."}
+      ]
+    },
+    "6-9": {
+      "pages": [
+        {"page": 1, "text": "A todos os guardioes do oceano: cada atitude pequena protege um mundo enorme.", "illustration_note": "Dedicatoria: ondas suaves e bolhas com coracoes."},
+        {"page": 2, "text": "{NOME} e uma sereiazinha curiosa que vive num recife vibrante, cheio de vida e cor.", "illustration_note": "{NOME} sereia (cauda colorida) diante de recife vibrante."},
+        {"page": 3, "text": "Todos os dias ela nada entre corais, cumprimentando peixes, tartarugas e cavalos-marinhos.", "illustration_note": "{NOME} nadando e acenando para peixinhos, tartaruga e cavalo-marinho."},
+        {"page": 4, "text": "Uma correnteza a desvia do caminho habitual e revela uma area do recife que ela ainda nao conhecia.", "illustration_note": "Correnteza levando {NOME} para area nova e mais escura."},
+        {"page": 5, "text": "Ali, a surpresa vira preocupacao: garrafas, sacolas e latas cobrem as casinhas dos peixinhos.", "illustration_note": "Recife com lixo sobre os corais; cores apagadas."},
+        {"page": 6, "text": "Um peixinho timido se aproxima e conta que esta doente por causa da poluicao.", "illustration_note": "Peixinho palido saindo de tras de uma lata; {NOME} preocupada."},
+        {"page": 7, "text": "{NOME} nao fica parada: nada depressa para reunir os amigos e montar um plano de ajuda.", "illustration_note": "{NOME} nadando veloz, rastro de bolhas."},
+        {"page": 8, "text": "Baiacu, polvo e peixinha veloz formam uma equipe determinada a limpar o mar.", "illustration_note": "Tres amigos em fila, prontos como equipe de limpeza."},
+        {"page": 9, "text": "Cada um assume uma tarefa: papeis, latas, garrafas e pedacinhos. Juntos, o trabalho avanca.", "illustration_note": "Mutirao: cada amigo com sua tarefa."},
+        {"page": 10, "text": "Devagar, as cores voltam. A agua recupera o brilho e o recife respira de novo.", "illustration_note": "Recife recuperando as cores, raios de sol."},
+        {"page": 11, "text": "Os peixes saem das casinhas limpas, e o peixinho doente ja se sente bem melhor.", "illustration_note": "Peixinhos saindo dos corais coloridos."},
+        {"page": 12, "text": "Entre bolhas e risadas, todos celebram um mar mais limpo, colorido e vivo.", "illustration_note": "Todos brincando entre bolhas num recife vibrante."},
+        {"page": 13, "text": "Cuidar do planeta comeca no dia a dia: lixo no lugar certo, respeito pelos oceanos e carinho pelos seres que nele vivem. Cada pequena acao conta.", "illustration_note": "{NOME} e amigos em volta de coracao de bolhas; lixeirinha na areia."}
+      ]
+    },
+    "9-12": {
+      "pages": [
+        {"page": 1, "text": "Para quem acredita que o futuro do planeta tambem cabe nas nossas maos - e nadadeiras.", "illustration_note": "Dedicatoria: ondas suaves e bolhas com coracoes."},
+        {"page": 2, "text": "{NOME} vive como sereia num recife diverso, onde cada coral e peixe faz parte de um equilibrio fragil.", "illustration_note": "{NOME} sereia (cauda colorida) diante de recife vibrante."},
+        {"page": 3, "text": "Nas rotinas de exploracao, cumprimenta amigos marinhos e observa como a vida depende de um habitat saudavel.", "illustration_note": "{NOME} nadando e acenando para peixinhos, tartaruga e cavalo-marinho."},
+        {"page": 4, "text": "Uma correnteza inesperada a leva para alem do caminho conhecido e expoe uma zona esquecida do recife.", "illustration_note": "Correnteza levando {NOME} para area nova e mais escura."},
+        {"page": 5, "text": "Ali, a beleza natural esta coberta por residuos: garrafas, sacolas e latas sufocam abrigos e apagam cores.", "illustration_note": "Recife com lixo sobre os corais; cores apagadas."},
+        {"page": 6, "text": "Um peixinho enfraquecido conta que a poluicao o deixou doente - uma consequencia direta do descuido humano.", "illustration_note": "Peixinho palido saindo de tras de uma lata; {NOME} preocupada."},
+        {"page": 7, "text": "Comovida, {NOME} transforma preocupacao em acao e convoca aliados para uma missao coletiva de limpeza.", "illustration_note": "{NOME} nadando veloz, rastro de bolhas."},
+        {"page": 8, "text": "Baiacu, polvo e peixinha veloz se organizam como equipe: funcoes claras, objetivo comum, urgencia compartilhada.", "illustration_note": "Tres amigos em fila, prontos como equipe de limpeza."},
+        {"page": 9, "text": "Dividem tarefas conforme habilidades - leves, pesadas, pequenas - e mostram que cooperacao multiplica resultados.", "illustration_note": "Mutirao: cada amigo com sua tarefa."},
+        {"page": 10, "text": "Aos poucos, a agua recupera transparencia e o recife volta a brilhar sob a luz do sol.", "illustration_note": "Recife recuperando as cores, raios de sol."},
+        {"page": 11, "text": "Os peixes reocupam suas casas. O peixinho antes doente recupera forca e cor.", "illustration_note": "Peixinhos saindo dos corais coloridos."},
+        {"page": 12, "text": "A celebracao final e simples e poderosa: brincar num oceano limpo e reconhecer o impacto do trabalho em equipe.", "illustration_note": "Todos brincando entre bolhas num recife vibrante."},
+        {"page": 13, "text": "Preservar o mar exige habitos concretos: descartar residuos corretamente, reduzir o que nao se reutiliza e tratar o oceano como lar compartilhado. Cada escolha diaria protege peixes, corais e o futuro de todos.", "illustration_note": "{NOME} e amigos em volta de coracao de bolhas; lixeirinha na areia."}
+      ]
+    }
+  }
+}

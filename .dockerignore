@@ -1,0 +1,13 @@
+.git
+.gitignore
+**/node_modules
+**/__pycache__
+**/.venv
+**/dist
+**/*.log
+photo-resp.json
+backend/.env
+.env
+.vercel
+up*.log
+build.log

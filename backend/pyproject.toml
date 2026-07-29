@@ -1,0 +1,35 @@
+[project]
+name = "story2-backend"
+version = "0.1.0"
+description = "Story2 MVP personalized children ebook API"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.111.0",
+  "uvicorn[standard]>=0.30.0",
+  "sqlalchemy>=2.0.30",
+  "alembic>=1.13.0",
+  "psycopg[binary]>=3.1.19",
+  "pydantic>=2.7.0",
+  "pydantic-settings>=2.3.0",
+  "python-jose[cryptography]>=3.3.0",
+  "passlib[bcrypt]>=1.7.4",
+  "bcrypt>=4.0.1,<4.1",
+  "python-multipart>=0.0.9",
+  "boto3>=1.34.0",
+  "redis>=5.0.0",
+  "httpx>=0.27.0",
+  "pillow>=10.4.0",
+  "reportlab>=4.2.0",
+  "email-validator>=2.1.0",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.setuptools.package-data]
+app = ["stories/*.json"]

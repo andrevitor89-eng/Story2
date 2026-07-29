@@ -1,0 +1,84 @@
+{
+  "id": "bichinhos_fazenda",
+  "title": "{NOME} e os bichinhos da fazenda",
+  "gender": "girl",
+  "theme": "Educativo - a arte de comunicar: pedir o que precisamos e escutar com atencao",
+  "variants": {
+    "2-5": {
+      "pages": [
+        {"page": 1, "text": "Para os pequenos sonhadores: escute com o coracao!", "illustration_note": "Dedicatoria: porteira de fazenda com coracoes flutuando."},
+        {"page": 2, "text": "{NOME} ama a fazenda da vovo. Que legal!", "illustration_note": "{NOME} correndo feliz pela fazenda; vovo acenando da varanda."},
+        {"page": 3, "text": "Um dia, um carneirinho grita: Beee! Beee!", "illustration_note": "Carneirinho fofo balindo; {NOME} se virando para olhar."},
+        {"page": 4, "text": "Ele quer alguma coisa. Mas o que? Ninguem sabe.", "illustration_note": "Carneirinho aflito; {NOME} e animais com pontos de interrogacao."},
+        {"page": 5, "text": "A vovo diz: escute com o coracao.", "illustration_note": "Vovo cochichando no ouvido de {NOME}, coracao entre as duas."},
+        {"page": 6, "text": "{NOME} leva aguinha. Glup, glup!", "illustration_note": "{NOME} com baldinho de agua ate o carneirinho."},
+        {"page": 7, "text": "Mas o carneirinho ainda faz: Beee!", "illustration_note": "Carneirinho ao lado do balde cheio, ainda balindo."},
+        {"page": 8, "text": "Entao ela leva o amigo para a sombra.", "illustration_note": "{NOME} guiando o carneirinho ate a sombra de uma arvore."},
+        {"page": 9, "text": "Beee! Beee! Ainda nao e isso.", "illustration_note": "Carneirinho na sombra, ainda balindo; {NOME} pensativa."},
+        {"page": 10, "text": "{NOME} quer parar. A vovo diz: aprender leva tempo.", "illustration_note": "{NOME} desanimada num toco; vovo com a mao no ombro."},
+        {"page": 11, "text": "Entao {NOME} senta quietinha e olha bem.", "illustration_note": "{NOME} sentada em silencio na grama, observando o carneirinho."},
+        {"page": 12, "text": "O carneirinho se aninha nela. Ele quer companhia!", "illustration_note": "Carneirinho no colo de {NOME}, os dois tranquilos."},
+        {"page": 13, "text": "Desde esse dia, sao grandes amigos.", "illustration_note": "{NOME} e o carneirinho brincando pela fazenda."},
+        {"page": 14, "text": "Toda tarde, eles se entendem. Coracao com coracao.", "illustration_note": "Por do sol; os dois sentados lado a lado; coracoes no ar."},
+        {"page": 15, "text": "Quando escutamos de verdade, descobrimos o que o outro precisa.", "illustration_note": "Vovo, {NOME} e o carneirinho na varanda, tarde dourada."}
+      ]
+    },
+    "5-9": {
+      "pages": [
+        {"page": 1, "text": "A todos os pequenos sonhadores: que escutem com o coracao.", "illustration_note": "Dedicatoria: porteira de fazenda com coracoes flutuando."},
+        {"page": 2, "text": "{NOME} adorava a fazenda da sua vovo.", "illustration_note": "{NOME} correndo feliz pela fazenda; vovo acenando da varanda."},
+        {"page": 3, "text": "Um dia, um carneirinho baliu bem forte. Beee! Beee!", "illustration_note": "Carneirinho fofo balindo; {NOME} se virando para olhar."},
+        {"page": 4, "text": "Ele queria alguma coisa. Mas ninguem entendia o que.", "illustration_note": "Carneirinho aflito; {NOME} e animais com pontos de interrogacao."},
+        {"page": 5, "text": "A vovo lhe ensinou um segredo: escutar com o coracao.", "illustration_note": "Vovo cochichando no ouvido de {NOME}, coracao entre as duas."},
+        {"page": 6, "text": "{NOME} pensou que ele estava com sede. Levou aguinha fresca para ele.", "illustration_note": "{NOME} com baldinho de agua ate o carneirinho."},
+        {"page": 7, "text": "Mas o carneirinho continuou balindo. Beee!", "illustration_note": "Carneirinho ao lado do balde cheio, ainda balindo."},
+        {"page": 8, "text": "Ela o levou com muito cuidado ate a sombrinha.", "illustration_note": "{NOME} guiando o carneirinho ate a sombra de uma arvore."},
+        {"page": 9, "text": "Mas o carneirinho baliu de novo. Beee! Beee!", "illustration_note": "Carneirinho na sombra, ainda balindo; {NOME} pensativa."},
+        {"page": 10, "text": "{NOME} queria desistir. A vovo sorriu: aprender leva tempo.", "illustration_note": "{NOME} desanimada num toco; vovo com a mao no ombro."},
+        {"page": 11, "text": "Entao {NOME} sentou bem quietinha. E olhou com atencao.", "illustration_note": "{NOME} sentada em silencio na grama, observando o carneirinho."},
+        {"page": 12, "text": "O carneirinho se aninhou juntinho dela. Ele so queria companhia!", "illustration_note": "Carneirinho no colo de {NOME}, os dois tranquilos."},
+        {"page": 13, "text": "Desde esse dia, o carneirinho e {NOME} se tornaram bons amigos.", "illustration_note": "{NOME} e o carneirinho brincando pela fazenda."},
+        {"page": 14, "text": "E toda tarde, na fazenda, aprendiam a se entender, coracao com coracao.", "illustration_note": "Por do sol; os dois sentados lado a lado; coracoes no ar."},
+        {"page": 15, "text": "Quando escutamos com atencao e com o coracao, descobrimos o que os outros realmente precisam.", "illustration_note": "Vovo, {NOME} e o carneirinho na varanda, tarde dourada."}
+      ]
+    },
+    "6-9": {
+      "pages": [
+        {"page": 1, "text": "A todos os sonhadores atentos: escutar bem e um superpoder do dia a dia.", "illustration_note": "Dedicatoria: porteira de fazenda com coracoes flutuando."},
+        {"page": 2, "text": "{NOME} adorava visitar a fazenda da vovo, onde cada animal tinha uma voz e um jeito proprio.", "illustration_note": "{NOME} correndo feliz pela fazenda; vovo acenando da varanda."},
+        {"page": 3, "text": "Certo dia, um carneirinho baliu sem parar. Beee! Beee! Parecia um pedido urgente.", "illustration_note": "Carneirinho fofo balindo; {NOME} se virando para olhar."},
+        {"page": 4, "text": "Ficou claro que ele precisava de algo - so que ninguem entendia exatamente o que era.", "illustration_note": "Carneirinho aflito; {NOME} e animais com pontos de interrogacao."},
+        {"page": 5, "text": "A vovo compartilhou um segredo antigo: para entender, e preciso escutar com o coracao.", "illustration_note": "Vovo cochichando no ouvido de {NOME}, coracao entre as duas."},
+        {"page": 6, "text": "{NOME} tentou a primeira hipotese: sede. Levou agua fresquinha ate o amigo.", "illustration_note": "{NOME} com baldinho de agua ate o carneirinho."},
+        {"page": 7, "text": "O carneirinho bebeu... e continuou balindo. Beee! Ainda nao era isso.", "illustration_note": "Carneirinho ao lado do balde cheio, ainda balindo."},
+        {"page": 8, "text": "Entao ela pensou no calor e o guiou com cuidado ate a sombra da arvore.", "illustration_note": "{NOME} guiando o carneirinho ate a sombra de uma arvore."},
+        {"page": 9, "text": "Mesmo ali, o Beee! Beee! voltou. {NOME} sentiu que estava quase desistindo.", "illustration_note": "Carneirinho na sombra, ainda balindo; {NOME} pensativa."},
+        {"page": 10, "text": "A vovo colocou a mao no ombro dela: aprender a escutar tambem leva tempo.", "illustration_note": "{NOME} desanimada num toco; vovo com a mao no ombro."},
+        {"page": 11, "text": "Dessa vez, {NOME} parou de adivinhar. Sentou em silencio e observou de verdade.", "illustration_note": "{NOME} sentada em silencio na grama, observando o carneirinho."},
+        {"page": 12, "text": "O carneirinho se aninhou no colo dela. A resposta era simples: companhia.", "illustration_note": "Carneirinho no colo de {NOME}, os dois tranquilos."},
+        {"page": 13, "text": "Daquele dia em diante, {NOME} e o carneirinho se tornaram amigos inseparaveis.", "illustration_note": "{NOME} e o carneirinho brincando pela fazenda."},
+        {"page": 14, "text": "Todas as tardes, na fazenda, praticavam o mesmo oficio: entender um ao outro.", "illustration_note": "Por do sol; os dois sentados lado a lado; coracoes no ar."},
+        {"page": 15, "text": "Quando prestamos atencao de verdade, descobrimos o que o outro precisa - mesmo sem as palavras certas.", "illustration_note": "Vovo, {NOME} e o carneirinho na varanda, tarde dourada."}
+      ]
+    },
+    "9-12": {
+      "pages": [
+        {"page": 1, "text": "Para quem quer se comunicar melhor: escutar e tao importante quanto falar.", "illustration_note": "Dedicatoria: porteira de fazenda com coracoes flutuando."},
+        {"page": 2, "text": "Na fazenda da vovo, {NOME} encontrava liberdade, cheiro de terra molhada e conversas sem pressa.", "illustration_note": "{NOME} correndo feliz pela fazenda; vovo acenando da varanda."},
+        {"page": 3, "text": "Um carneirinho comecou a balir sem descanso. Beee! Beee! Nao era brincadeira: era um pedido.", "illustration_note": "Carneirinho fofo balindo; {NOME} se virando para olhar."},
+        {"page": 4, "text": "Todos perceberam o desconforto, mas ninguem conseguia traduzir o que aquele Beee! queria dizer.", "illustration_note": "Carneirinho aflito; {NOME} e animais com pontos de interrogacao."},
+        {"page": 5, "text": "A vovo ofereceu uma pista valiosa: as vezes a resposta so aparece quando escutamos com empatia.", "illustration_note": "Vovo cochichando no ouvido de {NOME}, coracao entre as duas."},
+        {"page": 6, "text": "{NOME} testou a primeira ideia logica - sede - e levou agua fresca. Uma tentativa cuidadosa.", "illustration_note": "{NOME} com baldinho de agua ate o carneirinho."},
+        {"page": 7, "text": "Mesmo hidratado, o carneirinho insistiu. Beee! A necessidade ainda estava sem nome.", "illustration_note": "Carneirinho ao lado do balde cheio, ainda balindo."},
+        {"page": 8, "text": "Entao veio a segunda hipotese: calor. {NOME} o conduziu ate a sombra protetora da arvore.", "illustration_note": "{NOME} guiando o carneirinho ate a sombra de uma arvore."},
+        {"page": 9, "text": "O Beee! Beee! voltou. Cada tentativa errada aumentava a vontade de desistir.", "illustration_note": "Carneirinho na sombra, ainda balindo; {NOME} pensativa."},
+        {"page": 10, "text": "A vovo lembrou: escutar bem nao e adivinhar rapido - e persistir com paciencia.", "illustration_note": "{NOME} desanimada num toco; vovo com a mao no ombro."},
+        {"page": 11, "text": "{NOME} mudou de estrategia. Parou, sentou e observou em silencio, sem forcar uma resposta.", "illustration_note": "{NOME} sentada em silencio na grama, observando o carneirinho."},
+        {"page": 12, "text": "O carneirinho se aconchegou nela. Nao queria agua nem sombra: queria presenca.", "illustration_note": "Carneirinho no colo de {NOME}, os dois tranquilos."},
+        {"page": 13, "text": "Ali nasceu uma amizade fundada em atencao - a mais simples e a mais dificil das habilidades.", "illustration_note": "{NOME} e o carneirinho brincando pela fazenda."},
+        {"page": 14, "text": "Nas tardes seguintes, os dois praticavam o mesmo dialogo silencioso: sentir, observar e compreender.", "illustration_note": "Por do sol; os dois sentados lado a lado; coracoes no ar."},
+        {"page": 15, "text": "Quando escutamos com atencao genuina, descobrimos necessidades que as palavras ainda nao conseguiram explicar.", "illustration_note": "Vovo, {NOME} e o carneirinho na varanda, tarde dourada."}
+      ]
+    }
+  }
+}

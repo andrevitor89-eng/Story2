@@ -1,0 +1,36 @@
+# Story2 — producao (API + worker + frontend estatico)
+# Render: New -> Blueprint -> este repo
+
+databases:
+  - name: story2-db
+    plan: free
+    databaseName: story2
+    user: story2
+
+services:
+  - type: web
+    name: story2-api
+    runtime: docker
+    rootDir: .
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: prod
+      - key: DATABASE_URL
+        fromDatabase:
+          name: story2-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: STORAGE_BACKEND
+        value: local
+      - key: STORAGE_LOCAL_PATH
+        value: /tmp/story2-storage
+      - key: OFFLINE_FALLBACK
+        value: "true"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_SSL_VERIFY
+        value: "true"

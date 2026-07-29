@@ -1,0 +1,80 @@
+{
+  "id": "aventuras_dino",
+  "title": "As aventuras de {NOME} e Dino",
+  "gender": "boy",
+  "theme": "Educativo - aprender com os erros",
+  "variants": {
+    "2-5": {
+      "pages": [
+        {"page": 1, "text": "Para os pequenos aventureiros: nunca pare de tentar!", "illustration_note": "Dedicatoria: floresta amigavel com pegadas de crianca e dinossauro lado a lado."},
+        {"page": 2, "text": "{NOME} e Dino brincam juntos todo dia. Corre, corre!", "illustration_note": "{NOME} e Dino (dinossauro fofo verde) brincando de correr num campo."},
+        {"page": 3, "text": "Chove muito. O rio cresce. Agora cada um fica de um lado. Oh nao!", "illustration_note": "Chuva forte a noite; de manha, rio largo entre os dois amigos acenando de lados opostos."},
+        {"page": 4, "text": "{NOME} e Dino querem ficar juntos. Vamos fazer uma ponte!", "illustration_note": "Os dois com caras decididas, maos/patas na cintura, olhando o rio."},
+        {"page": 5, "text": "Primeiro: folhas grandes em cima da agua. Com cuidado!", "illustration_note": "Cada um colocando folhas gigantes sobre a agua com cuidado."},
+        {"page": 6, "text": "Mas o vento sopra... Fuuu! As folhas voam embora.", "illustration_note": "Vento personificado soprando suave; folhas voando; caras de surpresa."},
+        {"page": 7, "text": "Hmm... Nova ideia! Gravetos! Vamos tentar de novo.", "illustration_note": "Os dois com o dedo no queixo pensando; lampadinha acesa; gravetos por perto."},
+        {"page": 8, "text": "Eles colocam os gravetos um do lado do outro. Um caminhinho!", "illustration_note": "Caminhinho de gravetos atravessando o rio, ainda fragil."},
+        {"page": 9, "text": "Mas o rio corre forte... Splash! Leva os gravetos.", "illustration_note": "Correnteza levando os gravetos; carinha de ah nao."},
+        {"page": 10, "text": "Mais uma ideia! Pedras! Pedras sao fortes.", "illustration_note": "Os dois animados apontando para pedras grandes na margem."},
+        {"page": 11, "text": "Uma pedra. Outra pedra. Mais uma. Ate o meio!", "illustration_note": "{NOME} e Dino empilhando pedras que avancam para o centro do rio."},
+        {"page": 12, "text": "A ponte fica pronta! Os dois lados se encontram.", "illustration_note": "As duas metades da ponte de pedras se encontrando no meio do rio."},
+        {"page": 13, "text": "{NOME} e Dino se abracam. Conseguimos!", "illustration_note": "Abraco em cima da ponte pronta, sol brilhando."},
+        {"page": 14, "text": "Se uma ideia nao der certo, tente outra. Com coragem, voce consegue!", "illustration_note": "Cena final dos dois brincando juntos; ponte de pedras ao fundo."}
+      ]
+    },
+    "5-9": {
+      "pages": [
+        {"page": 1, "text": "A todos os pequenos aventureiros: que nunca deixem de tentar.", "illustration_note": "Dedicatoria: floresta amigavel com pegadas de crianca e dinossauro lado a lado."},
+        {"page": 2, "text": "{NOME} e seu amigo Dino brincam juntos todos os dias.", "illustration_note": "{NOME} e Dino (dinossauro fofo verde) brincando de correr num campo."},
+        {"page": 3, "text": "Uma noite chove muito, muito, e o rio cresce e os deixa separados. Cada um de um lado.", "illustration_note": "Chuva forte a noite; de manha, rio largo entre os dois amigos acenando de lados opostos."},
+        {"page": 4, "text": "{NOME} e Dino querem voltar a brincar juntos e decidem construir uma ponte.", "illustration_note": "Os dois com caras decididas, maos/patas na cintura, olhando o rio."},
+        {"page": 5, "text": "Primeiro juntam folhas grandes e as colocam sobre o rio com muito cuidado.", "illustration_note": "Cada um colocando folhas gigantes sobre a agua com cuidado."},
+        {"page": 6, "text": "Mas o vento sopra... e leva todas as folhas voando.", "illustration_note": "Vento personificado soprando suave; folhas voando; caras de surpresa."},
+        {"page": 7, "text": "{NOME} e Dino ficam pensando e tem uma ideia nova: usar gravetos.", "illustration_note": "Os dois com o dedo no queixo pensando; lampadinha acesa; gravetos por perto."},
+        {"page": 8, "text": "Colocam os gravetos um ao lado do outro, formando um caminhozinho sobre a agua.", "illustration_note": "Caminhinho de gravetos atravessando o rio, ainda fragil."},
+        {"page": 9, "text": "Mas o rio corre forte... e leva os gravetos boiando.", "illustration_note": "Correnteza levando os gravetos; carinha de ah nao."},
+        {"page": 10, "text": "{NOME} e Dino pensam mais uma vez e descobrem algo: podem usar pedras.", "illustration_note": "Os dois animados apontando para pedras grandes na margem."},
+        {"page": 11, "text": "Cada um coloca pedras do seu lado, uma por uma, chegando perto do meio.", "illustration_note": "{NOME} e Dino empilhando pedras que avancam para o centro do rio."},
+        {"page": 12, "text": "A ponte cresce pouquinho a pouquinho, firme e segura, ate que os dois lados se encontram.", "illustration_note": "As duas metades da ponte de pedras se encontrando no meio do rio."},
+        {"page": 13, "text": "{NOME} e Dino se abracam felizes por terem construido sua nova ponte.", "illustration_note": "Abraco em cima da ponte pronta, sol brilhando."},
+        {"page": 14, "text": "Nunca deixe de tentar. Quando uma ideia nao funciona, sempre da para encontrar outra. Com paciencia, esforco e coragem, voce pode conseguir coisas maravilhosas.", "illustration_note": "Cena final dos dois brincando juntos; ponte de pedras ao fundo."}
+      ]
+    },
+    "6-9": {
+      "pages": [
+        {"page": 1, "text": "A todos os jovens aventureiros: quando algo der errado, respire e tente de outro jeito.", "illustration_note": "Dedicatoria: floresta amigavel com pegadas de crianca e dinossauro lado a lado."},
+        {"page": 2, "text": "{NOME} e seu melhor amigo Dino passam as tardes correndo pelo campo, inventando brincadeiras.", "illustration_note": "{NOME} e Dino (dinossauro fofo verde) brincando de correr num campo."},
+        {"page": 3, "text": "Depois de uma noite de chuva forte, o rio cresce tanto que os dois ficam separados, cada um em uma margem.", "illustration_note": "Chuva forte a noite; de manha, rio largo entre os dois amigos acenando de lados opostos."},
+        {"page": 4, "text": "Eles sentem saudade um do outro e resolvem construir uma ponte para voltar a brincar juntos.", "illustration_note": "Os dois com caras decididas, maos/patas na cintura, olhando o rio."},
+        {"page": 5, "text": "A primeira tentativa: folhas grandes e leves, alinhadas com cuidado sobre a agua.", "illustration_note": "Cada um colocando folhas gigantes sobre a agua com cuidado."},
+        {"page": 6, "text": "Mas um vento forte chega de surpresa e espalha todas as folhas pelo ar.", "illustration_note": "Vento personificado soprando suave; folhas voando; caras de surpresa."},
+        {"page": 7, "text": "Em vez de desistir, {NOME} e Dino pensam juntos e escolhem um material mais firme: gravetos.", "illustration_note": "Os dois com o dedo no queixo pensando; lampadinha acesa; gravetos por perto."},
+        {"page": 8, "text": "Montam um caminho de gravetos lado a lado, quase como uma trilha sobre o rio.", "illustration_note": "Caminhinho de gravetos atravessando o rio, ainda fragil."},
+        {"page": 9, "text": "A correnteza, porem, e mais forte do que imaginavam e leva os gravetos embora.", "illustration_note": "Correnteza levando os gravetos; carinha de ah nao."},
+        {"page": 10, "text": "Eles observam a margem e notam pedras grandes: pesadas, firmes e perfeitas para uma ponte de verdade.", "illustration_note": "Os dois animados apontando para pedras grandes na margem."},
+        {"page": 11, "text": "Cada um avanca do seu lado, pedra por pedra, aproximando-se do centro com paciencia.", "illustration_note": "{NOME} e Dino empilhando pedras que avancam para o centro do rio."},
+        {"page": 12, "text": "A ponte cresce firme e segura ate as duas metades se encontrarem no meio do rio.", "illustration_note": "As duas metades da ponte de pedras se encontrando no meio do rio."},
+        {"page": 13, "text": "{NOME} e Dino se abracam no meio da ponte: o trabalho em equipe valeu a pena.", "illustration_note": "Abraco em cima da ponte pronta, sol brilhando."},
+        {"page": 14, "text": "Errar faz parte de aprender. Quando uma ideia falha, outra pode funcionar melhor. Com paciencia, esforco e coragem, grandes conquistas se tornam possiveis.", "illustration_note": "Cena final dos dois brincando juntos; ponte de pedras ao fundo."}
+      ]
+    },
+    "9-12": {
+      "pages": [
+        {"page": 1, "text": "Para quem gosta de desafios: errar nao e o fim da historia - e o comeco de uma ideia melhor.", "illustration_note": "Dedicatoria: floresta amigavel com pegadas de crianca e dinossauro lado a lado."},
+        {"page": 2, "text": "{NOME} e Dino eram inseparaveis. Cada tarde virava uma expedicao pelo campo, cheia de risadas e planos ousados.", "illustration_note": "{NOME} e Dino (dinossauro fofo verde) brincando de correr num campo."},
+        {"page": 3, "text": "Apos uma tempestade, o rio transbordou e cortou o caminho entre eles. De manha, so restava acenar de margens opostas.", "illustration_note": "Chuva forte a noite; de manha, rio largo entre os dois amigos acenando de lados opostos."},
+        {"page": 4, "text": "Em vez de esperar o rio baixar, decidiram resolver o problema: construir uma ponte com o que a natureza oferecia.", "illustration_note": "Os dois com caras decididas, maos/patas na cintura, olhando o rio."},
+        {"page": 5, "text": "Comecaram pelo material mais leve: folhas amplas, dispostas com cuidado como se fossem tabuas improviseadas.", "illustration_note": "Cada um colocando folhas gigantes sobre a agua com cuidado."},
+        {"page": 6, "text": "O plano durou pouco. Uma rajada de vento transformou a ponte em uma chuva de folhas coloridas.", "illustration_note": "Vento personificado soprando suave; folhas voando; caras de surpresa."},
+        {"page": 7, "text": "A frustracao veio rapido, mas a curiosidade veio em seguida. Se folhas eram leves demais, e se usassem gravetos?", "illustration_note": "Os dois com o dedo no queixo pensando; lampadinha acesa; gravetos por perto."},
+        {"page": 8, "text": "Alinharam os gravetos um ao lado do outro e criaram uma passagem estreita, quase uma trilha flutuante.", "illustration_note": "Caminhinho de gravetos atravessando o rio, ainda fragil."},
+        {"page": 9, "text": "A correnteza, porem, mostrou a segunda falha: gravetos flutuam - e o rio os levou sem pedir licenca.", "illustration_note": "Correnteza levando os gravetos; carinha de ah nao."},
+        {"page": 10, "text": "Observando melhor, perceberam o que ja estava ali: pedras. Pesadas, estaveis e capazes de resistir a agua.", "illustration_note": "Os dois animados apontando para pedras grandes na margem."},
+        {"page": 11, "text": "Trabalhando de lados opostos, avancaram pedra a pedra, medindo distancia, equilibrio e forca.", "illustration_note": "{NOME} e Dino empilhando pedras que avancam para o centro do rio."},
+        {"page": 12, "text": "Aos poucos, as duas metades se encontraram. A ponte deixou de ser um desejo e virou um caminho seguro.", "illustration_note": "As duas metades da ponte de pedras se encontrando no meio do rio."},
+        {"page": 13, "text": "No centro da obra, {NOME} e Dino celebraram o que a insistencia - e a parceria - tinham construido.", "illustration_note": "Abraco em cima da ponte pronta, sol brilhando."},
+        {"page": 14, "text": "Cada tentativa que falhou ensinou algo. Persistencia nao e repetir o mesmo erro: e ajustar a estrategia ate encontrar o que funciona. Com paciencia, esforco e coragem, voce pode atravessar o que parecia impossivel.", "illustration_note": "Cena final dos dois brincando juntos; ponte de pedras ao fundo."}
+      ]
+    }
+  }
+}
