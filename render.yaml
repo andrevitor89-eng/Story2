@@ -32,3 +32,11 @@ services:
         sync: false
       - key: GEMINI_SSL_VERIFY
         value: "true"
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash-image
+      - key: GEMINI_FALLBACK_MODELS
+        value: gemini-2.0-flash-preview-image-generation
+      - key: GEMINI_MAX_RETRIES
+        value: "6"
+      - key: GEMINI_RETRY_BASE_SECONDS
+        value: "5"

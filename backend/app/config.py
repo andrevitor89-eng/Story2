@@ -36,6 +36,11 @@ class Settings(BaseSettings):
     gemini_api_key: str = ""
     gemini_ssl_verify: bool = True
     offline_fallback: bool = True
+    gemini_model: str = "gemini-2.5-flash-image"
+    # Modelos alternativos se o principal estiver em 503/alta demanda
+    gemini_fallback_models: str = "gemini-2.0-flash-preview-image-generation"
+    gemini_max_retries: int = 6
+    gemini_retry_base_seconds: float = 5.0
 
     @property
     def sql_database_url(self) -> str:
