@@ -27,7 +27,15 @@ app.include_router(jobs.router)
 
 @app.get("/health")
 def health() -> dict:
-    return {"ok": True, "service": "story2"}
+    from app.config import settings
+
+    return {
+        "ok": True,
+        "service": "story2",
+        "has_gemini": bool(settings.gemini_api_key),
+        "storage_backend": settings.storage_backend,
+        "offline_fallback": settings.offline_fallback,
+    }
 
 
 STATIC_DIR = Path(__file__).resolve().parent.parent / "static"
