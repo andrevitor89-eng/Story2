@@ -113,9 +113,9 @@
 .fb-cover-title,
 .banner-book-title {
   position: absolute; top: 6%; left: 50%; transform: translateX(-50%); z-index: 5;
-  width: 90%; max-width: 16ch; text-align: center; pointer-events: none;
+  width: 92%; max-width: 22ch; text-align: center; pointer-events: none;
   font-family: 'Baloo 2', cursive; font-weight: 800; line-height: 1.02;
-  font-size: 1.85rem; letter-spacing: .02em;
+  font-size: 1.7rem; letter-spacing: .02em;
   color: #ffe27a;
   text-shadow:
     0 1px 0 #8a5a12,
@@ -126,8 +126,8 @@
 .fb-cover-title,
 .banner-book-title { font-size: 14.5cqw; max-width: 90%; }
 .kbh-cover-title {
-  top: 7%; z-index: 4; left: 50%; width: min(340px, 42%); max-width: 16ch;
-  font-size: 1.85rem;
+  top: 7%; z-index: 4; left: 50%; width: min(380px, 48%); max-width: 22ch;
+  font-size: 1.7rem;
 }
 .kbh-tag {
   position: absolute; top: 18px; left: 18px; z-index: 4; display: inline-flex; flex-direction: column; gap: 2px;
