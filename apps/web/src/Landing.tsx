@@ -44,7 +44,7 @@ const SHOTS: { img?: string; art?: "good" | "multi" | "side" | "covered"; ok: bo
   { img: "dica-lado.png", ok: false, focus: "center center" },
 ];
 const BOOK = Array.from({ length: 11 }, (_, i) => `ebook-${i + 1}.jpg`);
-const CATALOG_IMGS = ["capa-oceano.jpg", "capa-floresta2.jpg", "capa-dino2.jpg", "capa-circo.jpg"];
+const CATALOG_IMGS = ["capa-oceano.jpg", "capa-floresta2.jpg", "capa-dino.jpg", "capa-circo.jpg"];
 const CATALOG_THEMES = ["underwater", "fantasy", "dinosaurs", "adventure"];
 const SURPRISE_IMG = "capa-surpresa.jpg";
 /* livro 3D do catálogo: 6 páginas internas (3 spreads) do livro de exemplo de cada tema */
@@ -55,13 +55,13 @@ const BOOK3D = [
   { bg: "#f4d6da", pages: ["circo-1.jpg", "circo-2.jpg", "circo-3.jpg", "circo-4.jpg", "circo-5.jpg", "circo-6.jpg"] },
 ];
 const BOOK3D_SURPRISE = { bg: "#f3e2b4", pages: ["ebook-6.jpg", "ebook-9.jpg", "ebook-8.jpg", "ebook-10.jpg", "ebook-7.jpg", "ebook-4.jpg"] };
-const BANNER_IMGS = ["capa-circo.jpg", "capa-oceano.jpg", "capa-dino2.jpg"];
+const BANNER_IMGS = ["capa-circo.jpg", "capa-oceano.jpg", "capa-dino.jpg"];
 /* índice em t.catalog — título na capa do banner (circo, oceano, dino) */
 const BANNER_CATALOG_I = [3, 0, 2];
 /* um card por tema do catálogo — src null = ainda sem exemplo de vídeo */
 const VIDEO_IMGS = ["mar-2.jpg", "flor-2.jpg", "dino-2.jpg", "circo-2.jpg"];
 const VIDEO_SRCS: (string | null)[] = ["video-mar.mp4", "video-flor.mp4", null, "video-circo.mp4"];
-// Slides do hero: foto real (em cima) -> capa do livro gerado
+// Slides do hero: capa do livro (fundo) + foto real (card pequeno)
 const HERO_SLIDES: { photo: string; book: string; photoPos?: string }[] = [
   { photo: "foto-matteo.png", book: "capa-dino2.jpg", photoPos: "center 22%" },
   { photo: "foto-sofia.png", book: "capa-floresta.jpg" },
@@ -498,10 +498,9 @@ export function Landing() {
             <div className={`kbh-slide${i === heroI ? " on" : ""}`} key={s.book} aria-hidden={i !== heroI}>
               <img
                 className="kbh-photo"
-                src={exUrl(s.photo)}
-                alt="Foto real da criança"
+                src={exUrl(s.book)}
+                alt="Capa do livro gerado"
                 loading={i === 0 ? "eager" : "lazy"}
-                style={s.photoPos ? { objectPosition: s.photoPos } : undefined}
               />
               <span className="kbh-tag">
                 <span className="kbh-tag-top"><IcEye className="ei" /> {t.ba_preview}</span>
@@ -509,9 +508,10 @@ export function Landing() {
               </span>
               <figure className="kbh-book">
                 <img
-                  src={exUrl(s.book)}
-                  alt="Capa do livro gerado"
+                  src={exUrl(s.photo)}
+                  alt="Foto real da criança"
                   loading={i === 0 ? "eager" : "lazy"}
+                  style={s.photoPos ? { objectPosition: s.photoPos } : undefined}
                 />
               </figure>
               <div className="kbh-overlay">
@@ -558,7 +558,13 @@ export function Landing() {
             </button>
           ))}
         </div>
-        <div className="reveal"><FlipBook key={exBook} pages={exampleBooks[exBook].pages} coverTitle={exampleBooks[exBook].title} /></div>
+        <div className="reveal">
+          <FlipBook
+            key={exBook}
+            pages={exampleBooks[exBook].pages}
+            coverTitle={exampleBooks[exBook].cover === "capa-dino.jpg" ? undefined : exampleBooks[exBook].title}
+          />
+        </div>
         <p className="fb-hint reveal">{t.story_hint}</p>
       </section>
 
@@ -567,7 +573,9 @@ export function Landing() {
         {t.banners.map((b, i) => (
           <figure className="banner-card reveal" key={b.t}>
             <img src={exUrl(BANNER_IMGS[i])} alt={b.t} loading="lazy" />
-            <span className="banner-book-title">{t.catalog[BANNER_CATALOG_I[i]].t}</span>
+            {BANNER_IMGS[i] !== "capa-dino.jpg" && (
+              <span className="banner-book-title">{t.catalog[BANNER_CATALOG_I[i]].t}</span>
+            )}
             <figcaption><h3>{b.t}</h3><p>{b.p}</p></figcaption>
           </figure>
         ))}
@@ -581,7 +589,11 @@ export function Landing() {
           {t.catalog.map((c, i) => (
             <div className="cat-card reveal" key={c.t}>
               <div className="cat-flip" style={{ background: BOOK3D[i].bg }}>
-                <FlipBook pages={[CATALOG_IMGS[i], ...BOOK3D[i].pages]} compact coverTitle={c.t} />
+                <FlipBook
+                  pages={[CATALOG_IMGS[i], ...BOOK3D[i].pages]}
+                  compact
+                  coverTitle={CATALOG_IMGS[i] === "capa-dino.jpg" ? undefined : c.t}
+                />
                 <span className="cat-flip-off">{t.save}</span>
               </div>
               <div className="cat-body">
