@@ -98,22 +98,24 @@
 }
 .kbh-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .8s ease; pointer-events: none; }
 .kbh-slide.on { opacity: 1; pointer-events: auto; }
-.kbh-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 28%; }
+.kbh-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; }
 /* escurece a base e a esquerda para dar contraste ao texto */
 .kbh-slide::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(9,15,32,.74) 0%, rgba(9,15,32,.36) 42%, rgba(9,15,32,.02) 66%),
-    linear-gradient(0deg, rgba(9,15,32,.80) 0%, rgba(9,15,32,0) 48%);
+    linear-gradient(90deg, rgba(9,15,32,.62) 0%, rgba(9,15,32,.22) 38%, rgba(9,15,32,.02) 58%),
+    linear-gradient(0deg, rgba(9,15,32,.72) 0%, rgba(9,15,32,0) 42%);
 }
-/* título da capa — mesmo estilo dourado da História Surpresa */
+/* título da capa — mesmo estilo/tamanho dourado da História Surpresa */
+.fb-stage,
+.banner-card { container-type: inline-size; }
 .kbh-cover-title,
 .fb-cover-title,
 .banner-book-title {
   position: absolute; top: 7%; left: 50%; transform: translateX(-50%); z-index: 5;
-  width: 86%; text-align: center; pointer-events: none;
+  width: 86%; max-width: 14ch; text-align: center; pointer-events: none;
   font-family: 'Baloo 2', cursive; font-weight: 800; line-height: 1.05;
-  font-size: clamp(1.15rem, 2.6vw, 1.7rem); letter-spacing: .02em;
+  font-size: 1.35rem; letter-spacing: .02em;
   color: #ffe27a;
   text-shadow:
     0 1px 0 #8a5a12,
@@ -121,7 +123,12 @@
     0 3px 10px rgba(0,0,0,.45),
     0 0 18px rgba(255,210,80,.55);
 }
-.kbh-cover-title { top: 7%; z-index: 4; font-size: clamp(1.35rem, 3.2vw, 2.35rem); width: 42%; max-width: 360px; }
+.fb-cover-title,
+.banner-book-title { font-size: 11cqw; max-width: 88%; }
+.kbh-cover-title {
+  top: 8%; z-index: 4; left: 50%; width: min(280px, 34%); max-width: 14ch;
+  font-size: 1.35rem;
+}
 .kbh-tag {
   position: absolute; top: 18px; left: 18px; z-index: 4; display: inline-flex; flex-direction: column; gap: 2px;
   background: #fff; padding: 8px 15px; border-radius: 16px; max-width: 230px;
@@ -148,8 +155,8 @@
 @media (max-width: 760px) {
   .kbanner-hero { padding: 12px 14px 4px; }
   .kbh-frame { aspect-ratio: 3 / 4; min-height: 0; }
-  .kbh-photo { object-position: center 22%; }
-  .kbh-cover-title { left: 50%; width: 78%; top: 6%; font-size: clamp(1.15rem, 5.2vw, 1.55rem); }
+  .kbh-photo { object-position: center center; }
+  .kbh-cover-title { left: 50%; width: min(240px, 70%); max-width: 14ch; top: 7%; font-size: 1.35rem; }
   .kbh-tag { top: 12px; left: 12px; padding: 6px 12px; max-width: 60%; }
   .kbh-tag-top { font-size: .62rem; letter-spacing: 1px; }
   .kbh-tag b { font-size: .84rem; }
@@ -162,8 +169,8 @@
 }
 @media (max-width: 480px) {
   .kbh-frame { aspect-ratio: 3 / 4.3; }
-  .kbh-photo { object-position: center 20%; }
-  .kbh-cover-title { font-size: 1.15rem; top: 5%; }
+  .kbh-photo { object-position: center center; }
+  .kbh-cover-title { font-size: 1.35rem; top: 6%; }
   .kbh-book { width: 40%; top: 11%; }
   .kbh-overlay { bottom: 7%; }
   .kbh-overlay .keyebrow { font-size: .7rem; padding: 5px 11px; }
@@ -429,8 +436,7 @@
   font-family: 'Baloo 2', cursive; font-weight: 700; color: var(--ink); background: #fff;
   padding: 3px 15px; border-radius: 999px; box-shadow: 0 6px 14px rgba(0,0,0,.08); font-size: .95rem;
 }
-.fb-cover-title { width: 88%; }
-.flipbook-mini .fb-cover-title { font-size: clamp(.78rem, 1.8vw, 1.05rem); top: 6%; }
+.fb-cover-title { width: 88%; top: 6.5%; }
 .fb-hint { text-align: center; color: #6b6890; font-weight: 600; margin-top: 44px; }
 
 /* ---------- Como funciona com exemplos ---------- */
@@ -546,7 +552,7 @@
 .banner-card figcaption { position: relative; z-index: 1; padding: 22px 18px 16px; width: 100%; background: linear-gradient(to top, rgba(10,14,32,.96) 14%, rgba(10,14,32,.7) 44%, rgba(10,14,32,0)); }
 .banner-card h3 { margin: 0 0 4px; color: #fff; font-size: 1.28rem; }
 .banner-card p { margin: 0; color: #dfe6fb; font-size: .95rem; line-height: 1.4; }
-.banner-card .banner-book-title { top: 9%; z-index: 2; font-size: clamp(1.05rem, 2.2vw, 1.45rem); }
+.banner-card .banner-book-title { top: 8%; z-index: 2; }
 @keyframes bannerDrift {
   0% { transform: scale(1.05) translate3d(0, 0, 0); }
   100% { transform: scale(1.12) translate3d(0, -2.5%, 0); }

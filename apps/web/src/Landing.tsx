@@ -64,9 +64,9 @@ const VIDEO_IMGS = ["mar-2.jpg", "flor-2.jpg", "dino-2.jpg", "circo-2.jpg"];
 const VIDEO_SRCS: (string | null)[] = ["video-mar.mp4", "video-flor.mp4", "video-dino.mp4", "video-circo.mp4"];
 // Slides do hero: capa do livro (fundo) + foto real (card pequeno)
 const HERO_SLIDES: { photo: string; book: string; catalogI: number; photoPos?: string }[] = [
-  { photo: "foto-matteo.png", book: "capa-dino2.jpg", catalogI: 2, photoPos: "center 22%" },
-  { photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1 },
-  { photo: "foto-bebe.jpg", book: "capa-circo.jpg", catalogI: 3 },
+  { photo: "foto-matteo.png", book: "capa-dino2.jpg", catalogI: 2, photoPos: "center center" },
+  { photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1, photoPos: "center center" },
+  { photo: "foto-bebe.jpg", book: "capa-circo.jpg", catalogI: 3, photoPos: "center center" },
 ];
 const FLIP_MS = 850;
 const FLIP_AUTO_MS = 2000;
