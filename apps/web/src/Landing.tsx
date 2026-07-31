@@ -62,31 +62,31 @@ const BANNER_CATALOG_I = [3, 0, 2];
 /* um card por tema do catálogo — src null = ainda sem exemplo de vídeo */
 const VIDEO_IMGS = ["mar-2.jpg", "flor-2.jpg", "dino-2.jpg", "circo-2.jpg"];
 const VIDEO_SRCS: (string | null)[] = ["video-mar.mp4", "video-flor.mp4", "video-dino.mp4", "video-circo.mp4"];
-// Slides do hero: capa limpa + título (nome + tema), estilo Mundo dos Dinossauros
+// Slides do hero: capa limpa + título CSS em 2 linhas (sempre inteiro dentro do frame)
 const HERO_SLIDES: {
   photo: string; book: string; catalogI: number;
-  title: { pt: { name: string; theme: [string, string] }; en: { name: string; theme: [string, string] } };
+  titleLines: { pt: [string, string]; en: [string, string] };
   bookPos?: string; photoPos?: string;
 }[] = [
   {
-    photo: "foto-matteo.png", book: "capa-dino2.jpg", catalogI: 2, bookPos: "center 18%", photoPos: "center center",
-    title: {
-      pt: { name: "Matteo", theme: ["Mundo dos", "Dinossauros"] },
-      en: { name: "Matteo", theme: ["Dinosaur", "World"] },
+    photo: "foto-matteo.png", book: "capa-dino2.jpg", catalogI: 2, bookPos: "center 32%", photoPos: "center center",
+    titleLines: {
+      pt: ["Matteo e o Mundo", "dos Dinossauros"],
+      en: ["Matteo and the", "Dinosaur World"],
     },
   },
   {
-    photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1, bookPos: "center 18%", photoPos: "center center",
-    title: {
-      pt: { name: "Sofia", theme: ["Floresta", "Encantada"] },
-      en: { name: "Sofia", theme: ["Enchanted", "Forest"] },
+    photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1, bookPos: "center 32%", photoPos: "center center",
+    titleLines: {
+      pt: ["Sofia e a Floresta", "Encantada"],
+      en: ["Sofia and the", "Enchanted Forest"],
     },
   },
   {
-    photo: "foto-bebe.jpg", book: "capa-circo.jpg", catalogI: 3, bookPos: "center 20%", photoPos: "center center",
-    title: {
-      pt: { name: "Noah", theme: ["Circo das", "Luzes"] },
-      en: { name: "Noah", theme: ["Circus of", "Lights"] },
+    photo: "foto-bebe.jpg", book: "capa-circo.jpg", catalogI: 3, bookPos: "center 34%", photoPos: "center center",
+    titleLines: {
+      pt: ["Noah e o Circo", "das Luzes"],
+      en: ["Noah and the", "Circus of Lights"],
     },
   },
 ];
@@ -551,9 +551,8 @@ export function Landing() {
                 style={s.bookPos ? { objectPosition: s.bookPos } : undefined}
               />
               <span className="kbh-cover-title" aria-hidden>
-                <span className="kbh-cover-name">{s.title[lang].name}</span>
-                {s.title[lang].theme.map((line) => (
-                  <span className="kbh-cover-theme" key={line}>{line}</span>
+                {s.titleLines[lang].map((line) => (
+                  <span key={line}>{line}</span>
                 ))}
               </span>
               <span className="kbh-tag">

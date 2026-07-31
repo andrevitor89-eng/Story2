@@ -112,38 +112,32 @@
 .kbh-cover-title,
 .fb-cover-title,
 .banner-book-title {
-  position: absolute; top: 5.5%; left: 50%; transform: translateX(-50%); z-index: 5;
+  position: absolute; top: 7%; left: 50%; transform: translateX(-50%); z-index: 5;
   width: 92%; max-width: 22ch; text-align: center; pointer-events: none;
-  font-family: 'Baloo 2', cursive; font-weight: 800; line-height: .98;
+  font-family: 'Baloo 2', cursive; font-weight: 800; line-height: 1.02;
   font-size: 1.55rem; letter-spacing: .01em;
   color: #6b3e18;
-  -webkit-text-stroke: 4px #f7f1e6;
-  paint-order: stroke fill;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+  text-shadow:
+    -3px -3px 0 #f7f1e6, 3px -3px 0 #f7f1e6, -3px 3px 0 #f7f1e6, 3px 3px 0 #f7f1e6,
+    -3px 0 0 #f7f1e6, 3px 0 0 #f7f1e6, 0 -3px 0 #f7f1e6, 0 3px 0 #f7f1e6,
+    0 4px 10px rgba(0,0,0,.4);
 }
 .fb-cover-title,
-.banner-book-title { font-size: 12.5cqw; max-width: 90%; -webkit-text-stroke: .1em #f7f1e6; }
-/* título do hero — nome + tema (ortografia natural, sem ALL CAPS) */
+.banner-book-title { font-size: 12.5cqw; max-width: 90%; }
+/* título do hero — 2 linhas inteiras, com folga do topo (não corta no overflow) */
 .kbh-cover-title {
-  top: 4.5%; z-index: 5; left: 50%; width: min(520px, 58%); max-width: none;
-  display: flex; flex-direction: column; align-items: center; gap: 0;
-  font-size: clamp(1.7rem, 3.4vw, 2.7rem); line-height: .9; letter-spacing: .02em;
-  -webkit-text-stroke: 5px #f7f1e6;
-  filter:
-    drop-shadow(0 1px 0 rgba(90,50,16,.35))
-    drop-shadow(0 3px 10px rgba(0,0,0,.4));
+  top: 10%; z-index: 5; left: 50%; width: min(540px, 64%); max-width: none;
+  display: flex; flex-direction: column; align-items: center; gap: .08em;
+  padding: 6px 10px; box-sizing: border-box;
+  font-size: clamp(1.45rem, 2.9vw, 2.35rem); line-height: 1.05; letter-spacing: .015em;
+  text-shadow:
+    -3px -3px 0 #f7f1e6, 3px -3px 0 #f7f1e6, -3px 3px 0 #f7f1e6, 3px 3px 0 #f7f1e6,
+    -3px 0 0 #f7f1e6, 3px 0 0 #f7f1e6, 0 -3px 0 #f7f1e6, 0 3px 0 #f7f1e6,
+    0 5px 14px rgba(0,0,0,.42);
 }
 .kbh-cover-title > span {
   display: block; width: max-content; max-width: 100%; text-align: center;
   white-space: nowrap;
-}
-.kbh-cover-name {
-  font-size: .52em; letter-spacing: .14em; margin-bottom: .18em;
-  color: #7a4a1c;
-  -webkit-text-stroke: 3px #f7f1e6;
-}
-.kbh-cover-theme {
-  font-size: 1em; letter-spacing: .03em;
 }
 .kbh-tag {
   position: absolute; top: 18px; left: 18px; z-index: 4; display: inline-flex; align-items: center;
@@ -172,11 +166,10 @@
   .kbanner-hero { padding: 12px 14px 4px; }
   .kbh-frame { aspect-ratio: 3 / 4; min-height: 0; }
   .kbh-photo { object-position: center center; }
-  .kbh-cover-title { left: 50%; width: min(340px, 88%); top: 4%; font-size: clamp(1.35rem, 5.8vw, 1.85rem); -webkit-text-stroke: 4px #f7f1e6; }
-  .kbh-cover-name { -webkit-text-stroke: 2.5px #f7f1e6; letter-spacing: .12em; }
+  .kbh-cover-title { left: 50%; width: min(360px, 90%); top: 9%; font-size: clamp(1.2rem, 5.2vw, 1.65rem); }
   .kbh-tag { top: 12px; left: 12px; padding: 6px 12px; }
   .kbh-tag-top { font-size: .62rem; letter-spacing: 1px; }
-  .kbh-book { width: 34%; max-width: 148px; top: 18%; right: 5%; transform: none; }
+  .kbh-book { width: 34%; max-width: 148px; top: 22%; right: 5%; transform: none; }
   .kbh-overlay { left: 6%; right: 6%; max-width: none; bottom: 9%; }
   .kbh-overlay h1 { font-size: 1.95rem; margin: 8px 0 6px; }
   .kbh-overlay p { font-size: .98rem; margin-bottom: 14px; }
@@ -186,8 +179,8 @@
 @media (max-width: 480px) {
   .kbh-frame { aspect-ratio: 3 / 4.3; }
   .kbh-photo { object-position: center center; }
-  .kbh-cover-title { font-size: 1.25rem; top: 3.5%; -webkit-text-stroke: 3.5px #f7f1e6; }
-  .kbh-book { width: 36%; top: 16%; }
+  .kbh-cover-title { font-size: 1.15rem; top: 8%; }
+  .kbh-book { width: 36%; top: 20%; }
   .kbh-overlay { bottom: 7%; }
   .kbh-overlay .keyebrow { font-size: .7rem; padding: 5px 11px; }
   .kbh-overlay h1 { font-size: 1.6rem; }
