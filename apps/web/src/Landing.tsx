@@ -68,8 +68,8 @@ const HERO_SLIDES: { photo: string; book: string; catalogI: number; photoPos?: s
   { photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1 },
   { photo: "foto-bebe.jpg", book: "capa-circo.jpg", catalogI: 3 },
 ];
-const FLIP_MS = 380;
-const FLIP_AUTO_MS = 900;
+const FLIP_MS = 850;
+const FLIP_AUTO_MS = 2000;
 const exUrl = (f: string) => (f.startsWith("http://") || f.startsWith("https://") ? f : `${import.meta.env.BASE_URL}exemplos/${f}`);
 
 /* Ilustrações das dicas de enquadramento (SVG inline, sem depender de fotos) */

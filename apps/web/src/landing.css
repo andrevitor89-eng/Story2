@@ -106,19 +106,20 @@
     linear-gradient(90deg, rgba(9,15,32,.74) 0%, rgba(9,15,32,.36) 42%, rgba(9,15,32,.02) 66%),
     linear-gradient(0deg, rgba(9,15,32,.80) 0%, rgba(9,15,32,0) 48%);
 }
-/* título da capa — mesmo estilo tipográfico do Mundo dos Dinossauros */
+/* título da capa — mesmo estilo dourado da História Surpresa */
 .kbh-cover-title,
 .fb-cover-title,
 .banner-book-title {
   position: absolute; top: 7%; left: 50%; transform: translateX(-50%); z-index: 5;
   width: 86%; text-align: center; pointer-events: none;
   font-family: 'Baloo 2', cursive; font-weight: 800; line-height: 1.05;
-  font-size: clamp(1.15rem, 2.6vw, 1.7rem); letter-spacing: .03em;
-  text-transform: uppercase; color: #7a4f1a;
+  font-size: clamp(1.15rem, 2.6vw, 1.7rem); letter-spacing: .02em;
+  color: #ffe27a;
   text-shadow:
-    -2px -2px 0 #f5ebc8, 2px -2px 0 #f5ebc8, -2px 2px 0 #f5ebc8, 2px 2px 0 #f5ebc8,
-    -1px 0 0 #f5ebc8, 1px 0 0 #f5ebc8, 0 -1px 0 #f5ebc8, 0 1px 0 #f5ebc8,
-    0 3px 10px rgba(0,0,0,.35);
+    0 1px 0 #8a5a12,
+    0 2px 0 #7a4e10,
+    0 3px 10px rgba(0,0,0,.45),
+    0 0 18px rgba(255,210,80,.55);
 }
 .kbh-cover-title { top: 7%; z-index: 4; font-size: clamp(1.35rem, 3.2vw, 2.35rem); width: 42%; max-width: 360px; }
 .kbh-tag {
@@ -418,8 +419,8 @@
 }
 .fb-base { z-index: 1; }
 .fb-turn { z-index: 3; transform-origin: left center; box-shadow: 10px 0 26px rgba(0,0,0,.25); }
-.fb-turn.next { animation: fbNext .38s ease forwards; }
-.fb-turn.prev { animation: fbPrev .38s ease forwards; }
+.fb-turn.next { animation: fbNext .85s ease forwards; }
+.fb-turn.prev { animation: fbPrev .85s ease forwards; }
 /* a página escurece ao ficar de perfil (como luz incidindo numa folha virando) */
 @keyframes fbNext { 0% { transform: rotateY(0); filter: brightness(1); } 55% { filter: brightness(.65); } 100% { transform: rotateY(-172deg); filter: brightness(1); } }
 @keyframes fbPrev { 0% { transform: rotateY(-172deg); filter: brightness(1); } 45% { filter: brightness(.65); } 100% { transform: rotateY(0); filter: brightness(1); } }
