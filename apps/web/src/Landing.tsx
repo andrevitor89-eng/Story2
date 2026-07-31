@@ -76,7 +76,7 @@ const HERO_SLIDES: {
     },
   },
   {
-    photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1, bookPos: "center 32%", photoPos: "center center",
+    photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1, bookPos: "center 26%", photoPos: "center 22%",
     titleLines: {
       pt: ["Sofia e a Floresta", "Encantada"],
       en: ["Sofia and the", "Enchanted Forest"],
