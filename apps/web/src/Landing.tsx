@@ -34,8 +34,8 @@ const PROMISE_ICONS = [IcShield, IcGift, IcEye, IcTruck];
 
 /* ------- exemplos reais em apps/web/public/exemplos/ ------- */
 const HOW_IMGS = ["foto-matteo.png", "personagem-dino.jpg", "capa-dino2.jpg"];
-/* passo 3: começa na capa e folheia páginas internas */
-const HOW_OPEN_BOOK = ["capa-dino2.jpg", "dino-1.jpg", "dino-2.jpg", "dino-3.jpg", "dino-4.jpg", "dino-5.jpg", "dino-6.jpg"];
+/* passo 3: começa na capa e folheia páginas internas (sem a 2ª) */
+const HOW_OPEN_BOOK = ["capa-dino2.jpg", "dino-1.jpg", "dino-3.jpg", "dino-4.jpg", "dino-5.jpg", "dino-6.jpg"];
 // Dicas de enquadramento: 1 exemplo bom (verde) + 2 a evitar (X).
 // img = foto real local (public/exemplos/) ou URL externa; art = ilustração SVG de fallback.
 const SHOTS: { img?: string; art?: "good" | "multi" | "side" | "covered"; ok: boolean; focus?: string }[] = [
@@ -43,19 +43,19 @@ const SHOTS: { img?: string; art?: "good" | "multi" | "side" | "covered"; ok: bo
   { img: "dica-multi.png", ok: false, focus: "center center" },
   { img: "dica-lado.png", ok: false, focus: "center center" },
 ];
-const BOOK = Array.from({ length: 11 }, (_, i) => `ebook-${i + 1}.jpg`);
+const BOOK = Array.from({ length: 11 }, (_, i) => `ebook-${i + 1}.jpg`).filter((f) => f !== "ebook-2.jpg");
 /* capas sem título queimado — título CSS unificado (estilo Mundo dos Dinossauros) */
 const CATALOG_IMGS = ["capa-oceano.jpg", "capa-floresta2.jpg", "capa-dino2.jpg", "capa-circo.jpg"];
 const CATALOG_THEMES = ["underwater", "fantasy", "dinosaurs", "adventure"];
 const SURPRISE_IMG = "capa-surpresa.jpg";
-/* livro 3D do catálogo: 6 páginas internas (3 spreads) do livro de exemplo de cada tema */
+/* livro 3D do catálogo: páginas internas (sem a 2ª página, p/ flip mais limpo) */
 const BOOK3D = [
-  { bg: "#cfe3f0", pages: ["mar-1.jpg", "mar-2.jpg", "mar-3.jpg", "mar-4.jpg", "mar-5.jpg", "mar-6.jpg"] },
-  { bg: "#e2e6d1", pages: ["flor-1.jpg", "flor-2.jpg", "flor-3.jpg", "flor-4.jpg", "flor-5.jpg", "flor-6.jpg"] },
-  { bg: "#ecd8b2", pages: ["dino-1.jpg", "dino-2.jpg", "dino-3.jpg", "dino-4.jpg", "dino-5.jpg", "dino-6.jpg"] },
-  { bg: "#f4d6da", pages: ["circo-1.jpg", "circo-2.jpg", "circo-3.jpg", "circo-4.jpg", "circo-5.jpg", "circo-6.jpg"] },
+  { bg: "#cfe3f0", pages: ["mar-1.jpg", "mar-3.jpg", "mar-4.jpg", "mar-5.jpg", "mar-6.jpg"] },
+  { bg: "#e2e6d1", pages: ["flor-1.jpg", "flor-3.jpg", "flor-4.jpg", "flor-5.jpg", "flor-6.jpg"] },
+  { bg: "#ecd8b2", pages: ["dino-1.jpg", "dino-3.jpg", "dino-4.jpg", "dino-5.jpg", "dino-6.jpg"] },
+  { bg: "#f4d6da", pages: ["circo-1.jpg", "circo-3.jpg", "circo-4.jpg", "circo-5.jpg", "circo-6.jpg"] },
 ];
-const BOOK3D_SURPRISE = { bg: "#f3e2b4", pages: ["ebook-6.jpg", "ebook-9.jpg", "ebook-8.jpg", "ebook-10.jpg", "ebook-7.jpg", "ebook-4.jpg"] };
+const BOOK3D_SURPRISE = { bg: "#f3e2b4", pages: ["ebook-6.jpg", "ebook-8.jpg", "ebook-10.jpg", "ebook-7.jpg", "ebook-4.jpg"] };
 const BANNER_IMGS = ["capa-circo.jpg", "capa-oceano.jpg", "capa-dino2.jpg"];
 /* índice em t.catalog — título na capa do banner (circo, oceano, dino) */
 const BANNER_CATALOG_I = [3, 0, 2];
@@ -63,13 +63,13 @@ const BANNER_CATALOG_I = [3, 0, 2];
 const VIDEO_IMGS = ["mar-2.jpg", "flor-2.jpg", "dino-2.jpg", "circo-2.jpg"];
 const VIDEO_SRCS: (string | null)[] = ["video-mar.mp4", "video-flor.mp4", "video-dino.mp4", "video-circo.mp4"];
 // Slides do hero: capa do livro (fundo) + foto real (card pequeno)
-const HERO_SLIDES: { photo: string; book: string; catalogI: number; photoPos?: string }[] = [
-  { photo: "foto-matteo.png", book: "capa-dino2.jpg", catalogI: 2, photoPos: "center center" },
-  { photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1, photoPos: "center center" },
-  { photo: "foto-bebe.jpg", book: "capa-circo.jpg", catalogI: 3, photoPos: "center center" },
+const HERO_SLIDES: { photo: string; book: string; catalogI: number; bookPos?: string; photoPos?: string }[] = [
+  { photo: "foto-matteo.png", book: "capa-dino2.jpg", catalogI: 2, bookPos: "28% 18%", photoPos: "center center" },
+  { photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1, bookPos: "center center", photoPos: "center center" },
+  { photo: "foto-bebe.jpg", book: "capa-circo.jpg", catalogI: 3, bookPos: "center 35%", photoPos: "center center" },
 ];
-const FLIP_MS = 850;
-const FLIP_AUTO_MS = 2000;
+const FLIP_MS = 720;
+const FLIP_AUTO_MS = 1800;
 const exUrl = (f: string) => (f.startsWith("http://") || f.startsWith("https://") ? f : `${import.meta.env.BASE_URL}exemplos/${f}`);
 
 /* Ilustrações das dicas de enquadramento (SVG inline, sem depender de fotos) */
@@ -519,6 +519,7 @@ export function Landing() {
                 src={exUrl(s.book)}
                 alt={t.catalog[s.catalogI].t}
                 loading={i === 0 ? "eager" : "lazy"}
+                style={s.bookPos ? { objectPosition: s.bookPos } : undefined}
               />
               <span className="kbh-cover-title">{t.catalog[s.catalogI].t}</span>
               <span className="kbh-tag">
