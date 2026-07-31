@@ -34,6 +34,8 @@ const PROMISE_ICONS = [IcShield, IcGift, IcEye, IcTruck];
 
 /* ------- exemplos reais em apps/web/public/exemplos/ ------- */
 const HOW_IMGS = ["foto-matteo.png", "personagem-dino.jpg", "capa-dino2.jpg"];
+/* passo 3: começa na capa e folheia páginas internas */
+const HOW_OPEN_BOOK = ["capa-dino2.jpg", "dino-1.jpg", "dino-2.jpg", "dino-3.jpg", "dino-4.jpg", "dino-5.jpg", "dino-6.jpg"];
 // Dicas de enquadramento: 1 exemplo bom (verde) + 2 a evitar (X).
 // img = foto real local (public/exemplos/) ou URL externa; art = ilustração SVG de fallback.
 const SHOTS: { img?: string; art?: "good" | "multi" | "side" | "covered"; ok: boolean; focus?: string }[] = [
@@ -42,6 +44,7 @@ const SHOTS: { img?: string; art?: "good" | "multi" | "side" | "covered"; ok: bo
   { img: "dica-lado.png", ok: false, focus: "center center" },
 ];
 const BOOK = Array.from({ length: 11 }, (_, i) => `ebook-${i + 1}.jpg`);
+/* capas sem título queimado — título CSS unificado (estilo Mundo dos Dinossauros) */
 const CATALOG_IMGS = ["capa-oceano.jpg", "capa-floresta2.jpg", "capa-dino2.jpg", "capa-circo.jpg"];
 const CATALOG_THEMES = ["underwater", "fantasy", "dinosaurs", "adventure"];
 const SURPRISE_IMG = "capa-surpresa.jpg";
@@ -54,13 +57,19 @@ const BOOK3D = [
 ];
 const BOOK3D_SURPRISE = { bg: "#f3e2b4", pages: ["ebook-6.jpg", "ebook-9.jpg", "ebook-8.jpg", "ebook-10.jpg", "ebook-7.jpg", "ebook-4.jpg"] };
 const BANNER_IMGS = ["capa-circo.jpg", "capa-oceano.jpg", "capa-dino2.jpg"];
-const VIDEO_IMGS = ["mar-2.jpg", "flor-2.jpg", "circo-2.jpg"];
-// Slides do hero: foto real (em cima) -> capa do livro gerado
-const HERO_SLIDES: { photo: string; book: string; photoPos?: string }[] = [
-  { photo: "foto-matteo.png", book: "capa-dino2.jpg", photoPos: "center 22%" },
-  { photo: "foto-sofia.png", book: "capa-floresta.jpg" },
-  { photo: "foto-bebe.jpg", book: "capa-circo.jpg" },
+/* índice em t.catalog — título na capa do banner (circo, oceano, dino) */
+const BANNER_CATALOG_I = [3, 0, 2];
+/* um card por tema do catálogo — src null = ainda sem exemplo de vídeo */
+const VIDEO_IMGS = ["mar-2.jpg", "flor-2.jpg", "dino-2.jpg", "circo-2.jpg"];
+const VIDEO_SRCS: (string | null)[] = ["video-mar.mp4", "video-flor.mp4", "video-dino.mp4", "video-circo.mp4"];
+// Slides do hero: capa do livro (fundo) + foto real (card pequeno)
+const HERO_SLIDES: { photo: string; book: string; catalogI: number; photoPos?: string }[] = [
+  { photo: "foto-matteo.png", book: "capa-dino2.jpg", catalogI: 2, photoPos: "center 22%" },
+  { photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1 },
+  { photo: "foto-bebe.jpg", book: "capa-circo.jpg", catalogI: 3 },
 ];
+const FLIP_MS = 380;
+const FLIP_AUTO_MS = 900;
 const exUrl = (f: string) => (f.startsWith("http://") || f.startsWith("https://") ? f : `${import.meta.env.BASE_URL}exemplos/${f}`);
 
 /* Ilustrações das dicas de enquadramento (SVG inline, sem depender de fotos) */
@@ -130,6 +139,53 @@ function ShotArt({ kind }: { kind: "good" | "multi" | "side" | "covered" }) {
   );
 }
 
+/** Vídeo de exemplo: inicia sozinho em mudo e fica em loop. */
+function AutoMutedVideo({ src, poster }: { src: string; poster: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.muted = true;
+    el.defaultMuted = true;
+    const tryPlay = () => {
+      el.muted = true;
+      void el.play().catch(() => { /* autoplay bloqueado até interação */ });
+    };
+    tryPlay();
+    el.addEventListener("loadeddata", tryPlay);
+    el.addEventListener("canplay", tryPlay);
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const en of entries) {
+          if (en.isIntersecting) tryPlay();
+          else el.pause();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => {
+      el.removeEventListener("loadeddata", tryPlay);
+      el.removeEventListener("canplay", tryPlay);
+      io.disconnect();
+    };
+  }, [src]);
+  return (
+    <video
+      ref={ref}
+      poster={poster}
+      controls
+      muted
+      autoPlay
+      loop
+      playsInline
+      preload="auto"
+    >
+      <source src={src} type="video/mp4" />
+    </video>
+  );
+}
+
 function Faq({ items }: { items: readonly { q: string; a: string }[] }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
@@ -146,7 +202,7 @@ function Faq({ items }: { items: readonly { q: string; a: string }[] }) {
   );
 }
 
-function FlipBook({ pages, compact = false }: { pages: string[]; compact?: boolean }) {
+function FlipBook({ pages, compact = false, coverTitle }: { pages: string[]; compact?: boolean; coverTitle?: string }) {
   const [i, setI] = useState(0);
   const [anim, setAnim] = useState<"next" | "prev" | null>(null);
   const [target, setTarget] = useState(0);
@@ -160,41 +216,44 @@ function FlipBook({ pages, compact = false }: { pages: string[]; compact?: boole
     busy.current = true;
     setTarget(t);
     setAnim(dir);
-    window.setTimeout(() => { setI(t); setAnim(null); busy.current = false; }, 720);
+    window.setTimeout(() => { setI(t); setAnim(null); busy.current = false; }, FLIP_MS);
   };
-  // transição automática — vira a página sozinho; no modo compacto (catálogo) só roda com o mouse em cima
+  // só folheia com o mouse em cima
   useEffect(() => {
-    if (compact && !hover) return;
-    const id = window.setTimeout(() => flip("next", true), 1500);
+    if (!hover) return;
+    const id = window.setTimeout(() => flip("next", true), FLIP_AUTO_MS);
     return () => window.clearTimeout(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [i, pages.length, compact, hover]);
-  // ao tirar o mouse no modo compacto, volta parado na capa
+  }, [i, pages.length, hover]);
+  // ao sair, fecha na capa
   useEffect(() => {
-    if (compact && !hover) {
-      busy.current = false;
-      setAnim(null);
-      setI(0);
-    }
-  }, [hover, compact]);
+    if (hover) return;
+    busy.current = false;
+    setAnim(null);
+    setI(0);
+    setTarget(0);
+  }, [hover]);
   const baseSrc = anim === "next" ? pages[target] : pages[i];
   const turnSrc = anim === "next" ? pages[i] : pages[target];
+  const showCoverTitle = Boolean(coverTitle) && i === 0 && anim !== "next";
   const onStage = (e: RMouseEvent<HTMLDivElement>) => {
+    if (!hover) return;
     const r = e.currentTarget.getBoundingClientRect();
     if (e.clientX - r.left > r.width / 2) flip("next", true); else flip("prev");
   };
   return (
     <div
       className={`flipbook${compact ? " flipbook-mini" : ""}`}
-      onMouseEnter={compact ? () => setHover(true) : undefined}
-      onMouseLeave={compact ? () => setHover(false) : undefined}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
       {!compact && <button className="fb-nav" onClick={() => flip("prev")} disabled={i === 0} aria-label="Página anterior">‹</button>}
       <div className="fb-stage" onClick={onStage} role="button" tabIndex={0} aria-label="Virar página">
         <span className="fb-spine" />
-        <img className="fb-page fb-base" src={exUrl(baseSrc)} alt={`Página ${i + 1}`} />
+        <img className="fb-page fb-base" src={exUrl(baseSrc)} alt={i === 0 ? "Capa" : `Página ${i}`} />
         {anim && <img className={`fb-page fb-turn ${anim}`} src={exUrl(turnSrc)} alt="" aria-hidden />}
-        <span className="fb-count">{i + 1} / {pages.length}</span>
+        {showCoverTitle && <span className="fb-cover-title">{coverTitle}</span>}
+        <span className="fb-count">{i === 0 ? "Capa" : `${i} / ${pages.length - 1}`}</span>
       </div>
       {!compact && <button className="fb-nav" onClick={() => flip("next")} disabled={i === pages.length - 1} aria-label="Próxima página">›</button>}
     </div>
@@ -234,8 +293,10 @@ const I18N = {
     videos: [
       { t: "Fundo do Mar", p: "Uma aventura no oceano com narração encantadora." },
       { t: "Floresta Encantada", p: "Bichinhos gentis e luzes de vaga-lume, com trilha suave." },
+      { t: "Mundo dos Dinossauros", p: "Uma viagem ao vale dos dinossauros, com voz e trilha." },
       { t: "Circo das Luzes", p: "Uma noite mágica cheia de brilho e música." },
     ],
+    vid_soon: "Em breve",
     book_badge: "Exemplo real",
     story_title: "Folheie um livro de verdade",
     story_sub: "Livros criados pela plataforma a partir de uma única foto — escolha um exemplo.",
@@ -272,6 +333,7 @@ const I18N = {
       { q: "A foto e os dados da criança estão seguros?", a: "Sim. Usamos a foto apenas para criar o livro e não compartilhamos seus dados." },
       { q: "Recebo digital ou impresso?", a: "Os dois: o e-book digital na hora e, se quiser, o livro impresso enviado até você." },
       { q: "Posso pedir alterações?", a: "Pode! Ajuste o nome, a dedicatória e regenere as ilustrações na prévia até ficar do seu jeito." },
+      { q: "Como funciona o vídeo narrado?", a: "Depois do ebook pronto, na tela de resultado você pode gerar o vídeo narrado (voz + cenas ilustradas) ou uma animação curta do personagem." },
     ],
     rev_title: "O que as famílias dizem", rev_sub: "Histórias que viraram memórias para sempre.",
     reviews: [
@@ -319,8 +381,10 @@ const I18N = {
     videos: [
       { t: "Underwater World", p: "An ocean adventure with enchanting narration." },
       { t: "Enchanted Forest", p: "Gentle little creatures and firefly lights, with a soft soundtrack." },
+      { t: "Dinosaur World", p: "A journey through the dinosaur valley, with voice and music." },
       { t: "Circus of Lights", p: "A magical night full of sparkle and music." },
     ],
+    vid_soon: "Coming soon",
     book_badge: "Real example",
     story_title: "Flip through a real book",
     story_sub: "Books created by the platform from a single photo — pick an example.",
@@ -357,6 +421,7 @@ const I18N = {
       { q: "Are my child's photo and data safe?", a: "Yes. We use the photo only to create the book and never share your data." },
       { q: "Digital or printed?", a: "Both: the digital e-book right away and, if you want, the printed book shipped to you." },
       { q: "Can I request changes?", a: "You can! Adjust the name, the dedication and regenerate the illustrations in the preview." },
+      { q: "How does the narrated video work?", a: "After the ebook is ready, on the result screen you can generate a narrated video (voice + illustrated scenes) or a short character animation." },
     ],
     rev_title: "What families say", rev_sub: "Stories that became memories forever.",
     reviews: [
@@ -444,27 +509,28 @@ export function Landing() {
         </div>
       </header>
 
-      {/* HERO — banner full-width (foto real em cima -> capa do livro), carrossel */}
+      {/* HERO — capa do livro em destaque + foto real no card */}
       <section className="kbanner-hero" aria-label={t.eyebrow}>
         <div className="kbh-frame">
           {HERO_SLIDES.map((s, i) => (
             <div className={`kbh-slide${i === heroI ? " on" : ""}`} key={s.book} aria-hidden={i !== heroI}>
               <img
                 className="kbh-photo"
-                src={exUrl(s.photo)}
-                alt="Foto real da criança"
+                src={exUrl(s.book)}
+                alt={t.catalog[s.catalogI].t}
                 loading={i === 0 ? "eager" : "lazy"}
-                style={s.photoPos ? { objectPosition: s.photoPos } : undefined}
               />
+              <span className="kbh-cover-title">{t.catalog[s.catalogI].t}</span>
               <span className="kbh-tag">
                 <span className="kbh-tag-top"><IcEye className="ei" /> {t.ba_preview}</span>
-                <b>{t.banners[i].t}</b>
+                <b>{t.catalog[s.catalogI].t}</b>
               </span>
               <figure className="kbh-book">
                 <img
-                  src={exUrl(s.book)}
-                  alt="Capa do livro gerado"
+                  src={exUrl(s.photo)}
+                  alt="Foto real da criança"
                   loading={i === 0 ? "eager" : "lazy"}
+                  style={s.photoPos ? { objectPosition: s.photoPos } : undefined}
                 />
               </figure>
               <div className="kbh-overlay">
@@ -511,7 +577,13 @@ export function Landing() {
             </button>
           ))}
         </div>
-        <div className="reveal"><FlipBook key={exBook} pages={exampleBooks[exBook].pages} /></div>
+        <div className="reveal">
+          <FlipBook
+            key={exBook}
+            pages={exampleBooks[exBook].pages}
+            coverTitle={exampleBooks[exBook].title}
+          />
+        </div>
         <p className="fb-hint reveal">{t.story_hint}</p>
       </section>
 
@@ -519,7 +591,8 @@ export function Landing() {
       <section className="banners">
         {t.banners.map((b, i) => (
           <figure className="banner-card reveal" key={b.t}>
-            <img src={exUrl(BANNER_IMGS[i])} alt={b.t} loading="lazy" />
+            <img src={exUrl(BANNER_IMGS[i])} alt={t.catalog[BANNER_CATALOG_I[i]].t} loading="lazy" />
+            <span className="banner-book-title">{t.catalog[BANNER_CATALOG_I[i]].t}</span>
             <figcaption><h3>{b.t}</h3><p>{b.p}</p></figcaption>
           </figure>
         ))}
@@ -533,7 +606,11 @@ export function Landing() {
           {t.catalog.map((c, i) => (
             <div className="cat-card reveal" key={c.t}>
               <div className="cat-flip" style={{ background: BOOK3D[i].bg }}>
-                <FlipBook pages={[CATALOG_IMGS[i], ...BOOK3D[i].pages]} compact />
+                <FlipBook
+                  pages={[CATALOG_IMGS[i], ...BOOK3D[i].pages]}
+                  compact
+                  coverTitle={c.t}
+                />
                 <span className="cat-flip-off">{t.save}</span>
               </div>
               <div className="cat-body">
@@ -567,8 +644,14 @@ export function Landing() {
         <div className="howex">
           {t.hiw.map((h, i) => (
             <div className="howex-item" key={h.t}>
-              <figure className="howex-card reveal">
-                <img src={exUrl(HOW_IMGS[i])} alt={h.t} loading="lazy" />
+              <figure className={`howex-card reveal${i === 2 ? " howex-card-book" : ""}`}>
+                {i === 2 ? (
+                  <div className="howex-book">
+                    <FlipBook pages={HOW_OPEN_BOOK} compact coverTitle={t.catalog[2].t} />
+                  </div>
+                ) : (
+                  <img src={exUrl(HOW_IMGS[i])} alt={h.t} loading="lazy" />
+                )}
                 <span className="howex-num">{i + 1}</span>
                 <figcaption><h3>{h.t}</h3><p>{h.p}</p></figcaption>
               </figure>
@@ -605,16 +688,30 @@ export function Landing() {
         <h2 className="ktitle reveal">{t.vid_title}</h2>
         <p className="ksub reveal">{t.vid_sub}</p>
         <div className="vid-grid">
-          {t.videos.map((v, i) => (
-            <figure className="vid-card reveal" key={v.t}>
-              <div className="vid-thumb">
-                <img src={exUrl(VIDEO_IMGS[i])} alt={v.t} loading="lazy" />
-                <span className="vid-play" aria-hidden></span>
-                <span className="vid-dur">{t.vid_dur}</span>
-              </div>
-              <figcaption><h3>{v.t}</h3><p>{v.p}</p></figcaption>
-            </figure>
-          ))}
+          {t.videos.map((v, i) => {
+            const src = VIDEO_SRCS[i];
+            const canPlay = Boolean(src);
+            return (
+              <figure className="vid-card reveal" key={v.t}>
+                <div className="vid-thumb">
+                  {canPlay && src ? (
+                    <AutoMutedVideo key={src} src={exUrl(src)} poster={exUrl(VIDEO_IMGS[i])} />
+                  ) : (
+                    <button
+                      type="button"
+                      className="vid-play-btn"
+                      aria-label={`${v.t} — ${t.vid_soon}`}
+                      disabled
+                    >
+                      <img src={exUrl(VIDEO_IMGS[i])} alt={v.t} loading="lazy" />
+                      <span className="vid-dur">{t.vid_soon}</span>
+                    </button>
+                  )}
+                </div>
+                <figcaption><h3>{v.t}</h3><p>{v.p}</p></figcaption>
+              </figure>
+            );
+          })}
         </div>
         <div className="vid-cta"><Link to="/app" className="kbtn kbtn-primary big">{t.vid_cta}</Link></div>
       </section>

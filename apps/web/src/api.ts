@@ -1,4 +1,4 @@
-import type { Book, Job, StorySummary, User } from "./types";
+import type { Book, Job, StorySummary, User, UserVoice, VoiceList } from "./types";
 
 const TOKEN_KEY = "story2_token";
 
@@ -69,4 +69,25 @@ export const api = {
         age_band_mode: opts?.age_band_mode ?? "auto",
       }),
     }),
+  generateVideo: (id: string) =>
+    request<Job>(`/v1/books/${id}/video`, { method: "POST", body: JSON.stringify({}) }),
+  generateNarratedVideo: (id: string, opts?: { voice_id?: string | null }) =>
+    request<Job>(`/v1/books/${id}/narrated-video`, {
+      method: "POST",
+      body: JSON.stringify({ voice_id: opts?.voice_id || null }),
+    }),
+  listVoices: () => request<VoiceList>("/v1/voices"),
+  uploadVoice: (file: File, name: string, makeDefault = false) => {
+    const fd = new FormData();
+    fd.append("file", file);
+    fd.append("name", name);
+    fd.append("make_default", makeDefault ? "true" : "false");
+    return request<UserVoice>("/v1/voices", { method: "POST", body: fd });
+  },
+  setDefaultVoice: (id: string) =>
+    request<UserVoice>(`/v1/voices/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ is_default: true }),
+    }),
+  deleteVoice: (id: string) => request<void>(`/v1/voices/${id}`, { method: "DELETE" }),
 };

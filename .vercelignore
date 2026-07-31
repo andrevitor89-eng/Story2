@@ -1,0 +1,12 @@
+backend
+Dockerfile
+docker-compose.yml
+render.yaml
+scripts
+.git
+**/*.log
+**/__pycache__
+**/.venv
+**/node_modules
+photo-resp.json
+test-photo.png

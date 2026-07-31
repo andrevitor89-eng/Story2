@@ -1,0 +1,401 @@
+{
+  "id": "alfabeto_frutas",
+  "title": "O alfabeto de frutas do {NOME}",
+  "gender": "unisex",
+  "theme": "Educativo - alfabetizacao com frutas",
+  "pages": [
+    {
+      "page": 1,
+      "text": "Venha ler comigo: o alfabeto de frutas do {NOME}!",
+      "illustration_note": "Dedicatoria: {NOME} no centro de um pomar colorido; silhuetas A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha alegre."
+    },
+    {
+      "page": 2,
+      "text": "A de Abacaxi, doce e cheiroso; B de Banana, amarelo e gostoso.",
+      "illustration_note": "{NOME} no pomar com um abacaxi dourado e um cacho de bananas; silhuetas A e B; cores quentes, plano medio."
+    },
+    {
+      "page": 3,
+      "text": "C de Caju, do sol brasileiro; D de Damasco, macio e verdadeiro.",
+      "illustration_note": "{NOME} segura um caju alaranjado; damascos macios numa cesta; silhuetas C e D; close alegre."
+    },
+    {
+      "page": 4,
+      "text": "E de Embauba, fruta do quintal; F de Figo, doce natural.",
+      "illustration_note": "{NOME} no quintal sob uma embauba; figos maduros na mao; silhuetas E e F; cena de quintal brasileiro."
+    },
+    {
+      "page": 5,
+      "text": "G de Goiaba, doce no pomar; H de Hibisco, flor pro cha do lar.",
+      "illustration_note": "{NOME} com goiaba no pomar; flor de hibisco para cha; silhuetas G e H; pomar acolhedor."
+    },
+    {
+      "page": 6,
+      "text": "I de Inga, doce pra chupar; J de Jabuticaba, preta a brilhar.",
+      "illustration_note": "{NOME} chupa um inga; jabuticabas pretas brilhantes no tronco; silhuetas I e J; pomar brasileiro."
+    },
+    {
+      "page": 7,
+      "text": "K de Kiwi, verde por dentro; L de Laranja, suco no centro.",
+      "illustration_note": "{NOME} mostra kiwi aberto e espreme uma laranja; silhuetas K e L; mesa de frutas."
+    },
+    {
+      "page": 8,
+      "text": "M de Melancia, fresca no verao; N de Noz, crocante na mao.",
+      "illustration_note": "{NOME} com melancia aberta no calor; nozes na palma; silhuetas M e N; picnic de verao."
+    },
+    {
+      "page": 9,
+      "text": "O de Oliva, no galho dourado; P de Pessego, macio e rosado.",
+      "illustration_note": "{NOME} perto de oliveira com azeitonas; pessego rosado na mao; silhuetas O e P; luz dourada."
+    },
+    {
+      "page": 10,
+      "text": "Q de Quarana, energia do norte; R de Roma, doce no corte.",
+      "illustration_note": "{NOME} com guarana do norte; roma aberta ao meio; silhuetas Q e R; Brasil e pomar."
+    },
+    {
+      "page": 11,
+      "text": "S de Seriguela, sol do sertao; T de Tangerina, doce na mao.",
+      "illustration_note": "{NOME} com seriguelas douradas; tangerina em gomos na mao; silhuetas S e T; clima de sertao suave."
+    },
+    {
+      "page": 12,
+      "text": "U de Uva, doce no parreiral; V de Vagem, verde no quintal.",
+      "illustration_note": "{NOME} colhe uvas no parreiral; vagens verdes na horta; silhuetas U e V; pomar e horta juntos."
+    },
+    {
+      "page": 13,
+      "text": "W de Watermelon, melancia no chao; X de Xixa, fruta do sertao.",
+      "illustration_note": "{NOME} com melancia enorme; xixa tipica do Brasil; silhuetas W e X; festa de frutas."
+    },
+    {
+      "page": 14,
+      "text": "Y de Yacon, doce e crocante; Z de Zimbro, cheiro constante.",
+      "illustration_note": "{NOME} prova yacon crocante; zimbro aromatico ao fundo; silhuetas Y e Z; encerramento do pomar."
+    },
+    {
+      "page": 15,
+      "text": "De A a Z, {NOME} leu com carinho: do abacaxi ao pomar no caminho.",
+      "illustration_note": "{NOME} no centro de um pomar em festa, cercado de frutas do alfabeto; silhuetas A e Z; confete suave."
+    }
+  ],
+  "variants": {
+    "2-5": {
+      "pages": [
+        {
+          "page": 1,
+          "text": "Venha ler comigo: o alfabeto de frutas do {NOME}!",
+          "illustration_note": "Dedicatoria: {NOME} no centro de um pomar colorido; silhuetas A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha alegre."
+        },
+        {
+          "page": 2,
+          "text": "A de Abacaxi, doce e cheiroso; B de Banana, amarelo e gostoso.",
+          "illustration_note": "{NOME} no pomar com um abacaxi dourado e um cacho de bananas; silhuetas A e B; cores quentes, plano medio."
+        },
+        {
+          "page": 3,
+          "text": "C de Caju, do sol brasileiro; D de Damasco, macio e verdadeiro.",
+          "illustration_note": "{NOME} segura um caju alaranjado; damascos macios numa cesta; silhuetas C e D; close alegre."
+        },
+        {
+          "page": 4,
+          "text": "E de Embauba, fruta do quintal; F de Figo, doce natural.",
+          "illustration_note": "{NOME} no quintal sob uma embauba; figos maduros na mao; silhuetas E e F; cena de quintal brasileiro."
+        },
+        {
+          "page": 5,
+          "text": "G de Goiaba, doce no pomar; H de Hibisco, flor pro cha do lar.",
+          "illustration_note": "{NOME} com goiaba no pomar; flor de hibisco para cha; silhuetas G e H; pomar acolhedor."
+        },
+        {
+          "page": 6,
+          "text": "I de Inga, doce pra chupar; J de Jabuticaba, preta a brilhar.",
+          "illustration_note": "{NOME} chupa um inga; jabuticabas pretas brilhantes no tronco; silhuetas I e J; pomar brasileiro."
+        },
+        {
+          "page": 7,
+          "text": "K de Kiwi, verde por dentro; L de Laranja, suco no centro.",
+          "illustration_note": "{NOME} mostra kiwi aberto e espreme uma laranja; silhuetas K e L; mesa de frutas."
+        },
+        {
+          "page": 8,
+          "text": "M de Melancia, fresca no verao; N de Noz, crocante na mao.",
+          "illustration_note": "{NOME} com melancia aberta no calor; nozes na palma; silhuetas M e N; picnic de verao."
+        },
+        {
+          "page": 9,
+          "text": "O de Oliva, no galho dourado; P de Pessego, macio e rosado.",
+          "illustration_note": "{NOME} perto de oliveira com azeitonas; pessego rosado na mao; silhuetas O e P; luz dourada."
+        },
+        {
+          "page": 10,
+          "text": "Q de Quarana, energia do norte; R de Roma, doce no corte.",
+          "illustration_note": "{NOME} com guarana do norte; roma aberta ao meio; silhuetas Q e R; Brasil e pomar."
+        },
+        {
+          "page": 11,
+          "text": "S de Seriguela, sol do sertao; T de Tangerina, doce na mao.",
+          "illustration_note": "{NOME} com seriguelas douradas; tangerina em gomos na mao; silhuetas S e T; clima de sertao suave."
+        },
+        {
+          "page": 12,
+          "text": "U de Uva, doce no parreiral; V de Vagem, verde no quintal.",
+          "illustration_note": "{NOME} colhe uvas no parreiral; vagens verdes na horta; silhuetas U e V; pomar e horta juntos."
+        },
+        {
+          "page": 13,
+          "text": "W de Watermelon, melancia no chao; X de Xixa, fruta do sertao.",
+          "illustration_note": "{NOME} com melancia enorme; xixa tipica do Brasil; silhuetas W e X; festa de frutas."
+        },
+        {
+          "page": 14,
+          "text": "Y de Yacon, doce e crocante; Z de Zimbro, cheiro constante.",
+          "illustration_note": "{NOME} prova yacon crocante; zimbro aromatico ao fundo; silhuetas Y e Z; encerramento do pomar."
+        },
+        {
+          "page": 15,
+          "text": "De A a Z, {NOME} leu com carinho: do abacaxi ao pomar no caminho.",
+          "illustration_note": "{NOME} no centro de um pomar em festa, cercado de frutas do alfabeto; silhuetas A e Z; confete suave."
+        }
+      ]
+    },
+    "5-9": {
+      "pages": [
+        {
+          "page": 1,
+          "text": "Venha ler comigo: o alfabeto de frutas do {NOME}!",
+          "illustration_note": "Dedicatoria: {NOME} no centro de um pomar colorido; silhuetas A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha alegre."
+        },
+        {
+          "page": 2,
+          "text": "A de Abacaxi, doce e cheiroso; B de Banana, amarelo e gostoso.",
+          "illustration_note": "{NOME} no pomar com um abacaxi dourado e um cacho de bananas; silhuetas A e B; cores quentes, plano medio."
+        },
+        {
+          "page": 3,
+          "text": "C de Caju, do sol brasileiro; D de Damasco, macio e verdadeiro.",
+          "illustration_note": "{NOME} segura um caju alaranjado; damascos macios numa cesta; silhuetas C e D; close alegre."
+        },
+        {
+          "page": 4,
+          "text": "E de Embauba, fruta do quintal; F de Figo, doce natural.",
+          "illustration_note": "{NOME} no quintal sob uma embauba; figos maduros na mao; silhuetas E e F; cena de quintal brasileiro."
+        },
+        {
+          "page": 5,
+          "text": "G de Goiaba, doce no pomar; H de Hibisco, flor pro cha do lar.",
+          "illustration_note": "{NOME} com goiaba no pomar; flor de hibisco para cha; silhuetas G e H; pomar acolhedor."
+        },
+        {
+          "page": 6,
+          "text": "I de Inga, doce pra chupar; J de Jabuticaba, preta a brilhar.",
+          "illustration_note": "{NOME} chupa um inga; jabuticabas pretas brilhantes no tronco; silhuetas I e J; pomar brasileiro."
+        },
+        {
+          "page": 7,
+          "text": "K de Kiwi, verde por dentro; L de Laranja, suco no centro.",
+          "illustration_note": "{NOME} mostra kiwi aberto e espreme uma laranja; silhuetas K e L; mesa de frutas."
+        },
+        {
+          "page": 8,
+          "text": "M de Melancia, fresca no verao; N de Noz, crocante na mao.",
+          "illustration_note": "{NOME} com melancia aberta no calor; nozes na palma; silhuetas M e N; picnic de verao."
+        },
+        {
+          "page": 9,
+          "text": "O de Oliva, no galho dourado; P de Pessego, macio e rosado.",
+          "illustration_note": "{NOME} perto de oliveira com azeitonas; pessego rosado na mao; silhuetas O e P; luz dourada."
+        },
+        {
+          "page": 10,
+          "text": "Q de Quarana, energia do norte; R de Roma, doce no corte.",
+          "illustration_note": "{NOME} com guarana do norte; roma aberta ao meio; silhuetas Q e R; Brasil e pomar."
+        },
+        {
+          "page": 11,
+          "text": "S de Seriguela, sol do sertao; T de Tangerina, doce na mao.",
+          "illustration_note": "{NOME} com seriguelas douradas; tangerina em gomos na mao; silhuetas S e T; clima de sertao suave."
+        },
+        {
+          "page": 12,
+          "text": "U de Uva, doce no parreiral; V de Vagem, verde no quintal.",
+          "illustration_note": "{NOME} colhe uvas no parreiral; vagens verdes na horta; silhuetas U e V; pomar e horta juntos."
+        },
+        {
+          "page": 13,
+          "text": "W de Watermelon, melancia no chao; X de Xixa, fruta do sertao.",
+          "illustration_note": "{NOME} com melancia enorme; xixa tipica do Brasil; silhuetas W e X; festa de frutas."
+        },
+        {
+          "page": 14,
+          "text": "Y de Yacon, doce e crocante; Z de Zimbro, cheiro constante.",
+          "illustration_note": "{NOME} prova yacon crocante; zimbro aromatico ao fundo; silhuetas Y e Z; encerramento do pomar."
+        },
+        {
+          "page": 15,
+          "text": "De A a Z, {NOME} leu com carinho: do abacaxi ao pomar no caminho.",
+          "illustration_note": "{NOME} no centro de um pomar em festa, cercado de frutas do alfabeto; silhuetas A e Z; confete suave."
+        }
+      ]
+    },
+    "6-9": {
+      "pages": [
+        {
+          "page": 1,
+          "text": "Venha ler comigo: o alfabeto de frutas do {NOME}!",
+          "illustration_note": "Dedicatoria: {NOME} no centro de um pomar colorido; silhuetas A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha alegre."
+        },
+        {
+          "page": 2,
+          "text": "A de Abacaxi, doce e cheiroso; B de Banana, amarelo e gostoso.",
+          "illustration_note": "{NOME} no pomar com um abacaxi dourado e um cacho de bananas; silhuetas A e B; cores quentes, plano medio."
+        },
+        {
+          "page": 3,
+          "text": "C de Caju, do sol brasileiro; D de Damasco, macio e verdadeiro.",
+          "illustration_note": "{NOME} segura um caju alaranjado; damascos macios numa cesta; silhuetas C e D; close alegre."
+        },
+        {
+          "page": 4,
+          "text": "E de Embauba, fruta do quintal; F de Figo, doce natural.",
+          "illustration_note": "{NOME} no quintal sob uma embauba; figos maduros na mao; silhuetas E e F; cena de quintal brasileiro."
+        },
+        {
+          "page": 5,
+          "text": "G de Goiaba, doce no pomar; H de Hibisco, flor pro cha do lar.",
+          "illustration_note": "{NOME} com goiaba no pomar; flor de hibisco para cha; silhuetas G e H; pomar acolhedor."
+        },
+        {
+          "page": 6,
+          "text": "I de Inga, doce pra chupar; J de Jabuticaba, preta a brilhar.",
+          "illustration_note": "{NOME} chupa um inga; jabuticabas pretas brilhantes no tronco; silhuetas I e J; pomar brasileiro."
+        },
+        {
+          "page": 7,
+          "text": "K de Kiwi, verde por dentro; L de Laranja, suco no centro.",
+          "illustration_note": "{NOME} mostra kiwi aberto e espreme uma laranja; silhuetas K e L; mesa de frutas."
+        },
+        {
+          "page": 8,
+          "text": "M de Melancia, fresca no verao; N de Noz, crocante na mao.",
+          "illustration_note": "{NOME} com melancia aberta no calor; nozes na palma; silhuetas M e N; picnic de verao."
+        },
+        {
+          "page": 9,
+          "text": "O de Oliva, no galho dourado; P de Pessego, macio e rosado.",
+          "illustration_note": "{NOME} perto de oliveira com azeitonas; pessego rosado na mao; silhuetas O e P; luz dourada."
+        },
+        {
+          "page": 10,
+          "text": "Q de Quarana, energia do norte; R de Roma, doce no corte.",
+          "illustration_note": "{NOME} com guarana do norte; roma aberta ao meio; silhuetas Q e R; Brasil e pomar."
+        },
+        {
+          "page": 11,
+          "text": "S de Seriguela, sol do sertao; T de Tangerina, doce na mao.",
+          "illustration_note": "{NOME} com seriguelas douradas; tangerina em gomos na mao; silhuetas S e T; clima de sertao suave."
+        },
+        {
+          "page": 12,
+          "text": "U de Uva, doce no parreiral; V de Vagem, verde no quintal.",
+          "illustration_note": "{NOME} colhe uvas no parreiral; vagens verdes na horta; silhuetas U e V; pomar e horta juntos."
+        },
+        {
+          "page": 13,
+          "text": "W de Watermelon, melancia no chao; X de Xixa, fruta do sertao.",
+          "illustration_note": "{NOME} com melancia enorme; xixa tipica do Brasil; silhuetas W e X; festa de frutas."
+        },
+        {
+          "page": 14,
+          "text": "Y de Yacon, doce e crocante; Z de Zimbro, cheiro constante.",
+          "illustration_note": "{NOME} prova yacon crocante; zimbro aromatico ao fundo; silhuetas Y e Z; encerramento do pomar."
+        },
+        {
+          "page": 15,
+          "text": "De A a Z, {NOME} leu com carinho: do abacaxi ao pomar no caminho.",
+          "illustration_note": "{NOME} no centro de um pomar em festa, cercado de frutas do alfabeto; silhuetas A e Z; confete suave."
+        }
+      ]
+    },
+    "9-12": {
+      "pages": [
+        {
+          "page": 1,
+          "text": "Venha ler comigo: o alfabeto de frutas do {NOME}!",
+          "illustration_note": "Dedicatoria: {NOME} no centro de um pomar colorido; silhuetas A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha alegre."
+        },
+        {
+          "page": 2,
+          "text": "A de Abacaxi, doce e cheiroso; B de Banana, amarelo e gostoso.",
+          "illustration_note": "{NOME} no pomar com um abacaxi dourado e um cacho de bananas; silhuetas A e B; cores quentes, plano medio."
+        },
+        {
+          "page": 3,
+          "text": "C de Caju, do sol brasileiro; D de Damasco, macio e verdadeiro.",
+          "illustration_note": "{NOME} segura um caju alaranjado; damascos macios numa cesta; silhuetas C e D; close alegre."
+        },
+        {
+          "page": 4,
+          "text": "E de Embauba, fruta do quintal; F de Figo, doce natural.",
+          "illustration_note": "{NOME} no quintal sob uma embauba; figos maduros na mao; silhuetas E e F; cena de quintal brasileiro."
+        },
+        {
+          "page": 5,
+          "text": "G de Goiaba, doce no pomar; H de Hibisco, flor pro cha do lar.",
+          "illustration_note": "{NOME} com goiaba no pomar; flor de hibisco para cha; silhuetas G e H; pomar acolhedor."
+        },
+        {
+          "page": 6,
+          "text": "I de Inga, doce pra chupar; J de Jabuticaba, preta a brilhar.",
+          "illustration_note": "{NOME} chupa um inga; jabuticabas pretas brilhantes no tronco; silhuetas I e J; pomar brasileiro."
+        },
+        {
+          "page": 7,
+          "text": "K de Kiwi, verde por dentro; L de Laranja, suco no centro.",
+          "illustration_note": "{NOME} mostra kiwi aberto e espreme uma laranja; silhuetas K e L; mesa de frutas."
+        },
+        {
+          "page": 8,
+          "text": "M de Melancia, fresca no verao; N de Noz, crocante na mao.",
+          "illustration_note": "{NOME} com melancia aberta no calor; nozes na palma; silhuetas M e N; picnic de verao."
+        },
+        {
+          "page": 9,
+          "text": "O de Oliva, no galho dourado; P de Pessego, macio e rosado.",
+          "illustration_note": "{NOME} perto de oliveira com azeitonas; pessego rosado na mao; silhuetas O e P; luz dourada."
+        },
+        {
+          "page": 10,
+          "text": "Q de Quarana, energia do norte; R de Roma, doce no corte.",
+          "illustration_note": "{NOME} com guarana do norte; roma aberta ao meio; silhuetas Q e R; Brasil e pomar."
+        },
+        {
+          "page": 11,
+          "text": "S de Seriguela, sol do sertao; T de Tangerina, doce na mao.",
+          "illustration_note": "{NOME} com seriguelas douradas; tangerina em gomos na mao; silhuetas S e T; clima de sertao suave."
+        },
+        {
+          "page": 12,
+          "text": "U de Uva, doce no parreiral; V de Vagem, verde no quintal.",
+          "illustration_note": "{NOME} colhe uvas no parreiral; vagens verdes na horta; silhuetas U e V; pomar e horta juntos."
+        },
+        {
+          "page": 13,
+          "text": "W de Watermelon, melancia no chao; X de Xixa, fruta do sertao.",
+          "illustration_note": "{NOME} com melancia enorme; xixa tipica do Brasil; silhuetas W e X; festa de frutas."
+        },
+        {
+          "page": 14,
+          "text": "Y de Yacon, doce e crocante; Z de Zimbro, cheiro constante.",
+          "illustration_note": "{NOME} prova yacon crocante; zimbro aromatico ao fundo; silhuetas Y e Z; encerramento do pomar."
+        },
+        {
+          "page": 15,
+          "text": "De A a Z, {NOME} leu com carinho: do abacaxi ao pomar no caminho.",
+          "illustration_note": "{NOME} no centro de um pomar em festa, cercado de frutas do alfabeto; silhuetas A e Z; confete suave."
+        }
+      ]
+    }
+  }
+}

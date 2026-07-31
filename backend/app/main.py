@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from app.routers import auth, books, jobs, stories
+from app.routers import auth, books, jobs, stories, voices
 
 app = FastAPI(title="Story2 API", version="0.1.0")
 
@@ -23,6 +23,7 @@ app.include_router(auth.router)
 app.include_router(stories.router)
 app.include_router(books.router)
 app.include_router(jobs.router)
+app.include_router(voices.router)
 
 
 @app.get("/health")
@@ -33,6 +34,7 @@ def health() -> dict:
         "ok": True,
         "service": "story2",
         "has_gemini": bool(settings.gemini_api_key),
+        "has_elevenlabs": bool(settings.elevenlabs_api_key),
         "storage_backend": settings.storage_backend,
         "offline_fallback": settings.offline_fallback,
     }

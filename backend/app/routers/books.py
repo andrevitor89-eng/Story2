@@ -9,10 +9,10 @@ from sqlalchemy.orm import Session
 
 from app import storage
 from app.db import get_db
-from app.models import Asset, AssetKind, Book, BookStatus, Job, User
-from app.schemas import BookCreate, BookOut, GenerateRequest, JobOut
+from app.models import Asset, AssetKind, Book, BookStatus, Job, JobKind, User, UserVoice
+from app.schemas import BookCreate, BookOut, GenerateRequest, JobOut, NarratedVideoRequest, VideoRequest
 from app.security import get_current_user, get_current_user_flexible
-from app.services.jobs import enqueue_generate
+from app.services.jobs import enqueue_generate, enqueue_video
 from app.stories.catalog import AGE_BANDS, get_story, suggest_age_band
 
 router = APIRouter(prefix="/v1/books", tags=["books"])
@@ -27,6 +27,11 @@ def _book_out(book: Book) -> BookOut:
         [a for a in book.assets if a.kind == AssetKind.page],
         key=lambda a: a.page_number or 0,
     )
+    video = next((a for a in book.assets if a.kind == AssetKind.video), None)
+    narrated = next((a for a in book.assets if a.kind == AssetKind.narrated_video), None)
+    video_mime = video.mime_type if video else None
+    if not video_mime and book.video_url and str(book.video_url).endswith(".gif"):
+        video_mime = "image/gif"
     # URLs via API proxy (evita SigV4 quebrado do MinIO no navegador)
     return BookOut(
         id=book.id,
@@ -44,6 +49,11 @@ def _book_out(book: Book) -> BookOut:
         has_photo=has_photo,
         pdf_url=f"/v1/books/{book.id}/pdf" if pdf else None,
         page_urls=[f"/v1/books/{book.id}/pages/{p.page_number}" for p in pages],
+        video_url=f"/v1/books/{book.id}/video" if video or book.video_url else None,
+        video_mime=video_mime,
+        narrated_video_url=(
+            f"/v1/books/{book.id}/narrated-video" if narrated or book.narrated_video_url else None
+        ),
     )
 
 
@@ -137,6 +147,83 @@ def get_pdf(
             "Cache-Control": "private, max-age=3600",
         },
     )
+
+
+@router.get("/{book_id}/video")
+def get_video(
+    book_id: uuid.UUID,
+    user: User = Depends(get_current_user_flexible),
+    db: Session = Depends(get_db),
+) -> Response:
+    book = _get_owned(db, book_id, user)
+    asset = next((a for a in book.assets if a.kind == AssetKind.video), None)
+    key = asset.storage_key if asset else book.video_url
+    if not key:
+        raise HTTPException(status_code=404, detail="Video nao encontrado")
+    data = storage.get_bytes(key)
+    mime = asset.mime_type if asset else ("image/gif" if str(key).endswith(".gif") else "video/mp4")
+    return Response(
+        content=data,
+        media_type=mime,
+        headers={"Cache-Control": "private, max-age=3600"},
+    )
+
+
+@router.get("/{book_id}/narrated-video")
+def get_narrated_video(
+    book_id: uuid.UUID,
+    user: User = Depends(get_current_user_flexible),
+    db: Session = Depends(get_db),
+) -> Response:
+    book = _get_owned(db, book_id, user)
+    asset = next((a for a in book.assets if a.kind == AssetKind.narrated_video), None)
+    key = asset.storage_key if asset else book.narrated_video_url
+    if not key:
+        raise HTTPException(status_code=404, detail="Video narrado nao encontrado")
+    data = storage.get_bytes(key)
+    mime = asset.mime_type if asset else ("image/gif" if str(key).endswith(".gif") else "video/mp4")
+    return Response(
+        content=data,
+        media_type=mime,
+        headers={"Cache-Control": "private, max-age=3600"},
+    )
+
+
+@router.post("/{book_id}/video", response_model=JobOut, status_code=status.HTTP_202_ACCEPTED)
+def start_video(
+    book_id: uuid.UUID,
+    body: VideoRequest | None = None,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> JobOut:
+    book = _get_owned(db, book_id, user)
+    if book.status != BookStatus.ready:
+        raise HTTPException(status_code=400, detail="Gere o ebook antes da animacao")
+    if not any(a.kind in (AssetKind.character, AssetKind.page) for a in book.assets):
+        raise HTTPException(status_code=400, detail="Ilustracoes ausentes")
+    return enqueue_video(db, book, kind=JobKind.VIDEO)
+
+
+@router.post("/{book_id}/narrated-video", response_model=JobOut, status_code=status.HTTP_202_ACCEPTED)
+def start_narrated_video(
+    book_id: uuid.UUID,
+    body: NarratedVideoRequest | None = None,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> JobOut:
+    book = _get_owned(db, book_id, user)
+    if book.status != BookStatus.ready:
+        raise HTTPException(status_code=400, detail="Gere o ebook antes do video narrado")
+    if not any(a.kind == AssetKind.page for a in book.assets):
+        raise HTTPException(status_code=400, detail="Paginas ilustradas ausentes")
+    payload: dict = {}
+    voice_id = body.voice_id if body else None
+    if voice_id is not None:
+        voice = db.get(UserVoice, voice_id)
+        if voice is None or voice.user_id != user.id:
+            raise HTTPException(status_code=404, detail="Voz nao encontrada")
+        payload["voice_id"] = str(voice.id)
+    return enqueue_video(db, book, kind=JobKind.NARRATED_VIDEO, payload=payload or None)
 
 
 @router.post("/{book_id}/photo", response_model=BookOut)

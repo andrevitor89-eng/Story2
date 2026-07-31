@@ -1,0 +1,401 @@
+{
+  "id": "alfabeto_frutas_animais",
+  "title": "O alfabeto de frutas e animais do {NOME}",
+  "gender": "unisex",
+  "theme": "Educativo - alfabetizacao e consciencia fonemica",
+  "pages": [
+    {
+      "page": 1,
+      "text": "A todos os pequenos leitores: venham aprender o alfabeto com frutas e animais!",
+      "illustration_note": "Dedicatoria: {NOME} no centro de um jardim colorido com frutas e animais; silhuetas grandes e macias das letras A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha, clima alegre."
+    },
+    {
+      "page": 2,
+      "text": "A de Abacaxi, todo amarelinho, B de Boi, forte e valentinho.",
+      "illustration_note": "{NOME} no prado, ao lado de um abacaxi dourado e um boi forte; silhuetas A e B em madeira; cores quentes, plano medio."
+    },
+    {
+      "page": 3,
+      "text": "C de Cereja, doce e vermelhinha, D de Dinossauro, vem na festinha!",
+      "illustration_note": "{NOME} com cerejas vermelhas brilhantes; dinossauro verde amigavel e grande ao lado; silhuetas C e D; close alegre."
+    },
+    {
+      "page": 4,
+      "text": "E de Ema, corre, corre sem parar, F de Figo, doce pra se lambuzar.",
+      "illustration_note": "{NOME} ri vendo uma ema correr pelo campo; figos maduros prontos para comer; silhuetas E e F; cena dinamica."
+    },
+    {
+      "page": 5,
+      "text": "G de Girafa, pescoco tao alto, H de Hipopotamo da um grande salto.",
+      "illustration_note": "{NOME} no pasto olha uma girafa alta; hipopotamo fresco na lagoa; silhuetas G e H; plano aberto alegre."
+    },
+    {
+      "page": 6,
+      "text": "I de Iguana, anda bem baixinho, J de Jaca, gigante amarelinho.",
+      "illustration_note": "{NOME} observa iguana subindo num tronco; jaca enorme caida no pomar; silhuetas I e J; ritmo calmo e curioso."
+    },
+    {
+      "page": 7,
+      "text": "K de Kiwi, verdinho no pratinho, L de Leao, solta o rugidinho!",
+      "illustration_note": "{NOME} abre um kiwi mostrando o verde de dentro; leao ruge ao fundo; silhuetas K e L; contraste quieto e energia."
+    },
+    {
+      "page": 8,
+      "text": "M de Melancia, fresca e gostosinha, N de Noz, crocante e pequenina.",
+      "illustration_note": "{NOME} com melancia aberta no calor; nozes crocantes na mao; silhuetas M e N; picnic de verao."
+    },
+    {
+      "page": 9,
+      "text": "O de Ourico, cheinho de espinho, P de Pato nadando quietinho.",
+      "illustration_note": "{NOME} ve ourico enrolado em bola; pato nada num canto quieto do lago; silhuetas O e P; luz dourada gentil."
+    },
+    {
+      "page": 10,
+      "text": "Q de Quati, focinho comprido, R de Roma, doce e colorido.",
+      "illustration_note": "{NOME} oferece roma aberta a um quati de focinho longo; silhuetas Q e R no pomar; tom brincalhao."
+    },
+    {
+      "page": 11,
+      "text": "S de Sapo que pula sem parar, T de Tangerina pra saborear.",
+      "illustration_note": "{NOME} ri de um sapo pulando no chao; tangerina em gomos na mao; silhuetas S e T; energia alegre."
+    },
+    {
+      "page": 12,
+      "text": "U de Uva, roxinha e docinha, V de Vaca, mansa e boazinha.",
+      "illustration_note": "{NOME} colhe uvas no parreiral; vaca mansa pasta perto do curral; silhuetas U e V; cena rural acolhedora."
+    },
+    {
+      "page": 13,
+      "text": "W de Waffle, quentinho e dourado, X de Xicara, lanche combinado.",
+      "illustration_note": "{NOME} numa mesa com waffle dourado e xicara de leite ao lado; silhuetas W e X; lanche aconchegante."
+    },
+    {
+      "page": 14,
+      "text": "Y de Yogurte, cremoso no potinho, Z de Zebra, linda no cantinho.",
+      "illustration_note": "{NOME} com pote de yogurte cremoso; zebra listrada e vistosa ao fundo; silhuetas Y e Z; encerramento alegre."
+    },
+    {
+      "page": 15,
+      "text": "De A a Z, {NOME} aprendeu tudo, frutas e animais, um mundo miudo!",
+      "illustration_note": "{NOME} no centro, cercado de frutas e animais do alfabeto, festa alegre; silhuetas A e Z atras (sem texto legivel); confete suave."
+    }
+  ],
+  "variants": {
+    "2-5": {
+      "pages": [
+        {
+          "page": 1,
+          "text": "Para os pequenos leitores: letras, frutas e bichinhos!",
+          "illustration_note": "Dedicatoria: {NOME} no centro de um jardim colorido com frutas e animais; silhuetas grandes e macias das letras A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha, clima alegre."
+        },
+        {
+          "page": 2,
+          "text": "A de Abacaxi, amarelinho. B de Boi, bem fortinho.",
+          "illustration_note": "{NOME} no prado, ao lado de um abacaxi dourado e um boi forte; silhuetas A e B em madeira; cores quentes, plano medio."
+        },
+        {
+          "page": 3,
+          "text": "C de Cereja, vermelhinha. D de Dinossauro, na festinha!",
+          "illustration_note": "{NOME} com cerejas vermelhas brilhantes; dinossauro verde amigavel e grande ao lado; silhuetas C e D; close alegre."
+        },
+        {
+          "page": 4,
+          "text": "E de Ema, corre sem parar. F de Figo, pra lambuzar.",
+          "illustration_note": "{NOME} ri vendo uma ema correr pelo campo; figos maduros prontos para comer; silhuetas E e F; cena dinamica."
+        },
+        {
+          "page": 5,
+          "text": "G de Girafa, pescoco alto. H de Hipopotamo, da um salto!",
+          "illustration_note": "{NOME} no pasto olha uma girafa alta; hipopotamo fresco na lagoa; silhuetas G e H; plano aberto alegre."
+        },
+        {
+          "page": 6,
+          "text": "I de Iguana, bem baixinho. J de Jaca, amarelinho.",
+          "illustration_note": "{NOME} observa iguana subindo num tronco; jaca enorme caida no pomar; silhuetas I e J; ritmo calmo e curioso."
+        },
+        {
+          "page": 7,
+          "text": "K de Kiwi, bem verdinho. L de Leao, rugidinho!",
+          "illustration_note": "{NOME} abre um kiwi mostrando o verde de dentro; leao ruge ao fundo; silhuetas K e L; contraste quieto e energia."
+        },
+        {
+          "page": 8,
+          "text": "M de Melancia, gostosinha. N de Noz, pequenina.",
+          "illustration_note": "{NOME} com melancia aberta no calor; nozes crocantes na mao; silhuetas M e N; picnic de verao."
+        },
+        {
+          "page": 9,
+          "text": "O de Ourico, cheio de espinho. P de Pato, bem quietinho.",
+          "illustration_note": "{NOME} ve ourico enrolado em bola; pato nada num canto quieto do lago; silhuetas O e P; luz dourada gentil."
+        },
+        {
+          "page": 10,
+          "text": "Q de Quati, tao divertido. R de Roma, doce e colorido.",
+          "illustration_note": "{NOME} oferece roma aberta a um quati de focinho longo; silhuetas Q e R no pomar; tom brincalhao."
+        },
+        {
+          "page": 11,
+          "text": "S de Sapo, pula sem parar. T de Tangerina, pra petiscar.",
+          "illustration_note": "{NOME} ri de um sapo pulando no chao; tangerina em gomos na mao; silhuetas S e T; energia alegre."
+        },
+        {
+          "page": 12,
+          "text": "U de Uva, bem docinha. V de Vaca, bem boazinha.",
+          "illustration_note": "{NOME} colhe uvas no parreiral; vaca mansa pasta perto do curral; silhuetas U e V; cena rural acolhedora."
+        },
+        {
+          "page": 13,
+          "text": "W de Waffle, bem dourado. X de Xicara, lanche combinado.",
+          "illustration_note": "{NOME} numa mesa com waffle dourado e xicara de leite ao lado; silhuetas W e X; lanche aconchegante."
+        },
+        {
+          "page": 14,
+          "text": "Y de Yogurte, no potinho. Z de Zebra, no cantinho!",
+          "illustration_note": "{NOME} com pote de yogurte cremoso; zebra listrada e vistosa ao fundo; silhuetas Y e Z; encerramento alegre."
+        },
+        {
+          "page": 15,
+          "text": "De A a Z, {NOME} aprendeu tudo. Frutas e animais, que mundo!",
+          "illustration_note": "{NOME} no centro, cercado de frutas e animais do alfabeto, festa alegre; silhuetas A e Z atras (sem texto legivel); confete suave."
+        }
+      ]
+    },
+    "5-9": {
+      "pages": [
+        {
+          "page": 1,
+          "text": "A todos os pequenos leitores: venham aprender o alfabeto com frutas e animais!",
+          "illustration_note": "Dedicatoria: {NOME} no centro de um jardim colorido com frutas e animais; silhuetas grandes e macias das letras A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha, clima alegre."
+        },
+        {
+          "page": 2,
+          "text": "A de Abacaxi, todo amarelinho, B de Boi, forte e valentinho.",
+          "illustration_note": "{NOME} no prado, ao lado de um abacaxi dourado e um boi forte; silhuetas A e B em madeira; cores quentes, plano medio."
+        },
+        {
+          "page": 3,
+          "text": "C de Cereja, doce e vermelhinha, D de Dinossauro, vem na festinha!",
+          "illustration_note": "{NOME} com cerejas vermelhas brilhantes; dinossauro verde amigavel e grande ao lado; silhuetas C e D; close alegre."
+        },
+        {
+          "page": 4,
+          "text": "E de Ema, corre, corre sem parar, F de Figo, doce pra se lambuzar.",
+          "illustration_note": "{NOME} ri vendo uma ema correr pelo campo; figos maduros prontos para comer; silhuetas E e F; cena dinamica."
+        },
+        {
+          "page": 5,
+          "text": "G de Girafa, pescoco tao alto, H de Hipopotamo da um grande salto.",
+          "illustration_note": "{NOME} no pasto olha uma girafa alta; hipopotamo fresco na lagoa; silhuetas G e H; plano aberto alegre."
+        },
+        {
+          "page": 6,
+          "text": "I de Iguana, anda bem baixinho, J de Jaca, gigante amarelinho.",
+          "illustration_note": "{NOME} observa iguana subindo num tronco; jaca enorme caida no pomar; silhuetas I e J; ritmo calmo e curioso."
+        },
+        {
+          "page": 7,
+          "text": "K de Kiwi, verdinho no pratinho, L de Leao, solta o rugidinho!",
+          "illustration_note": "{NOME} abre um kiwi mostrando o verde de dentro; leao ruge ao fundo; silhuetas K e L; contraste quieto e energia."
+        },
+        {
+          "page": 8,
+          "text": "M de Melancia, fresca e gostosinha, N de Noz, crocante e pequenina.",
+          "illustration_note": "{NOME} com melancia aberta no calor; nozes crocantes na mao; silhuetas M e N; picnic de verao."
+        },
+        {
+          "page": 9,
+          "text": "O de Ourico, cheinho de espinho, P de Pato nadando quietinho.",
+          "illustration_note": "{NOME} ve ourico enrolado em bola; pato nada num canto quieto do lago; silhuetas O e P; luz dourada gentil."
+        },
+        {
+          "page": 10,
+          "text": "Q de Quati, focinho comprido, R de Roma, doce e colorido.",
+          "illustration_note": "{NOME} oferece roma aberta a um quati de focinho longo; silhuetas Q e R no pomar; tom brincalhao."
+        },
+        {
+          "page": 11,
+          "text": "S de Sapo que pula sem parar, T de Tangerina pra saborear.",
+          "illustration_note": "{NOME} ri de um sapo pulando no chao; tangerina em gomos na mao; silhuetas S e T; energia alegre."
+        },
+        {
+          "page": 12,
+          "text": "U de Uva, roxinha e docinha, V de Vaca, mansa e boazinha.",
+          "illustration_note": "{NOME} colhe uvas no parreiral; vaca mansa pasta perto do curral; silhuetas U e V; cena rural acolhedora."
+        },
+        {
+          "page": 13,
+          "text": "W de Waffle, quentinho e dourado, X de Xicara, lanche combinado.",
+          "illustration_note": "{NOME} numa mesa com waffle dourado e xicara de leite ao lado; silhuetas W e X; lanche aconchegante."
+        },
+        {
+          "page": 14,
+          "text": "Y de Yogurte, cremoso no potinho, Z de Zebra, linda no cantinho.",
+          "illustration_note": "{NOME} com pote de yogurte cremoso; zebra listrada e vistosa ao fundo; silhuetas Y e Z; encerramento alegre."
+        },
+        {
+          "page": 15,
+          "text": "De A a Z, {NOME} aprendeu tudo, frutas e animais, um mundo miudo!",
+          "illustration_note": "{NOME} no centro, cercado de frutas e animais do alfabeto, festa alegre; silhuetas A e Z atras (sem texto legivel); confete suave."
+        }
+      ]
+    },
+    "6-9": {
+      "pages": [
+        {
+          "page": 1,
+          "text": "Para quem ama rimar e descobrir sons: o alfabeto ganha vida com frutas e animais!",
+          "illustration_note": "Dedicatoria: {NOME} no centro de um jardim colorido com frutas e animais; silhuetas grandes e macias das letras A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha, clima alegre."
+        },
+        {
+          "page": 2,
+          "text": "A de Abacaxi — escute o A clarinho; B de Boi, forte e valentinho.",
+          "illustration_note": "{NOME} no prado, ao lado de um abacaxi dourado e um boi forte; silhuetas A e B em madeira; cores quentes, plano medio."
+        },
+        {
+          "page": 3,
+          "text": "C de Cereja — escute o C na frutinha; D de Dinossauro, pula na festinha!",
+          "illustration_note": "{NOME} com cerejas vermelhas brilhantes; dinossauro verde amigavel e grande ao lado; silhuetas C e D; close alegre."
+        },
+        {
+          "page": 4,
+          "text": "E de Ema — o E que corre sem parar; F de Figo, doce pra se lambuzar.",
+          "illustration_note": "{NOME} ri vendo uma ema correr pelo campo; figos maduros prontos para comer; silhuetas E e F; cena dinamica."
+        },
+        {
+          "page": 5,
+          "text": "G de Girafa — o G la no alto; H de Hipopotamo, um grande salto.",
+          "illustration_note": "{NOME} no pasto olha uma girafa alta; hipopotamo fresco na lagoa; silhuetas G e H; plano aberto alegre."
+        },
+        {
+          "page": 6,
+          "text": "I de Iguana — o I bem baixinho; J de Jaca, gigante amarelinho.",
+          "illustration_note": "{NOME} observa iguana subindo num tronco; jaca enorme caida no pomar; silhuetas I e J; ritmo calmo e curioso."
+        },
+        {
+          "page": 7,
+          "text": "K de Kiwi — o K no pratinho; L de Leao, que solta o rugidinho.",
+          "illustration_note": "{NOME} abre um kiwi mostrando o verde de dentro; leao ruge ao fundo; silhuetas K e L; contraste quieto e energia."
+        },
+        {
+          "page": 8,
+          "text": "M de Melancia — escute o M na frutinha; N de Noz, crocante e pequenina.",
+          "illustration_note": "{NOME} com melancia aberta no calor; nozes crocantes na mao; silhuetas M e N; picnic de verao."
+        },
+        {
+          "page": 9,
+          "text": "O de Ourico — o O de espinho; P de Pato, nadando quietinho.",
+          "illustration_note": "{NOME} ve ourico enrolado em bola; pato nada num canto quieto do lago; silhuetas O e P; luz dourada gentil."
+        },
+        {
+          "page": 10,
+          "text": "Q de Quati — o Q divertido; R de Roma, doce e colorido.",
+          "illustration_note": "{NOME} oferece roma aberta a um quati de focinho longo; silhuetas Q e R no pomar; tom brincalhao."
+        },
+        {
+          "page": 11,
+          "text": "S de Sapo — o S sem parar; T de Tangerina pra saborear.",
+          "illustration_note": "{NOME} ri de um sapo pulando no chao; tangerina em gomos na mao; silhuetas S e T; energia alegre."
+        },
+        {
+          "page": 12,
+          "text": "U de Uva — o U bem docinho; V de Vaca, mansa no campinho.",
+          "illustration_note": "{NOME} colhe uvas no parreiral; vaca mansa pasta perto do curral; silhuetas U e V; cena rural acolhedora."
+        },
+        {
+          "page": 13,
+          "text": "W de Waffle — o W dourado; X de Xicara, lanche combinado.",
+          "illustration_note": "{NOME} numa mesa com waffle dourado e xicara de leite ao lado; silhuetas W e X; lanche aconchegante."
+        },
+        {
+          "page": 14,
+          "text": "Y de Yogurte — o Y no potinho; Z de Zebra, listras no cantinho.",
+          "illustration_note": "{NOME} com pote de yogurte cremoso; zebra listrada e vistosa ao fundo; silhuetas Y e Z; encerramento alegre."
+        },
+        {
+          "page": 15,
+          "text": "De A a Z, {NOME} escutou cada som do mundo: frutas e animais num alfabeto profundo!",
+          "illustration_note": "{NOME} no centro, cercado de frutas e animais do alfabeto, festa alegre; silhuetas A e Z atras (sem texto legivel); confete suave."
+        }
+      ]
+    },
+    "9-12": {
+      "pages": [
+        {
+          "page": 1,
+          "text": "Para quem esta aprendendo a ler: cada letra abre um mundo de sons, frutas e animais.",
+          "illustration_note": "Dedicatoria: {NOME} no centro de um jardim colorido com frutas e animais; silhuetas grandes e macias das letras A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha, clima alegre."
+        },
+        {
+          "page": 2,
+          "text": "A de Abacaxi, amarelo e cheiroso; B de Boi, forte e generoso.",
+          "illustration_note": "{NOME} no prado, ao lado de um abacaxi dourado e um boi forte; silhuetas A e B em madeira; cores quentes, plano medio."
+        },
+        {
+          "page": 3,
+          "text": "C de Cereja, pequena e brilhante; D de Dinossauro, amigo gigante.",
+          "illustration_note": "{NOME} com cerejas vermelhas brilhantes; dinossauro verde amigavel e grande ao lado; silhuetas C e D; close alegre."
+        },
+        {
+          "page": 4,
+          "text": "E de Ema, que corre sem cansar; F de Figo, doce pra se lambuzar.",
+          "illustration_note": "{NOME} ri vendo uma ema correr pelo campo; figos maduros prontos para comer; silhuetas E e F; cena dinamica."
+        },
+        {
+          "page": 5,
+          "text": "G de Girafa, pescoco tao alto; H de Hipopotamo, splash e salto.",
+          "illustration_note": "{NOME} no pasto olha uma girafa alta; hipopotamo fresco na lagoa; silhuetas G e H; plano aberto alegre."
+        },
+        {
+          "page": 6,
+          "text": "I de Iguana, quieta no galho; J de Jaca, gigante no atalho.",
+          "illustration_note": "{NOME} observa iguana subindo num tronco; jaca enorme caida no pomar; silhuetas I e J; ritmo calmo e curioso."
+        },
+        {
+          "page": 7,
+          "text": "K de Kiwi, verde e pequenino; L de Leao, rugido cristalino.",
+          "illustration_note": "{NOME} abre um kiwi mostrando o verde de dentro; leao ruge ao fundo; silhuetas K e L; contraste quieto e energia."
+        },
+        {
+          "page": 8,
+          "text": "M de Melancia, fresca no calor; N de Noz, crocante de sabor.",
+          "illustration_note": "{NOME} com melancia aberta no calor; nozes crocantes na mao; silhuetas M e N; picnic de verao."
+        },
+        {
+          "page": 9,
+          "text": "O de Ourico, espinhos com cuidado; P de Pato, lago sossegado.",
+          "illustration_note": "{NOME} ve ourico enrolado em bola; pato nada num canto quieto do lago; silhuetas O e P; luz dourada gentil."
+        },
+        {
+          "page": 10,
+          "text": "Q de Quati, focinho comprido; R de Roma, tesouro escondido.",
+          "illustration_note": "{NOME} oferece roma aberta a um quati de focinho longo; silhuetas Q e R no pomar; tom brincalhao."
+        },
+        {
+          "page": 11,
+          "text": "S de Sapo, pulo sem cansar; T de Tangerina pra saborear.",
+          "illustration_note": "{NOME} ri de um sapo pulando no chao; tangerina em gomos na mao; silhuetas S e T; energia alegre."
+        },
+        {
+          "page": 12,
+          "text": "U de Uva, doce no parreiral; V de Vaca, mansa no curral.",
+          "illustration_note": "{NOME} colhe uvas no parreiral; vaca mansa pasta perto do curral; silhuetas U e V; cena rural acolhedora."
+        },
+        {
+          "page": 13,
+          "text": "W de Waffle, quentinho e dourado; X de Xicara, lanche bem combinado.",
+          "illustration_note": "{NOME} numa mesa com waffle dourado e xicara de leite ao lado; silhuetas W e X; lanche aconchegante."
+        },
+        {
+          "page": 14,
+          "text": "Y de Yogurte, cremoso e fiel; Z de Zebra, listras no papel.",
+          "illustration_note": "{NOME} com pote de yogurte cremoso; zebra listrada e vistosa ao fundo; silhuetas Y e Z; encerramento alegre."
+        },
+        {
+          "page": 15,
+          "text": "De A a Z, {NOME} ligou letra, som e mundo: frutas e animais num alfabeto profundo!",
+          "illustration_note": "{NOME} no centro, cercado de frutas e animais do alfabeto, festa alegre; silhuetas A e Z atras (sem texto legivel); confete suave."
+        }
+      ]
+    }
+  }
+}

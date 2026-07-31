@@ -28,38 +28,40 @@ export function Register() {
   }
 
   return (
-    <div className="panel">
-      <Link to="/" className="brand">
-        Story R Us
-      </Link>
-      <h1>Criar conta</h1>
-      <form className="form-grid" onSubmit={onSubmit}>
-        <label>
-          Seu nome
-          <input value={name} onChange={(e) => setName(e.target.value)} />
-        </label>
-        <label>
-          Email
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </label>
-        <label>
-          Senha
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            minLength={6}
-          />
-        </label>
-        {error && <p className="error">{error}</p>}
-        <button className="btn btn-primary" disabled={busy} type="submit">
-          {busy ? "Criando..." : "Comecar"}
-        </button>
-      </form>
-      <p className="muted">
-        Ja tem conta? <Link to="/login">Entrar</Link>
-      </p>
+    <div className="auth-page">
+      <div className="panel auth-panel">
+        <Link to="/" className="brand">
+          Story R Us
+        </Link>
+        <h1>Criar conta</h1>
+        <form className="form-grid" onSubmit={onSubmit}>
+          <label>
+            Seu nome
+            <input value={name} onChange={(e) => setName(e.target.value)} />
+          </label>
+          <label>
+            Email
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </label>
+          <label>
+            Senha
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              minLength={6}
+            />
+          </label>
+          {error && <p className="error">{error}</p>}
+          <button className="btn btn-primary" disabled={busy} type="submit">
+            {busy ? "Criando..." : "Comecar"}
+          </button>
+        </form>
+        <p className="muted">
+          Ja tem conta? <Link to="/login">Entrar</Link>
+        </p>
+      </div>
     </div>
   );
 }
