@@ -16,3 +16,6 @@ photo-resp.json
 .vercel
 static/
 
+
+.vercel
+.env*

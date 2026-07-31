@@ -77,6 +77,9 @@ class BookOut(BaseModel):
     has_photo: bool = False
     pdf_url: str | None = None
     page_urls: list[str] = []
+    video_url: str | None = None
+    video_mime: str | None = None
+    narrated_video_url: str | None = None
 
     model_config = {"from_attributes": True}
 
@@ -84,6 +87,7 @@ class BookOut(BaseModel):
 class JobOut(BaseModel):
     id: uuid.UUID
     book_id: uuid.UUID
+    kind: str = "GENERATE"
     status: str
     error_message: str | None
     created_at: datetime
@@ -97,3 +101,13 @@ class GenerateRequest(BaseModel):
     story_id: str
     age_band: AgeBand | None = None
     age_band_mode: Literal["auto", "manual"] = "auto"
+
+
+class VideoRequest(BaseModel):
+    duration_s: int = Field(default=5, ge=5, le=10)
+
+
+class NarratedVideoRequest(BaseModel):
+    """Pedido de vídeo narrado. voice_id = UUID interno de UserVoice (opcional)."""
+
+    voice_id: uuid.UUID | None = None

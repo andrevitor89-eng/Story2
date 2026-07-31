@@ -32,13 +32,30 @@ export type Book = {
   has_photo: boolean;
   pdf_url: string | null;
   page_urls: string[];
+  video_url: string | null;
+  video_mime: string | null;
+  narrated_video_url: string | null;
 };
 
 export type Job = {
   id: string;
   book_id: string;
+  kind?: string;
   status: string;
   error_message: string | null;
+};
+
+export type UserVoice = {
+  id: string;
+  name: string;
+  is_default: boolean;
+  mime_type: string;
+  created_at: string;
+};
+
+export type VoiceList = {
+  items: UserVoice[];
+  custom_voice_available: boolean;
 };
 
 export const AGE_BANDS: AgeBand[] = ["2-5", "5-9", "6-9", "9-12"];

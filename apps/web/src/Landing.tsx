@@ -34,8 +34,8 @@ const PROMISE_ICONS = [IcShield, IcGift, IcEye, IcTruck];
 
 /* ------- exemplos reais em apps/web/public/exemplos/ ------- */
 const HOW_IMGS = ["foto-matteo.png", "personagem-dino.jpg", "capa-dino2.jpg"];
-/* passo 3: livro em aberto (páginas internas), não a capa fechada */
-const HOW_OPEN_BOOK = ["dino-2.jpg", "dino-3.jpg", "dino-4.jpg", "dino-5.jpg", "dino-6.jpg", "dino-1.jpg"];
+/* passo 3: começa na capa e folheia páginas internas */
+const HOW_OPEN_BOOK = ["capa-dino2.jpg", "dino-1.jpg", "dino-2.jpg", "dino-3.jpg", "dino-4.jpg", "dino-5.jpg", "dino-6.jpg"];
 // Dicas de enquadramento: 1 exemplo bom (verde) + 2 a evitar (X).
 // img = foto real local (public/exemplos/) ou URL externa; art = ilustração SVG de fallback.
 const SHOTS: { img?: string; art?: "good" | "multi" | "side" | "covered"; ok: boolean; focus?: string }[] = [
@@ -44,7 +44,8 @@ const SHOTS: { img?: string; art?: "good" | "multi" | "side" | "covered"; ok: bo
   { img: "dica-lado.png", ok: false, focus: "center center" },
 ];
 const BOOK = Array.from({ length: 11 }, (_, i) => `ebook-${i + 1}.jpg`);
-const CATALOG_IMGS = ["capa-oceano.jpg", "capa-floresta2.jpg", "capa-dino.jpg", "capa-circo.jpg"];
+/* capas sem título queimado — título CSS unificado (estilo Mundo dos Dinossauros) */
+const CATALOG_IMGS = ["capa-oceano.jpg", "capa-floresta2.jpg", "capa-dino2.jpg", "capa-circo.jpg"];
 const CATALOG_THEMES = ["underwater", "fantasy", "dinosaurs", "adventure"];
 const SURPRISE_IMG = "capa-surpresa.jpg";
 /* livro 3D do catálogo: 6 páginas internas (3 spreads) do livro de exemplo de cada tema */
@@ -55,18 +56,20 @@ const BOOK3D = [
   { bg: "#f4d6da", pages: ["circo-1.jpg", "circo-2.jpg", "circo-3.jpg", "circo-4.jpg", "circo-5.jpg", "circo-6.jpg"] },
 ];
 const BOOK3D_SURPRISE = { bg: "#f3e2b4", pages: ["ebook-6.jpg", "ebook-9.jpg", "ebook-8.jpg", "ebook-10.jpg", "ebook-7.jpg", "ebook-4.jpg"] };
-const BANNER_IMGS = ["capa-circo.jpg", "capa-oceano.jpg", "capa-dino.jpg"];
+const BANNER_IMGS = ["capa-circo.jpg", "capa-oceano.jpg", "capa-dino2.jpg"];
 /* índice em t.catalog — título na capa do banner (circo, oceano, dino) */
 const BANNER_CATALOG_I = [3, 0, 2];
 /* um card por tema do catálogo — src null = ainda sem exemplo de vídeo */
 const VIDEO_IMGS = ["mar-2.jpg", "flor-2.jpg", "dino-2.jpg", "circo-2.jpg"];
-const VIDEO_SRCS: (string | null)[] = ["video-mar.mp4", "video-flor.mp4", null, "video-circo.mp4"];
+const VIDEO_SRCS: (string | null)[] = ["video-mar.mp4", "video-flor.mp4", "video-dino.mp4", "video-circo.mp4"];
 // Slides do hero: capa do livro (fundo) + foto real (card pequeno)
-const HERO_SLIDES: { photo: string; book: string; photoPos?: string }[] = [
-  { photo: "foto-matteo.png", book: "capa-dino2.jpg", photoPos: "center 22%" },
-  { photo: "foto-sofia.png", book: "capa-floresta.jpg" },
-  { photo: "foto-bebe.jpg", book: "capa-circo.jpg" },
+const HERO_SLIDES: { photo: string; book: string; catalogI: number; photoPos?: string }[] = [
+  { photo: "foto-matteo.png", book: "capa-dino2.jpg", catalogI: 2, photoPos: "center 22%" },
+  { photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1 },
+  { photo: "foto-bebe.jpg", book: "capa-circo.jpg", catalogI: 3 },
 ];
+const FLIP_MS = 380;
+const FLIP_AUTO_MS = 900;
 const exUrl = (f: string) => (f.startsWith("http://") || f.startsWith("https://") ? f : `${import.meta.env.BASE_URL}exemplos/${f}`);
 
 /* Ilustrações das dicas de enquadramento (SVG inline, sem depender de fotos) */
@@ -203,6 +206,7 @@ function FlipBook({ pages, compact = false, coverTitle }: { pages: string[]; com
   const [i, setI] = useState(0);
   const [anim, setAnim] = useState<"next" | "prev" | null>(null);
   const [target, setTarget] = useState(0);
+  const [hover, setHover] = useState(false);
   const busy = useRef(false);
   const flip = (dir: "next" | "prev", loop = false) => {
     if (busy.current) return;
@@ -212,30 +216,44 @@ function FlipBook({ pages, compact = false, coverTitle }: { pages: string[]; com
     busy.current = true;
     setTarget(t);
     setAnim(dir);
-    window.setTimeout(() => { setI(t); setAnim(null); busy.current = false; }, 720);
+    window.setTimeout(() => { setI(t); setAnim(null); busy.current = false; }, FLIP_MS);
   };
-  // transição automática — vira a página sozinho (catálogo e destaque)
+  // só folheia com o mouse em cima
   useEffect(() => {
-    const id = window.setTimeout(() => flip("next", true), compact ? 2200 : 1500);
+    if (!hover) return;
+    const id = window.setTimeout(() => flip("next", true), FLIP_AUTO_MS);
     return () => window.clearTimeout(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [i, pages.length, compact]);
+  }, [i, pages.length, hover]);
+  // ao sair, fecha na capa
+  useEffect(() => {
+    if (hover) return;
+    busy.current = false;
+    setAnim(null);
+    setI(0);
+    setTarget(0);
+  }, [hover]);
   const baseSrc = anim === "next" ? pages[target] : pages[i];
   const turnSrc = anim === "next" ? pages[i] : pages[target];
   const showCoverTitle = Boolean(coverTitle) && i === 0 && anim !== "next";
   const onStage = (e: RMouseEvent<HTMLDivElement>) => {
+    if (!hover) return;
     const r = e.currentTarget.getBoundingClientRect();
     if (e.clientX - r.left > r.width / 2) flip("next", true); else flip("prev");
   };
   return (
-    <div className={`flipbook${compact ? " flipbook-mini" : ""}`}>
+    <div
+      className={`flipbook${compact ? " flipbook-mini" : ""}`}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
       {!compact && <button className="fb-nav" onClick={() => flip("prev")} disabled={i === 0} aria-label="Página anterior">‹</button>}
       <div className="fb-stage" onClick={onStage} role="button" tabIndex={0} aria-label="Virar página">
         <span className="fb-spine" />
-        <img className="fb-page fb-base" src={exUrl(baseSrc)} alt={`Página ${i + 1}`} />
+        <img className="fb-page fb-base" src={exUrl(baseSrc)} alt={i === 0 ? "Capa" : `Página ${i}`} />
         {anim && <img className={`fb-page fb-turn ${anim}`} src={exUrl(turnSrc)} alt="" aria-hidden />}
         {showCoverTitle && <span className="fb-cover-title">{coverTitle}</span>}
-        <span className="fb-count">{i + 1} / {pages.length}</span>
+        <span className="fb-count">{i === 0 ? "Capa" : `${i} / ${pages.length - 1}`}</span>
       </div>
       {!compact && <button className="fb-nav" onClick={() => flip("next")} disabled={i === pages.length - 1} aria-label="Próxima página">›</button>}
     </div>
@@ -491,7 +509,7 @@ export function Landing() {
         </div>
       </header>
 
-      {/* HERO — banner full-width (foto real em cima -> capa do livro), carrossel */}
+      {/* HERO — capa do livro em destaque + foto real no card */}
       <section className="kbanner-hero" aria-label={t.eyebrow}>
         <div className="kbh-frame">
           {HERO_SLIDES.map((s, i) => (
@@ -499,12 +517,13 @@ export function Landing() {
               <img
                 className="kbh-photo"
                 src={exUrl(s.book)}
-                alt="Capa do livro gerado"
+                alt={t.catalog[s.catalogI].t}
                 loading={i === 0 ? "eager" : "lazy"}
               />
+              <span className="kbh-cover-title">{t.catalog[s.catalogI].t}</span>
               <span className="kbh-tag">
                 <span className="kbh-tag-top"><IcEye className="ei" /> {t.ba_preview}</span>
-                <b>{t.banners[i].t}</b>
+                <b>{t.catalog[s.catalogI].t}</b>
               </span>
               <figure className="kbh-book">
                 <img
@@ -562,7 +581,7 @@ export function Landing() {
           <FlipBook
             key={exBook}
             pages={exampleBooks[exBook].pages}
-            coverTitle={exampleBooks[exBook].cover === "capa-dino.jpg" ? undefined : exampleBooks[exBook].title}
+            coverTitle={exampleBooks[exBook].title}
           />
         </div>
         <p className="fb-hint reveal">{t.story_hint}</p>
@@ -572,10 +591,8 @@ export function Landing() {
       <section className="banners">
         {t.banners.map((b, i) => (
           <figure className="banner-card reveal" key={b.t}>
-            <img src={exUrl(BANNER_IMGS[i])} alt={b.t} loading="lazy" />
-            {BANNER_IMGS[i] !== "capa-dino.jpg" && (
-              <span className="banner-book-title">{t.catalog[BANNER_CATALOG_I[i]].t}</span>
-            )}
+            <img src={exUrl(BANNER_IMGS[i])} alt={t.catalog[BANNER_CATALOG_I[i]].t} loading="lazy" />
+            <span className="banner-book-title">{t.catalog[BANNER_CATALOG_I[i]].t}</span>
             <figcaption><h3>{b.t}</h3><p>{b.p}</p></figcaption>
           </figure>
         ))}
@@ -592,7 +609,7 @@ export function Landing() {
                 <FlipBook
                   pages={[CATALOG_IMGS[i], ...BOOK3D[i].pages]}
                   compact
-                  coverTitle={CATALOG_IMGS[i] === "capa-dino.jpg" ? undefined : c.t}
+                  coverTitle={c.t}
                 />
                 <span className="cat-flip-off">{t.save}</span>
               </div>
@@ -630,7 +647,7 @@ export function Landing() {
               <figure className={`howex-card reveal${i === 2 ? " howex-card-book" : ""}`}>
                 {i === 2 ? (
                   <div className="howex-book">
-                    <FlipBook pages={HOW_OPEN_BOOK} compact />
+                    <FlipBook pages={HOW_OPEN_BOOK} compact coverTitle={t.catalog[2].t} />
                   </div>
                 ) : (
                   <img src={exUrl(HOW_IMGS[i])} alt={h.t} loading="lazy" />

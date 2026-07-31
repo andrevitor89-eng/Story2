@@ -98,7 +98,7 @@
 }
 .kbh-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .8s ease; pointer-events: none; }
 .kbh-slide.on { opacity: 1; pointer-events: auto; }
-.kbh-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center center; }
+.kbh-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 28%; }
 /* escurece a base e a esquerda para dar contraste ao texto */
 .kbh-slide::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
@@ -106,6 +106,21 @@
     linear-gradient(90deg, rgba(9,15,32,.74) 0%, rgba(9,15,32,.36) 42%, rgba(9,15,32,.02) 66%),
     linear-gradient(0deg, rgba(9,15,32,.80) 0%, rgba(9,15,32,0) 48%);
 }
+/* título da capa — mesmo estilo tipográfico do Mundo dos Dinossauros */
+.kbh-cover-title,
+.fb-cover-title,
+.banner-book-title {
+  position: absolute; top: 7%; left: 50%; transform: translateX(-50%); z-index: 5;
+  width: 86%; text-align: center; pointer-events: none;
+  font-family: 'Baloo 2', cursive; font-weight: 800; line-height: 1.05;
+  font-size: clamp(1.15rem, 2.6vw, 1.7rem); letter-spacing: .03em;
+  text-transform: uppercase; color: #7a4f1a;
+  text-shadow:
+    -2px -2px 0 #f5ebc8, 2px -2px 0 #f5ebc8, -2px 2px 0 #f5ebc8, 2px 2px 0 #f5ebc8,
+    -1px 0 0 #f5ebc8, 1px 0 0 #f5ebc8, 0 -1px 0 #f5ebc8, 0 1px 0 #f5ebc8,
+    0 3px 10px rgba(0,0,0,.35);
+}
+.kbh-cover-title { top: 7%; z-index: 4; font-size: clamp(1.35rem, 3.2vw, 2.35rem); width: 42%; max-width: 360px; }
 .kbh-tag {
   position: absolute; top: 18px; left: 18px; z-index: 4; display: inline-flex; flex-direction: column; gap: 2px;
   background: #fff; padding: 8px 15px; border-radius: 16px; max-width: 230px;
@@ -132,7 +147,8 @@
 @media (max-width: 760px) {
   .kbanner-hero { padding: 12px 14px 4px; }
   .kbh-frame { aspect-ratio: 3 / 4; min-height: 0; }
-  .kbh-photo { object-position: center 32%; }
+  .kbh-photo { object-position: center 22%; }
+  .kbh-cover-title { left: 50%; width: 78%; top: 6%; font-size: clamp(1.15rem, 5.2vw, 1.55rem); }
   .kbh-tag { top: 12px; left: 12px; padding: 6px 12px; max-width: 60%; }
   .kbh-tag-top { font-size: .62rem; letter-spacing: 1px; }
   .kbh-tag b { font-size: .84rem; }
@@ -145,7 +161,8 @@
 }
 @media (max-width: 480px) {
   .kbh-frame { aspect-ratio: 3 / 4.3; }
-  .kbh-photo { object-position: center 28%; }
+  .kbh-photo { object-position: center 20%; }
+  .kbh-cover-title { font-size: 1.15rem; top: 5%; }
   .kbh-book { width: 40%; top: 11%; }
   .kbh-overlay { bottom: 7%; }
   .kbh-overlay .keyebrow { font-size: .7rem; padding: 5px 11px; }
@@ -401,8 +418,8 @@
 }
 .fb-base { z-index: 1; }
 .fb-turn { z-index: 3; transform-origin: left center; box-shadow: 10px 0 26px rgba(0,0,0,.25); }
-.fb-turn.next { animation: fbNext .72s ease forwards; }
-.fb-turn.prev { animation: fbPrev .72s ease forwards; }
+.fb-turn.next { animation: fbNext .38s ease forwards; }
+.fb-turn.prev { animation: fbPrev .38s ease forwards; }
 /* a página escurece ao ficar de perfil (como luz incidindo numa folha virando) */
 @keyframes fbNext { 0% { transform: rotateY(0); filter: brightness(1); } 55% { filter: brightness(.65); } 100% { transform: rotateY(-172deg); filter: brightness(1); } }
 @keyframes fbPrev { 0% { transform: rotateY(-172deg); filter: brightness(1); } 45% { filter: brightness(.65); } 100% { transform: rotateY(0); filter: brightness(1); } }
@@ -411,20 +428,8 @@
   font-family: 'Baloo 2', cursive; font-weight: 700; color: var(--ink); background: #fff;
   padding: 3px 15px; border-radius: 999px; box-shadow: 0 6px 14px rgba(0,0,0,.08); font-size: .95rem;
 }
-/* título na capa — mesmo padrão visual da História Surpresa */
-.fb-cover-title {
-  position: absolute; top: 7%; left: 50%; transform: translateX(-50%); z-index: 5;
-  width: 88%; text-align: center; pointer-events: none;
-  font-family: 'Baloo 2', cursive; font-weight: 800; line-height: 1.05;
-  font-size: clamp(1.05rem, 2.4vw, 1.55rem); letter-spacing: .02em;
-  color: #ffe27a;
-  text-shadow:
-    0 1px 0 #8a5a12,
-    0 2px 0 #7a4e10,
-    0 3px 10px rgba(0,0,0,.45),
-    0 0 18px rgba(255,210,80,.55);
-}
-.flipbook-mini .fb-cover-title { font-size: clamp(.72rem, 1.7vw, .95rem); top: 6%; }
+.fb-cover-title { width: 88%; }
+.flipbook-mini .fb-cover-title { font-size: clamp(.78rem, 1.8vw, 1.05rem); top: 6%; }
 .fb-hint { text-align: center; color: #6b6890; font-weight: 600; margin-top: 44px; }
 
 /* ---------- Como funciona com exemplos ---------- */
@@ -540,17 +545,7 @@
 .banner-card figcaption { position: relative; z-index: 1; padding: 22px 18px 16px; width: 100%; background: linear-gradient(to top, rgba(10,14,32,.96) 14%, rgba(10,14,32,.7) 44%, rgba(10,14,32,0)); }
 .banner-card h3 { margin: 0 0 4px; color: #fff; font-size: 1.28rem; }
 .banner-card p { margin: 0; color: #dfe6fb; font-size: .95rem; line-height: 1.4; }
-.banner-card .banner-book-title {
-  position: absolute; top: 10%; left: 50%; transform: translateX(-50%); z-index: 2;
-  width: 86%; text-align: center; pointer-events: none;
-  font-family: 'Baloo 2', cursive; font-weight: 800; line-height: 1.05;
-  font-size: clamp(1.15rem, 2.2vw, 1.55rem); letter-spacing: .02em; color: #ffe27a;
-  text-shadow:
-    0 1px 0 #8a5a12,
-    0 2px 0 #7a4e10,
-    0 3px 10px rgba(0,0,0,.45),
-    0 0 18px rgba(255,210,80,.55);
-}
+.banner-card .banner-book-title { top: 9%; z-index: 2; font-size: clamp(1.05rem, 2.2vw, 1.45rem); }
 @keyframes bannerDrift {
   0% { transform: scale(1.05) translate3d(0, 0, 0); }
   100% { transform: scale(1.12) translate3d(0, -2.5%, 0); }

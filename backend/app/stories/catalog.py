@@ -1,12 +1,108 @@
 from __future__ import annotations
 
 import json
+import unicodedata
 from functools import lru_cache
 from pathlib import Path
 
 STORIES_DIR = Path(__file__).resolve().parent
 
 AGE_BANDS: tuple[str, ...] = ("2-5", "5-9", "6-9", "9-12")
+
+ALPHABET_STORY_IDS = frozenset(
+    {
+        "alfabeto_frutas_animais",
+        "alfabeto_frutas",
+        "alfabeto_animais",
+    }
+)
+# Compat: id legado do livro misto
+ALPHABET_STORY_ID = "alfabeto_frutas_animais"
+
+_ACROSTIC_POOLS: dict[str, dict[str, list[str]]] = {
+    "alfabeto_frutas": {
+        "A": ["Abacaxi", "Amora", "Acerola"],
+        "B": ["Banana", "Bacuri"],
+        "C": ["Caju", "Cereja", "Coco"],
+        "D": ["Damasco"],
+        "E": ["Embauba"],
+        "F": ["Figo", "Framboesa"],
+        "G": ["Goiaba", "Graviola"],
+        "H": ["Hibisco", "Hortela"],
+        "I": ["Inga"],
+        "J": ["Jabuticaba", "Jaca"],
+        "K": ["Kiwi"],
+        "L": ["Laranja", "Limao"],
+        "M": ["Melancia", "Manga", "Morango"],
+        "N": ["Noz", "Nespera"],
+        "O": ["Oliva", "Oiti"],
+        "P": ["Pessego", "Pera", "Pitanga"],
+        "Q": ["Quarana"],
+        "R": ["Roma"],
+        "S": ["Seriguela", "Sapoti"],
+        "T": ["Tangerina", "Tamarindo"],
+        "U": ["Uva", "Uvaia"],
+        "V": ["Vagem"],
+        "W": ["Watermelon"],
+        "X": ["Xixa"],
+        "Y": ["Yacon"],
+        "Z": ["Zimbro"],
+    },
+    "alfabeto_animais": {
+        "A": ["Abelha", "Anta", "Arara"],
+        "B": ["Baleia", "Boi", "Borboleta"],
+        "C": ["Cachorro", "Cavalo", "Coelho"],
+        "D": ["Dinossauro", "Dragao"],
+        "E": ["Elefante", "Ema"],
+        "F": ["Foca", "Formiga"],
+        "G": ["Girafa", "Gato"],
+        "H": ["Hipopotamo", "Hamster"],
+        "I": ["Iguana"],
+        "J": ["Jacare", "Joaninha"],
+        "K": ["Koala"],
+        "L": ["Leao", "Lagarta"],
+        "M": ["Macaco", "Morcego"],
+        "N": ["Nambu"],
+        "O": ["Ovelha", "Onca", "Ourico"],
+        "P": ["Pato", "Porco", "Panda"],
+        "Q": ["Quati"],
+        "R": ["Raposa", "Rato"],
+        "S": ["Sapo", "Siri"],
+        "T": ["Tigre", "Tartaruga", "Touro"],
+        "U": ["Urso"],
+        "V": ["Vaca", "Veado"],
+        "W": ["Wombat"],
+        "X": ["Xexeu"],
+        "Y": ["Yorkshire"],
+        "Z": ["Zebra", "Zangao"],
+    },
+}
+
+# Livro misto: ordem classica do acrostico (animal/fruta conhecidos primeiro)
+_ACROSTIC_POOLS["alfabeto_frutas_animais"] = {
+    letter: list(
+        dict.fromkeys(
+            _ACROSTIC_POOLS["alfabeto_animais"].get(letter, [])
+            + _ACROSTIC_POOLS["alfabeto_frutas"].get(letter, [])
+        )
+    )
+    for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+}
+_ACROSTIC_POOLS["alfabeto_frutas_animais"].update(
+    {
+        "A": ["Abacaxi", "Abelha", "Anta", "Amora"],
+        "E": ["Elefante", "Ema", "Embauba"],
+        "M": ["Macaco", "Melancia", "Morango"],
+        "O": ["Onca", "Ourico", "Ovelha", "Oliva"],
+        "T": ["Tigre", "Tartaruga", "Tangerina", "Tamarindo", "Touro"],
+    }
+)
+
+_ACROSTIC_CLOSING = {
+    "alfabeto_frutas": "Frutas do pomar, vamos conhecer!",
+    "alfabeto_animais": "Animais do mundo, vamos conhecer!",
+    "alfabeto_frutas_animais": "Frutas e animais, vamos conhecer!",
+}
 
 
 @lru_cache
@@ -81,7 +177,6 @@ def resolve_story(
     variants = story.get("variants") or {}
     pages = (variants.get(band) or {}).get("pages")
     if not pages:
-        # legado: historia sem variantes
         pages = story.get("pages") or []
 
     return {
@@ -95,17 +190,114 @@ def resolve_story(
     }
 
 
-def personalize(story: dict, child_name: str) -> dict:
+def _name_letters(name: str) -> list[str]:
+    normalized = unicodedata.normalize("NFD", name.upper())
+    return [ch for ch in normalized if "A" <= ch <= "Z"]
+
+
+def _pick_acrostic_word(letter: str, used: dict[str, int], pool: dict[str, list[str]]) -> str:
+    options = pool.get(letter) or [letter]
+    idx = used.get(letter, 0)
+    used[letter] = idx + 1
+    return options[idx % len(options)]
+
+
+def build_name_acrostic(
+    child_name: str,
+    *,
+    age_band: str = "5-9",
+    gender: str | None = None,
+    story_id: str = ALPHABET_STORY_ID,
+) -> tuple[str, str] | None:
+    """Gera texto + nota de ilustracao do acrostico do nome (pagina 1)."""
     name = child_name.strip()
+    letters = _name_letters(name)
+    if not letters:
+        return None
+
+    pool = _ACROSTIC_POOLS.get(story_id) or _ACROSTIC_POOLS[ALPHABET_STORY_ID]
+    used: dict[str, int] = {}
+    pairs = [(letter, _pick_acrostic_word(letter, used, pool)) for letter in letters]
+    if len(pairs) > 10:
+        pairs = pairs[:10]
+
+    if gender == "girl":
+        meet = f"Conheça a {name}"
+    elif gender == "boy":
+        meet = f"Conheça o {name}"
+    else:
+        meet = f"Conheça {name}"
+
+    closing = _ACROSTIC_CLOSING.get(story_id, _ACROSTIC_CLOSING[ALPHABET_STORY_ID])
+    # Faixas do livro misto: P1 com ritmo diferente
+    if story_id == ALPHABET_STORY_ID and age_band == "2-5":
+        body = ", ".join(f"{letter} de {word}" for letter, word in pairs)
+        text = f"{body}! {meet}, pronto pra aprender!"
+    elif story_id == ALPHABET_STORY_ID and age_band == "6-9":
+        body = "; ".join(f"{letter} de {word}" for letter, word in pairs)
+        text = f"{body} — escute cada som. {meet}: cada letra do nome abre um som novo!"
+    elif story_id == ALPHABET_STORY_ID and age_band == "9-12":
+        body = ",\n".join(f"{letter} de {word}" for letter, word in pairs)
+        text = (
+            f"{body} —\n{meet}, pronto para ligar letra, som e mundo "
+            "com frutas, animais e descobertas!"
+        )
+    else:
+        body = ",\n".join(f"{letter} de {word}" for letter, word in pairs)
+        text = f"{body} —\n{meet}, pronto pra aprender!\n{closing}"
+
+    words = [word for _, word in pairs]
+    if len(words) == 1:
+        surround = words[0]
+    elif len(words) == 2:
+        surround = f"{words[0]} e {words[1]}"
+    else:
+        surround = ", ".join(words[:-1]) + f" e {words[-1]}"
+
+    if story_id == "alfabeto_animais":
+        place = "campo vivo"
+    elif story_id == "alfabeto_frutas":
+        place = "pomar colorido"
+    else:
+        place = "jardim alegre"
+
+    note = (
+        f"{name} no centro de um {place}, rodeado por {surround}; "
+        "silhuetas decorativas grandes das letras do nome em madeira ou espuma "
+        "(formas abstratas, sem texto legivel na arte); luz suave de manha."
+    )
+    return text, note
+
+
+def personalize(
+    story: dict,
+    child_name: str,
+    gender: str | None = None,
+) -> dict:
+    name = child_name.strip()
+    pages = [
+        {
+            **page,
+            "text": page["text"].replace("{NOME}", name),
+            "illustration_note": page["illustration_note"].replace("{NOME}", name),
+        }
+        for page in story["pages"]
+    ]
+
+    story_id = str(story.get("id") or "")
+    if story_id in ALPHABET_STORY_IDS and pages:
+        acrostic = build_name_acrostic(
+            name,
+            age_band=str(story.get("age_band") or "5-9"),
+            gender=gender,
+            story_id=story_id,
+        )
+        if acrostic is not None:
+            text, note = acrostic
+            pages[0] = {**pages[0], "text": text, "illustration_note": note}
+
     return {
         **story,
         "title": story["title"].replace("{NOME}", name),
-        "pages": [
-            {
-                **page,
-                "text": page["text"].replace("{NOME}", name),
-                "illustration_note": page["illustration_note"].replace("{NOME}", name),
-            }
-            for page in story["pages"]
-        ],
+        "pages": pages,
     }

@@ -1,0 +1,401 @@
+{
+  "id": "alfabeto_animais",
+  "title": "O alfabeto de animais do {NOME}",
+  "gender": "unisex",
+  "theme": "Educativo - alfabetizacao com animais",
+  "pages": [
+    {
+      "page": 1,
+      "text": "Venha ler comigo: o alfabeto de animais do {NOME}!",
+      "illustration_note": "Dedicatoria: {NOME} no centro de um campo vivo com animais; silhuetas A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha alegre."
+    },
+    {
+      "page": 2,
+      "text": "A de Abelha, zum-zum no ar; B de Baleia, canto no mar.",
+      "illustration_note": "{NOME} ve uma abelha no jardim e uma baleia no mar ao fundo magico; silhuetas A e B; cena alegre."
+    },
+    {
+      "page": 3,
+      "text": "C de Cachorro, amigo de verdade; D de Dinossauro, forca e bondade.",
+      "illustration_note": "{NOME} abraça um cachorro amigavel; dinossauro gentil ao lado; silhuetas C e D; close caloroso."
+    },
+    {
+      "page": 4,
+      "text": "E de Ema, corre sem parar; F de Foca, desliza no mar.",
+      "illustration_note": "{NOME} ri de uma ema correndo; foca desliza na agua; silhuetas E e F; cena dinamica."
+    },
+    {
+      "page": 5,
+      "text": "G de Girafa, alta no pasto; H de Hipopotamo, fresco no lago vasto.",
+      "illustration_note": "{NOME} no pasto com girafa alta; hipopotamo na lagoa; silhuetas G e H; plano aberto."
+    },
+    {
+      "page": 6,
+      "text": "I de Iguana, verde no galho; J de Jacare, quieto no atalho.",
+      "illustration_note": "{NOME} observa iguana no galho; jacare quieto na beira d agua; silhuetas I e J; natureza calma."
+    },
+    {
+      "page": 7,
+      "text": "K de Koala, abraço apertado; L de Leao, rugido animado.",
+      "illustration_note": "{NOME} ve koala abraçado ao tronco; leao ruge ao fundo sem medo; silhuetas K e L; contraste carinho e forca."
+    },
+    {
+      "page": 8,
+      "text": "M de Macaco, pula no galho; N de Nambu, corre no atalho.",
+      "illustration_note": "{NOME} ri de macaco no galho; nambu corre na trilha; silhuetas M e N; mata brasileira."
+    },
+    {
+      "page": 9,
+      "text": "O de Ovelha, la no curral; P de Pato, nada no canal.",
+      "illustration_note": "{NOME} na fazenda com ovelha lanosa; pato nada no canal; silhuetas O e P; cena rural."
+    },
+    {
+      "page": 10,
+      "text": "Q de Quati, focinho comprido; R de Raposa, salto atrevido.",
+      "illustration_note": "{NOME} com quati curioso; raposa num salto leve; silhuetas Q e R; bosque brincalhao."
+    },
+    {
+      "page": 11,
+      "text": "S de Sapo, canta na lagoa; T de Tigre, ruge e ecoa.",
+      "illustration_note": "{NOME} perto de sapo na lagoa; tigre majestoso ao fundo; silhuetas S e T; natureza viva."
+    },
+    {
+      "page": 12,
+      "text": "U de Urso, busca o mel; V de Vaca, pasta fiel.",
+      "illustration_note": "{NOME} ve urso perto do mel; vaca pasta mansa; silhuetas U e V; campo acolhedor."
+    },
+    {
+      "page": 13,
+      "text": "W de Wombat, toca no chao; X de Xexeu, canto no sertao.",
+      "illustration_note": "{NOME} observa wombat cavando; passarinho xexeu cantando; silhuetas W e X; natureza curiosa."
+    },
+    {
+      "page": 14,
+      "text": "Y de Yorkshire, fiel companheiro; Z de Zebra, listras no terreiro.",
+      "illustration_note": "{NOME} com yorkshire pequeno; zebra listrada no terreiro; silhuetas Y e Z; festa dos animais."
+    },
+    {
+      "page": 15,
+      "text": "De A a Z, {NOME} leu com carinho: da abelha a zebra no caminho.",
+      "illustration_note": "{NOME} no centro, cercado de animais do alfabeto, festa alegre; silhuetas A e Z; confete suave."
+    }
+  ],
+  "variants": {
+    "2-5": {
+      "pages": [
+        {
+          "page": 1,
+          "text": "Venha ler comigo: o alfabeto de animais do {NOME}!",
+          "illustration_note": "Dedicatoria: {NOME} no centro de um campo vivo com animais; silhuetas A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha alegre."
+        },
+        {
+          "page": 2,
+          "text": "A de Abelha, zum-zum no ar; B de Baleia, canto no mar.",
+          "illustration_note": "{NOME} ve uma abelha no jardim e uma baleia no mar ao fundo magico; silhuetas A e B; cena alegre."
+        },
+        {
+          "page": 3,
+          "text": "C de Cachorro, amigo de verdade; D de Dinossauro, forca e bondade.",
+          "illustration_note": "{NOME} abraça um cachorro amigavel; dinossauro gentil ao lado; silhuetas C e D; close caloroso."
+        },
+        {
+          "page": 4,
+          "text": "E de Ema, corre sem parar; F de Foca, desliza no mar.",
+          "illustration_note": "{NOME} ri de uma ema correndo; foca desliza na agua; silhuetas E e F; cena dinamica."
+        },
+        {
+          "page": 5,
+          "text": "G de Girafa, alta no pasto; H de Hipopotamo, fresco no lago vasto.",
+          "illustration_note": "{NOME} no pasto com girafa alta; hipopotamo na lagoa; silhuetas G e H; plano aberto."
+        },
+        {
+          "page": 6,
+          "text": "I de Iguana, verde no galho; J de Jacare, quieto no atalho.",
+          "illustration_note": "{NOME} observa iguana no galho; jacare quieto na beira d agua; silhuetas I e J; natureza calma."
+        },
+        {
+          "page": 7,
+          "text": "K de Koala, abraço apertado; L de Leao, rugido animado.",
+          "illustration_note": "{NOME} ve koala abraçado ao tronco; leao ruge ao fundo sem medo; silhuetas K e L; contraste carinho e forca."
+        },
+        {
+          "page": 8,
+          "text": "M de Macaco, pula no galho; N de Nambu, corre no atalho.",
+          "illustration_note": "{NOME} ri de macaco no galho; nambu corre na trilha; silhuetas M e N; mata brasileira."
+        },
+        {
+          "page": 9,
+          "text": "O de Ovelha, la no curral; P de Pato, nada no canal.",
+          "illustration_note": "{NOME} na fazenda com ovelha lanosa; pato nada no canal; silhuetas O e P; cena rural."
+        },
+        {
+          "page": 10,
+          "text": "Q de Quati, focinho comprido; R de Raposa, salto atrevido.",
+          "illustration_note": "{NOME} com quati curioso; raposa num salto leve; silhuetas Q e R; bosque brincalhao."
+        },
+        {
+          "page": 11,
+          "text": "S de Sapo, canta na lagoa; T de Tigre, ruge e ecoa.",
+          "illustration_note": "{NOME} perto de sapo na lagoa; tigre majestoso ao fundo; silhuetas S e T; natureza viva."
+        },
+        {
+          "page": 12,
+          "text": "U de Urso, busca o mel; V de Vaca, pasta fiel.",
+          "illustration_note": "{NOME} ve urso perto do mel; vaca pasta mansa; silhuetas U e V; campo acolhedor."
+        },
+        {
+          "page": 13,
+          "text": "W de Wombat, toca no chao; X de Xexeu, canto no sertao.",
+          "illustration_note": "{NOME} observa wombat cavando; passarinho xexeu cantando; silhuetas W e X; natureza curiosa."
+        },
+        {
+          "page": 14,
+          "text": "Y de Yorkshire, fiel companheiro; Z de Zebra, listras no terreiro.",
+          "illustration_note": "{NOME} com yorkshire pequeno; zebra listrada no terreiro; silhuetas Y e Z; festa dos animais."
+        },
+        {
+          "page": 15,
+          "text": "De A a Z, {NOME} leu com carinho: da abelha a zebra no caminho.",
+          "illustration_note": "{NOME} no centro, cercado de animais do alfabeto, festa alegre; silhuetas A e Z; confete suave."
+        }
+      ]
+    },
+    "5-9": {
+      "pages": [
+        {
+          "page": 1,
+          "text": "Venha ler comigo: o alfabeto de animais do {NOME}!",
+          "illustration_note": "Dedicatoria: {NOME} no centro de um campo vivo com animais; silhuetas A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha alegre."
+        },
+        {
+          "page": 2,
+          "text": "A de Abelha, zum-zum no ar; B de Baleia, canto no mar.",
+          "illustration_note": "{NOME} ve uma abelha no jardim e uma baleia no mar ao fundo magico; silhuetas A e B; cena alegre."
+        },
+        {
+          "page": 3,
+          "text": "C de Cachorro, amigo de verdade; D de Dinossauro, forca e bondade.",
+          "illustration_note": "{NOME} abraça um cachorro amigavel; dinossauro gentil ao lado; silhuetas C e D; close caloroso."
+        },
+        {
+          "page": 4,
+          "text": "E de Ema, corre sem parar; F de Foca, desliza no mar.",
+          "illustration_note": "{NOME} ri de uma ema correndo; foca desliza na agua; silhuetas E e F; cena dinamica."
+        },
+        {
+          "page": 5,
+          "text": "G de Girafa, alta no pasto; H de Hipopotamo, fresco no lago vasto.",
+          "illustration_note": "{NOME} no pasto com girafa alta; hipopotamo na lagoa; silhuetas G e H; plano aberto."
+        },
+        {
+          "page": 6,
+          "text": "I de Iguana, verde no galho; J de Jacare, quieto no atalho.",
+          "illustration_note": "{NOME} observa iguana no galho; jacare quieto na beira d agua; silhuetas I e J; natureza calma."
+        },
+        {
+          "page": 7,
+          "text": "K de Koala, abraço apertado; L de Leao, rugido animado.",
+          "illustration_note": "{NOME} ve koala abraçado ao tronco; leao ruge ao fundo sem medo; silhuetas K e L; contraste carinho e forca."
+        },
+        {
+          "page": 8,
+          "text": "M de Macaco, pula no galho; N de Nambu, corre no atalho.",
+          "illustration_note": "{NOME} ri de macaco no galho; nambu corre na trilha; silhuetas M e N; mata brasileira."
+        },
+        {
+          "page": 9,
+          "text": "O de Ovelha, la no curral; P de Pato, nada no canal.",
+          "illustration_note": "{NOME} na fazenda com ovelha lanosa; pato nada no canal; silhuetas O e P; cena rural."
+        },
+        {
+          "page": 10,
+          "text": "Q de Quati, focinho comprido; R de Raposa, salto atrevido.",
+          "illustration_note": "{NOME} com quati curioso; raposa num salto leve; silhuetas Q e R; bosque brincalhao."
+        },
+        {
+          "page": 11,
+          "text": "S de Sapo, canta na lagoa; T de Tigre, ruge e ecoa.",
+          "illustration_note": "{NOME} perto de sapo na lagoa; tigre majestoso ao fundo; silhuetas S e T; natureza viva."
+        },
+        {
+          "page": 12,
+          "text": "U de Urso, busca o mel; V de Vaca, pasta fiel.",
+          "illustration_note": "{NOME} ve urso perto do mel; vaca pasta mansa; silhuetas U e V; campo acolhedor."
+        },
+        {
+          "page": 13,
+          "text": "W de Wombat, toca no chao; X de Xexeu, canto no sertao.",
+          "illustration_note": "{NOME} observa wombat cavando; passarinho xexeu cantando; silhuetas W e X; natureza curiosa."
+        },
+        {
+          "page": 14,
+          "text": "Y de Yorkshire, fiel companheiro; Z de Zebra, listras no terreiro.",
+          "illustration_note": "{NOME} com yorkshire pequeno; zebra listrada no terreiro; silhuetas Y e Z; festa dos animais."
+        },
+        {
+          "page": 15,
+          "text": "De A a Z, {NOME} leu com carinho: da abelha a zebra no caminho.",
+          "illustration_note": "{NOME} no centro, cercado de animais do alfabeto, festa alegre; silhuetas A e Z; confete suave."
+        }
+      ]
+    },
+    "6-9": {
+      "pages": [
+        {
+          "page": 1,
+          "text": "Venha ler comigo: o alfabeto de animais do {NOME}!",
+          "illustration_note": "Dedicatoria: {NOME} no centro de um campo vivo com animais; silhuetas A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha alegre."
+        },
+        {
+          "page": 2,
+          "text": "A de Abelha, zum-zum no ar; B de Baleia, canto no mar.",
+          "illustration_note": "{NOME} ve uma abelha no jardim e uma baleia no mar ao fundo magico; silhuetas A e B; cena alegre."
+        },
+        {
+          "page": 3,
+          "text": "C de Cachorro, amigo de verdade; D de Dinossauro, forca e bondade.",
+          "illustration_note": "{NOME} abraça um cachorro amigavel; dinossauro gentil ao lado; silhuetas C e D; close caloroso."
+        },
+        {
+          "page": 4,
+          "text": "E de Ema, corre sem parar; F de Foca, desliza no mar.",
+          "illustration_note": "{NOME} ri de uma ema correndo; foca desliza na agua; silhuetas E e F; cena dinamica."
+        },
+        {
+          "page": 5,
+          "text": "G de Girafa, alta no pasto; H de Hipopotamo, fresco no lago vasto.",
+          "illustration_note": "{NOME} no pasto com girafa alta; hipopotamo na lagoa; silhuetas G e H; plano aberto."
+        },
+        {
+          "page": 6,
+          "text": "I de Iguana, verde no galho; J de Jacare, quieto no atalho.",
+          "illustration_note": "{NOME} observa iguana no galho; jacare quieto na beira d agua; silhuetas I e J; natureza calma."
+        },
+        {
+          "page": 7,
+          "text": "K de Koala, abraço apertado; L de Leao, rugido animado.",
+          "illustration_note": "{NOME} ve koala abraçado ao tronco; leao ruge ao fundo sem medo; silhuetas K e L; contraste carinho e forca."
+        },
+        {
+          "page": 8,
+          "text": "M de Macaco, pula no galho; N de Nambu, corre no atalho.",
+          "illustration_note": "{NOME} ri de macaco no galho; nambu corre na trilha; silhuetas M e N; mata brasileira."
+        },
+        {
+          "page": 9,
+          "text": "O de Ovelha, la no curral; P de Pato, nada no canal.",
+          "illustration_note": "{NOME} na fazenda com ovelha lanosa; pato nada no canal; silhuetas O e P; cena rural."
+        },
+        {
+          "page": 10,
+          "text": "Q de Quati, focinho comprido; R de Raposa, salto atrevido.",
+          "illustration_note": "{NOME} com quati curioso; raposa num salto leve; silhuetas Q e R; bosque brincalhao."
+        },
+        {
+          "page": 11,
+          "text": "S de Sapo, canta na lagoa; T de Tigre, ruge e ecoa.",
+          "illustration_note": "{NOME} perto de sapo na lagoa; tigre majestoso ao fundo; silhuetas S e T; natureza viva."
+        },
+        {
+          "page": 12,
+          "text": "U de Urso, busca o mel; V de Vaca, pasta fiel.",
+          "illustration_note": "{NOME} ve urso perto do mel; vaca pasta mansa; silhuetas U e V; campo acolhedor."
+        },
+        {
+          "page": 13,
+          "text": "W de Wombat, toca no chao; X de Xexeu, canto no sertao.",
+          "illustration_note": "{NOME} observa wombat cavando; passarinho xexeu cantando; silhuetas W e X; natureza curiosa."
+        },
+        {
+          "page": 14,
+          "text": "Y de Yorkshire, fiel companheiro; Z de Zebra, listras no terreiro.",
+          "illustration_note": "{NOME} com yorkshire pequeno; zebra listrada no terreiro; silhuetas Y e Z; festa dos animais."
+        },
+        {
+          "page": 15,
+          "text": "De A a Z, {NOME} leu com carinho: da abelha a zebra no caminho.",
+          "illustration_note": "{NOME} no centro, cercado de animais do alfabeto, festa alegre; silhuetas A e Z; confete suave."
+        }
+      ]
+    },
+    "9-12": {
+      "pages": [
+        {
+          "page": 1,
+          "text": "Venha ler comigo: o alfabeto de animais do {NOME}!",
+          "illustration_note": "Dedicatoria: {NOME} no centro de um campo vivo com animais; silhuetas A e Z ao fundo (formas abstratas, sem texto legivel); luz de manha alegre."
+        },
+        {
+          "page": 2,
+          "text": "A de Abelha, zum-zum no ar; B de Baleia, canto no mar.",
+          "illustration_note": "{NOME} ve uma abelha no jardim e uma baleia no mar ao fundo magico; silhuetas A e B; cena alegre."
+        },
+        {
+          "page": 3,
+          "text": "C de Cachorro, amigo de verdade; D de Dinossauro, forca e bondade.",
+          "illustration_note": "{NOME} abraça um cachorro amigavel; dinossauro gentil ao lado; silhuetas C e D; close caloroso."
+        },
+        {
+          "page": 4,
+          "text": "E de Ema, corre sem parar; F de Foca, desliza no mar.",
+          "illustration_note": "{NOME} ri de uma ema correndo; foca desliza na agua; silhuetas E e F; cena dinamica."
+        },
+        {
+          "page": 5,
+          "text": "G de Girafa, alta no pasto; H de Hipopotamo, fresco no lago vasto.",
+          "illustration_note": "{NOME} no pasto com girafa alta; hipopotamo na lagoa; silhuetas G e H; plano aberto."
+        },
+        {
+          "page": 6,
+          "text": "I de Iguana, verde no galho; J de Jacare, quieto no atalho.",
+          "illustration_note": "{NOME} observa iguana no galho; jacare quieto na beira d agua; silhuetas I e J; natureza calma."
+        },
+        {
+          "page": 7,
+          "text": "K de Koala, abraço apertado; L de Leao, rugido animado.",
+          "illustration_note": "{NOME} ve koala abraçado ao tronco; leao ruge ao fundo sem medo; silhuetas K e L; contraste carinho e forca."
+        },
+        {
+          "page": 8,
+          "text": "M de Macaco, pula no galho; N de Nambu, corre no atalho.",
+          "illustration_note": "{NOME} ri de macaco no galho; nambu corre na trilha; silhuetas M e N; mata brasileira."
+        },
+        {
+          "page": 9,
+          "text": "O de Ovelha, la no curral; P de Pato, nada no canal.",
+          "illustration_note": "{NOME} na fazenda com ovelha lanosa; pato nada no canal; silhuetas O e P; cena rural."
+        },
+        {
+          "page": 10,
+          "text": "Q de Quati, focinho comprido; R de Raposa, salto atrevido.",
+          "illustration_note": "{NOME} com quati curioso; raposa num salto leve; silhuetas Q e R; bosque brincalhao."
+        },
+        {
+          "page": 11,
+          "text": "S de Sapo, canta na lagoa; T de Tigre, ruge e ecoa.",
+          "illustration_note": "{NOME} perto de sapo na lagoa; tigre majestoso ao fundo; silhuetas S e T; natureza viva."
+        },
+        {
+          "page": 12,
+          "text": "U de Urso, busca o mel; V de Vaca, pasta fiel.",
+          "illustration_note": "{NOME} ve urso perto do mel; vaca pasta mansa; silhuetas U e V; campo acolhedor."
+        },
+        {
+          "page": 13,
+          "text": "W de Wombat, toca no chao; X de Xexeu, canto no sertao.",
+          "illustration_note": "{NOME} observa wombat cavando; passarinho xexeu cantando; silhuetas W e X; natureza curiosa."
+        },
+        {
+          "page": 14,
+          "text": "Y de Yorkshire, fiel companheiro; Z de Zebra, listras no terreiro.",
+          "illustration_note": "{NOME} com yorkshire pequeno; zebra listrada no terreiro; silhuetas Y e Z; festa dos animais."
+        },
+        {
+          "page": 15,
+          "text": "De A a Z, {NOME} leu com carinho: da abelha a zebra no caminho.",
+          "illustration_note": "{NOME} no centro, cercado de animais do alfabeto, festa alegre; silhuetas A e Z; confete suave."
+        }
+      ]
+    }
+  }
+}

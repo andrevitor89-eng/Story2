@@ -8,8 +8,9 @@ import redis
 
 from app.config import settings
 from app.db import SessionLocal
+from app.models import JobKind
 from app.services.jobs import REDIS_CHANNEL, claim_next_job, mark_job_done, mark_job_failed
-from app.workers.handlers import process_generate_job
+from app.workers.handlers import process_generate_job, process_video_job
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
 logger = logging.getLogger("worker")
@@ -30,9 +31,16 @@ async def run_once() -> bool:
         job = claim_next_job(db)
         if job is None:
             return False
-        logger.info("Processing job %s for book %s", job.id, job.book_id)
+        logger.info("Processing job %s kind=%s for book %s", job.id, job.kind, job.book_id)
         try:
-            await process_generate_job(db, job)
+            if job.kind == JobKind.VIDEO:
+                await process_video_job(db, job)
+            elif job.kind == JobKind.NARRATED_VIDEO:
+                from app.workers.handlers import process_narrated_video_job
+
+                await process_narrated_video_job(db, job)
+            else:
+                await process_generate_job(db, job)
             mark_job_done(db, job)
             logger.info("Job %s completed", job.id)
         except Exception as exc:  # noqa: BLE001
@@ -44,8 +52,14 @@ async def run_once() -> bool:
 
 
 async def main() -> None:
-    logger.info("Worker started (offline_fallback=%s, has_gemini=%s)",
-                settings.offline_fallback, bool(settings.gemini_api_key))
+    from app.ai.kling import kling_configured
+
+    logger.info(
+        "Worker started (offline_fallback=%s, has_gemini=%s, has_kling=%s)",
+        settings.offline_fallback,
+        bool(settings.gemini_api_key),
+        kling_configured(),
+    )
     while True:
         worked = await run_once()
         if not worked:

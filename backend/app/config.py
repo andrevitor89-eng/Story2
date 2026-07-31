@@ -42,6 +42,21 @@ class Settings(BaseSettings):
     gemini_max_retries: int = 6
     gemini_retry_base_seconds: float = 5.0
 
+    # Animacao / narrado animado
+    # Preferir KLING_API_KEY (gateway Bearer, ex. api-key-kling-...) quando o console
+    # so mostra uma chave. Alternativa oficial: ACCESS + SECRET (JWT em api.klingai.com).
+    kling_api_key: str = ""
+    kling_access_key: str = ""
+    kling_secret_key: str = ""
+    kling_model_name: str = "kling-v2-1"
+    default_video_duration_s: int = 5
+    video_poll_interval_s: float = 10.0
+    video_poll_timeout_s: float = 600.0
+
+    # V�deo narrado (TTS)
+    elevenlabs_api_key: str = ""
+    elevenlabs_voice_id: str = ""
+
     @property
     def sql_database_url(self) -> str:
         return normalize_database_url(self.database_url)

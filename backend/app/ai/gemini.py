@@ -8,8 +8,15 @@ import random
 import httpx
 
 from app.ai import offline
-from app.ai.prompts import CHARACTER_PROMPT, GENDER_LABELS, SCENE_PROMPT
+from app.ai.prompts import (
+    ALPHABET_SCENE_PROMPT,
+    CHARACTER_PROMPT,
+    GENDER_LABELS,
+    SCENE_PROMPT,
+)
+
 from app.config import settings
+from app.stories.catalog import ALPHABET_STORY_IDS
 
 logger = logging.getLogger("gemini")
 BASE = "https://generativelanguage.googleapis.com/v1beta"
@@ -61,6 +68,8 @@ async def _generate_once(client: httpx.AsyncClient, model: str, parts: list[dict
 
 def _is_transient(exc: Exception) -> bool:
     msg = str(exc)
+    if "respondeu sem imagem" in msg:
+        return True
     return any(f"Gemini {code}" in msg for code in TRANSIENT_STATUS) or "Gemini rede:" in msg
 
 
@@ -136,13 +145,19 @@ async def generate_scene(
     page: int,
     page_text: str,
     illustration_note: str,
+    story_id: str | None = None,
 ) -> bytes:
     if not settings.gemini_api_key:
         if settings.offline_fallback:
             return offline.placeholder_scene(name, page, illustration_note)
         raise RuntimeError("GEMINI_API_KEY nao configurada no servidor")
 
-    prompt = SCENE_PROMPT.format(
+    template = (
+        ALPHABET_SCENE_PROMPT
+        if (story_id or "").strip() in ALPHABET_STORY_IDS
+        else SCENE_PROMPT
+    )
+    prompt = template.format(
         name=name,
         illustration_note=illustration_note,
         page_text=page_text,

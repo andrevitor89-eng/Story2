@@ -27,34 +27,36 @@ export function Login() {
   }
 
   return (
-    <div className="panel">
-      <Link to="/" className="brand">
-        Story R Us
-      </Link>
-      <h1>Entrar</h1>
-      <form className="form-grid" onSubmit={onSubmit}>
-        <label>
-          Email
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </label>
-        <label>
-          Senha
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            minLength={6}
-          />
-        </label>
-        {error && <p className="error">{error}</p>}
-        <button className="btn btn-primary" disabled={busy} type="submit">
-          {busy ? "Entrando..." : "Entrar"}
-        </button>
-      </form>
-      <p className="muted">
-        Nao tem conta? <Link to="/register">Cadastre-se</Link>
-      </p>
+    <div className="auth-page">
+      <div className="panel auth-panel">
+        <Link to="/" className="brand">
+          Story R Us
+        </Link>
+        <h1>Entrar</h1>
+        <form className="form-grid" onSubmit={onSubmit}>
+          <label>
+            Email
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </label>
+          <label>
+            Senha
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              minLength={6}
+            />
+          </label>
+          {error && <p className="error">{error}</p>}
+          <button className="btn btn-primary" disabled={busy} type="submit">
+            {busy ? "Entrando..." : "Entrar"}
+          </button>
+        </form>
+        <p className="muted">
+          Nao tem conta? <Link to="/register">Cadastre-se</Link>
+        </p>
+      </div>
     </div>
   );
 }
