@@ -538,7 +538,7 @@ export function Landing() {
         </div>
       </header>
 
-      {/* HERO — capa do livro em destaque + foto real no card */}
+      {/* HERO — livro grande (retrato), capa + foto real no card */}
       <section className="kbanner-hero" aria-label={t.eyebrow}>
         <div className="kbh-frame">
           {HERO_SLIDES.map((s, i) => (

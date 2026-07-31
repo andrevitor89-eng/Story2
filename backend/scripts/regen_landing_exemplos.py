@@ -40,8 +40,9 @@ THEME_RULES = {
     "mar": (
         "CRITICAL: The child is a MERMAID / merboy with a colorful fish tail from the waist down "
         "in EVERY underwater scene. Face must match the character reference. "
-        "Never put the child in shorts/shirt underwater. Recurring friends: friendly pufferfish, "
-        "purple octopus, small yellow fish."
+        "MODESTY: the child MUST wear a modest short-sleeved blouse / seashell bikini top / "
+        "cute swim top covering the chest — NEVER bare torso / topless / nude chest. "
+        "Recurring friends: friendly pufferfish, purple octopus, small yellow fish."
     ),
     "dino": (
         "CRITICAL: Dino is ALWAYS a cute GREEN DINOSAUR (triceratops-like, dog-sized, friendly big eyes) "
