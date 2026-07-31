@@ -62,11 +62,33 @@ const BANNER_CATALOG_I = [3, 0, 2];
 /* um card por tema do catálogo — src null = ainda sem exemplo de vídeo */
 const VIDEO_IMGS = ["mar-2.jpg", "flor-2.jpg", "dino-2.jpg", "circo-2.jpg"];
 const VIDEO_SRCS: (string | null)[] = ["video-mar.mp4", "video-flor.mp4", "video-dino.mp4", "video-circo.mp4"];
-// Slides do hero: capa com título IA (dourado) + foto real (card pequeno)
-const HERO_SLIDES: { photo: string; book: string; catalogI: number; bookPos?: string; photoPos?: string }[] = [
-  { photo: "foto-matteo.png", book: "hero-dino.jpg", catalogI: 2, bookPos: "28% 22%", photoPos: "center center" },
-  { photo: "foto-sofia.png", book: "hero-flor.jpg", catalogI: 1, bookPos: "center 30%", photoPos: "center center" },
-  { photo: "foto-bebe.jpg", book: "hero-circo.jpg", catalogI: 3, bookPos: "center 32%", photoPos: "center center" },
+// Slides do hero: capa limpa + título (nome + tema), estilo Mundo dos Dinossauros
+const HERO_SLIDES: {
+  photo: string; book: string; catalogI: number;
+  title: { pt: { name: string; theme: [string, string] }; en: { name: string; theme: [string, string] } };
+  bookPos?: string; photoPos?: string;
+}[] = [
+  {
+    photo: "foto-matteo.png", book: "capa-dino2.jpg", catalogI: 2, bookPos: "center 18%", photoPos: "center center",
+    title: {
+      pt: { name: "Matteo", theme: ["Mundo dos", "Dinossauros"] },
+      en: { name: "Matteo", theme: ["Dinosaur", "World"] },
+    },
+  },
+  {
+    photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1, bookPos: "center 18%", photoPos: "center center",
+    title: {
+      pt: { name: "Sofia", theme: ["Floresta", "Encantada"] },
+      en: { name: "Sofia", theme: ["Enchanted", "Forest"] },
+    },
+  },
+  {
+    photo: "foto-bebe.jpg", book: "capa-circo.jpg", catalogI: 3, bookPos: "center 20%", photoPos: "center center",
+    title: {
+      pt: { name: "Noah", theme: ["Circo das", "Luzes"] },
+      en: { name: "Noah", theme: ["Circus of", "Lights"] },
+    },
+  },
 ];
 const FLIP_MS = 600;
 const FLIP_AUTO_MS = 2000;
@@ -388,7 +410,7 @@ const I18N = {
     videos: [
       { t: "Lia and the Deep Sea", p: "An ocean adventure with enchanting narration." },
       { t: "Sofia and the Enchanted Forest", p: "Gentle little creatures and firefly lights, with a soft soundtrack." },
-      { t: "Matteo and Dinosaur World", p: "A journey through the dinosaur valley, with voice and music." },
+      { t: "Matteo and the Dinosaur World", p: "A journey through the dinosaur valley, with voice and music." },
       { t: "Noah and the Circus of Lights", p: "A magical night full of sparkle and music." },
     ],
     vid_soon: "Coming soon",
@@ -409,7 +431,7 @@ const I18N = {
     catalog: [
       { t: "Lia and the Deep Sea", p: "An ocean adventure with sea friends.", age: "ages 3-6", tag: "Courage & friendship", quote: "Courage that dives deep — and comes back with friends." },
       { t: "Sofia and the Enchanted Forest", p: "Gentle creatures and magical firefly lights.", age: "ages 3-6", tag: "Kindness & nature", quote: "Where kindness lights up the fireflies." },
-      { t: "Matteo and Dinosaur World", p: "A valley full of gentle dinosaurs.", age: "ages 4-7", tag: "Discovery & curiosity", quote: "A fun journey back to the dinosaur age." },
+      { t: "Matteo and the Dinosaur World", p: "A valley full of gentle dinosaurs.", age: "ages 4-7", tag: "Discovery & curiosity", quote: "A fun journey back to the dinosaur age." },
       { t: "Noah and the Circus of Lights", p: "A magical night full of sparkle.", age: "ages 3-6", tag: "Dream & shine", quote: "A night made to dream and shine." },
     ],
     surprise: { t: "Surprise Story (AI)", p: "Let the AI invent a unique adventure from the photo.", age: "ages 3-8", tag: "Made-to-fit adventure", quote: "Every photo hides a secret adventure." },
@@ -528,9 +550,14 @@ export function Landing() {
                 loading={i === 0 ? "eager" : "lazy"}
                 style={s.bookPos ? { objectPosition: s.bookPos } : undefined}
               />
+              <span className="kbh-cover-title" aria-hidden>
+                <span className="kbh-cover-name">{s.title[lang].name}</span>
+                {s.title[lang].theme.map((line) => (
+                  <span className="kbh-cover-theme" key={line}>{line}</span>
+                ))}
+              </span>
               <span className="kbh-tag">
                 <span className="kbh-tag-top"><IcEye className="ei" /> {t.ba_preview}</span>
-                <b>{t.catalog[s.catalogI].t}</b>
               </span>
               <figure className="kbh-book">
                 <img
