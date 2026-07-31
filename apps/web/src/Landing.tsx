@@ -57,9 +57,9 @@ const BANNER_IMGS = ["capa-circo.jpg", "capa-oceano.jpg", "capa-dino2.jpg"];
 const VIDEO_IMGS = ["mar-2.jpg", "flor-2.jpg", "circo-2.jpg"];
 // Slides do hero: foto real (em cima) -> capa do livro gerado
 const HERO_SLIDES: { photo: string; book: string; photoPos?: string }[] = [
-  { photo: "foto-matteo.png", book: "capa-circo.jpg", photoPos: "center 22%" },
+  { photo: "foto-matteo.png", book: "capa-dino2.jpg", photoPos: "center 22%" },
   { photo: "foto-sofia.png", book: "capa-floresta.jpg" },
-  { photo: "foto-bebe.jpg", book: "capa-oceano.jpg" },
+  { photo: "foto-bebe.jpg", book: "capa-circo.jpg" },
 ];
 const exUrl = (f: string) => (f.startsWith("http://") || f.startsWith("https://") ? f : `${import.meta.env.BASE_URL}exemplos/${f}`);
 
@@ -451,9 +451,10 @@ export function Landing() {
             <div className={`kbh-slide${i === heroI ? " on" : ""}`} key={s.book} aria-hidden={i !== heroI}>
               <img
                 className="kbh-photo"
-                src={exUrl(s.book)}
-                alt="Capa do livro gerado"
+                src={exUrl(s.photo)}
+                alt="Foto real da criança"
                 loading={i === 0 ? "eager" : "lazy"}
+                style={s.photoPos ? { objectPosition: s.photoPos } : undefined}
               />
               <span className="kbh-tag">
                 <span className="kbh-tag-top"><IcEye className="ei" /> {t.ba_preview}</span>
@@ -461,10 +462,9 @@ export function Landing() {
               </span>
               <figure className="kbh-book">
                 <img
-                  src={exUrl(s.photo)}
-                  alt="Foto real da criança"
+                  src={exUrl(s.book)}
+                  alt="Capa do livro gerado"
                   loading={i === 0 ? "eager" : "lazy"}
-                  style={s.photoPos ? { objectPosition: s.photoPos } : undefined}
                 />
               </figure>
               <div className="kbh-overlay">
