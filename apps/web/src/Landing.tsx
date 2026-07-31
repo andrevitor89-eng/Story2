@@ -68,8 +68,8 @@ const HERO_SLIDES: { photo: string; book: string; catalogI: number; bookPos?: st
   { photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1, bookPos: "center center", photoPos: "center center" },
   { photo: "foto-bebe.jpg", book: "capa-circo.jpg", catalogI: 3, bookPos: "center 35%", photoPos: "center center" },
 ];
-const FLIP_MS = 720;
-const FLIP_AUTO_MS = 1800;
+const FLIP_MS = 600;
+const FLIP_AUTO_MS = 2000;
 const exUrl = (f: string) => (f.startsWith("http://") || f.startsWith("https://") ? f : `${import.meta.env.BASE_URL}exemplos/${f}`);
 
 /* Ilustrações das dicas de enquadramento (SVG inline, sem depender de fotos) */
@@ -209,14 +209,18 @@ function FlipBook({ pages, compact = false, coverTitle }: { pages: string[]; com
   const [hover, setHover] = useState(false);
   const busy = useRef(false);
   const flip = (dir: "next" | "prev", loop = false) => {
-    if (busy.current) return;
+    if (busy.current || pages.length < 2) return;
     let t = dir === "next" ? i + 1 : i - 1;
     if (t >= pages.length) { if (!loop) return; t = 0; }
     if (t < 0) return;
     busy.current = true;
     setTarget(t);
     setAnim(dir);
-    window.setTimeout(() => { setI(t); setAnim(null); busy.current = false; }, FLIP_MS);
+    window.setTimeout(() => {
+      setI(t);
+      setAnim(null);
+      busy.current = false;
+    }, FLIP_MS);
   };
   // só folheia com o mouse em cima
   useEffect(() => {
@@ -233,9 +237,9 @@ function FlipBook({ pages, compact = false, coverTitle }: { pages: string[]; com
     setI(0);
     setTarget(0);
   }, [hover]);
-  const baseSrc = anim === "next" ? pages[target] : pages[i];
-  const turnSrc = anim === "next" ? pages[i] : pages[target];
-  const showCoverTitle = Boolean(coverTitle) && i === 0 && anim !== "next";
+  const underSrc = anim === "next" ? pages[target] : pages[i];
+  const leafSrc = anim === "next" ? pages[i] : (anim === "prev" ? pages[target] : pages[i]);
+  const showCoverTitle = Boolean(coverTitle) && i === 0 && !anim;
   const onStage = (e: RMouseEvent<HTMLDivElement>) => {
     if (!hover) return;
     const r = e.currentTarget.getBoundingClientRect();
@@ -247,15 +251,18 @@ function FlipBook({ pages, compact = false, coverTitle }: { pages: string[]; com
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      {!compact && <button className="fb-nav" onClick={() => flip("prev")} disabled={i === 0} aria-label="Página anterior">‹</button>}
+      {!compact && <button className="fb-nav" onClick={() => flip("prev")} disabled={i === 0 || !!anim} aria-label="Página anterior">‹</button>}
       <div className="fb-stage" onClick={onStage} role="button" tabIndex={0} aria-label="Virar página">
         <span className="fb-spine" />
-        <img className="fb-page fb-base" src={exUrl(baseSrc)} alt={i === 0 ? "Capa" : `Página ${i}`} />
-        {anim && <img className={`fb-page fb-turn ${anim}`} src={exUrl(turnSrc)} alt="" aria-hidden />}
+        <img className="fb-page fb-under" src={exUrl(underSrc)} alt="" aria-hidden />
+        <div className={`fb-leaf${anim ? ` ${anim}` : ""}`}>
+          <img className="fb-page" src={exUrl(leafSrc)} alt={i === 0 ? "Capa" : `Página ${i}`} />
+          <span className="fb-leaf-shade" aria-hidden />
+        </div>
         {showCoverTitle && <span className="fb-cover-title">{coverTitle}</span>}
         <span className="fb-count">{i === 0 ? "Capa" : `${i} / ${pages.length - 1}`}</span>
       </div>
-      {!compact && <button className="fb-nav" onClick={() => flip("next")} disabled={i === pages.length - 1} aria-label="Próxima página">›</button>}
+      {!compact && <button className="fb-nav" onClick={() => flip("next")} disabled={i === pages.length - 1 || !!anim} aria-label="Próxima página">›</button>}
     </div>
   );
 }

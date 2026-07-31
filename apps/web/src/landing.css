@@ -405,47 +405,62 @@
 .fb-nav:disabled { opacity: .35; cursor: default; }
 .fb-stage {
   position: relative; width: 300px; max-width: 76vw; aspect-ratio: 780 / 1055;
-  perspective: 1400px; cursor: pointer; border-radius: 10px 4px 4px 10px;
+  perspective: 1800px; perspective-origin: left center;
+  cursor: pointer; border-radius: 10px 4px 4px 10px;
   filter: drop-shadow(0 26px 42px rgba(31,53,104,.30));
-  transform-style: preserve-3d;
+  overflow: hidden;
 }
 /* pilha de páginas saindo pela lateral direita, como um livro de verdade fechado */
 .fb-stage::before {
-  content: ""; position: absolute; top: 2%; bottom: 2%; right: -6px; width: 7px; z-index: 0; pointer-events: none;
+  content: ""; position: absolute; top: 2%; bottom: 2%; right: 0; width: 6px; z-index: 3; pointer-events: none;
   background: repeating-linear-gradient(0deg, #f6f2e7 0px, #f6f2e7 1.6px, #ddd6c2 1.6px, #ddd6c2 3.2px);
-  border-radius: 0 5px 5px 0; box-shadow: 2px 0 5px rgba(0,0,0,.3);
+  border-radius: 0 4px 4px 0; box-shadow: inset 1px 0 2px rgba(0,0,0,.15);
 }
-.cat-flip .fb-stage::before, .ex-tabs .fb-stage::before { width: 5px; right: -4px; }
+.cat-flip .fb-stage::before, .ex-tabs .fb-stage::before { width: 4px; }
 .fb-stage:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
 .fb-spine {
-  position: absolute; top: 0; bottom: 0; left: 0; width: 20px; z-index: 4; pointer-events: none;
+  position: absolute; top: 0; bottom: 0; left: 0; width: 20px; z-index: 5; pointer-events: none;
   background: linear-gradient(90deg, rgba(0,0,0,.34), rgba(0,0,0,0)); border-radius: 10px 0 0 10px;
 }
 .fb-page {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-  border-radius: 10px 4px 4px 10px; backface-visibility: hidden;
+  display: block; width: 100%; height: 100%; object-fit: cover;
+  border-radius: 10px 4px 4px 10px;
+}
+.fb-under {
+  position: absolute; inset: 0; z-index: 1;
+  border-radius: 10px 4px 4px 10px;
+}
+/* folha de cima: peel suave (~100°), sem giro completo / sem fade estranho */
+.fb-leaf {
+  position: absolute; inset: 0; z-index: 2;
+  transform-origin: left center;
   transform-style: preserve-3d;
+  border-radius: 10px 4px 4px 10px;
+  will-change: transform;
 }
-.fb-base { z-index: 1; }
-.fb-turn {
-  z-index: 3; transform-origin: left center;
-  box-shadow: 8px 0 22px rgba(0,0,0,.28);
-  will-change: transform, filter, opacity;
+.fb-leaf .fb-page { position: absolute; inset: 0; backface-visibility: hidden; }
+.fb-leaf-shade {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  border-radius: 10px 4px 4px 10px;
+  background: linear-gradient(90deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 42%);
+  opacity: 0; transition: none;
 }
-.fb-turn.next { animation: fbNext .72s cubic-bezier(.22,.61,.36,1) forwards; }
-.fb-turn.prev { animation: fbPrev .72s cubic-bezier(.22,.61,.36,1) forwards; }
-/* folha vira com sombra e some suavemente no fim (sem “segunda página” presa) */
-@keyframes fbNext {
-  0% { transform: rotateY(0); filter: brightness(1); opacity: 1; }
-  45% { filter: brightness(.78); }
-  85% { opacity: 1; }
-  100% { transform: rotateY(-180deg); filter: brightness(.55); opacity: 0; }
+.fb-leaf.next { animation: fbPeelNext .6s cubic-bezier(.25,.8,.25,1) forwards; }
+.fb-leaf.prev { animation: fbPeelPrev .6s cubic-bezier(.25,.8,.25,1) forwards; }
+.fb-leaf.next .fb-leaf-shade,
+.fb-leaf.prev .fb-leaf-shade { animation: fbShade .6s cubic-bezier(.25,.8,.25,1) forwards; }
+@keyframes fbPeelNext {
+  0% { transform: rotateY(0deg); box-shadow: 0 0 0 rgba(0,0,0,0); }
+  100% { transform: rotateY(-105deg); box-shadow: -18px 0 36px rgba(0,0,0,.35); }
 }
-@keyframes fbPrev {
-  0% { transform: rotateY(-180deg); filter: brightness(.55); opacity: 0; }
-  15% { opacity: 1; }
-  55% { filter: brightness(.78); }
-  100% { transform: rotateY(0); filter: brightness(1); opacity: 1; }
+@keyframes fbPeelPrev {
+  0% { transform: rotateY(-105deg); box-shadow: -18px 0 36px rgba(0,0,0,.35); }
+  100% { transform: rotateY(0deg); box-shadow: 0 0 0 rgba(0,0,0,0); }
+}
+@keyframes fbShade {
+  0% { opacity: .15; }
+  45% { opacity: .55; }
+  100% { opacity: .2; }
 }
 .fb-count {
   position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); z-index: 5;
