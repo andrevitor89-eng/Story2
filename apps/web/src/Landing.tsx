@@ -62,11 +62,11 @@ const BANNER_CATALOG_I = [3, 0, 2];
 /* um card por tema do catálogo — src null = ainda sem exemplo de vídeo */
 const VIDEO_IMGS = ["mar-2.jpg", "flor-2.jpg", "dino-2.jpg", "circo-2.jpg"];
 const VIDEO_SRCS: (string | null)[] = ["video-mar.mp4", "video-flor.mp4", "video-dino.mp4", "video-circo.mp4"];
-// Slides do hero: capa do livro (fundo) + foto real (card pequeno)
+// Slides do hero: capa com título IA (dourado) + foto real (card pequeno)
 const HERO_SLIDES: { photo: string; book: string; catalogI: number; bookPos?: string; photoPos?: string }[] = [
-  { photo: "foto-matteo.png", book: "capa-dino2.jpg", catalogI: 2, bookPos: "28% 18%", photoPos: "center center" },
-  { photo: "foto-sofia.png", book: "capa-floresta2.jpg", catalogI: 1, bookPos: "center center", photoPos: "center center" },
-  { photo: "foto-bebe.jpg", book: "capa-circo.jpg", catalogI: 3, bookPos: "center 35%", photoPos: "center center" },
+  { photo: "foto-matteo.png", book: "hero-dino.jpg", catalogI: 2, bookPos: "28% 22%", photoPos: "center center" },
+  { photo: "foto-sofia.png", book: "hero-flor.jpg", catalogI: 1, bookPos: "center 30%", photoPos: "center center" },
+  { photo: "foto-bebe.jpg", book: "hero-circo.jpg", catalogI: 3, bookPos: "center 32%", photoPos: "center center" },
 ];
 const FLIP_MS = 600;
 const FLIP_AUTO_MS = 2000;
@@ -528,7 +528,6 @@ export function Landing() {
                 loading={i === 0 ? "eager" : "lazy"}
                 style={s.bookPos ? { objectPosition: s.bookPos } : undefined}
               />
-              <span className="kbh-cover-title">{t.catalog[s.catalogI].t}</span>
               <span className="kbh-tag">
                 <span className="kbh-tag-top"><IcEye className="ei" /> {t.ba_preview}</span>
                 <b>{t.catalog[s.catalogI].t}</b>
