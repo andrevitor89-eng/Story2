@@ -116,11 +116,9 @@
   background: linear-gradient(0deg, rgba(9,15,32,.78) 0%, rgba(9,15,32,.28) 28%, rgba(9,15,32,0) 48%);
 }
 /* título da capa — dourado glitter (estilo História Surpresa) */
-.fb-stage,
-.banner-card { container-type: inline-size; }
+.fb-stage { container-type: inline-size; }
 .kbh-cover-title,
-.fb-cover-title,
-.banner-book-title {
+.fb-cover-title {
   position: absolute; top: 6%; left: 50%; transform: translateX(-50%); z-index: 5;
   width: 92%; max-width: 22ch; text-align: center; pointer-events: none;
   font-family: 'Fredoka', 'Baloo 2', cursive; font-weight: 700; line-height: 1.02;
@@ -134,8 +132,7 @@
     0 5px 12px rgba(0,0,0,.45),
     0 0 18px rgba(255,214,90,.55);
 }
-.fb-cover-title,
-.banner-book-title { font-size: 12.5cqw; max-width: 90%; }
+.fb-cover-title { font-size: 12.5cqw; max-width: 90%; }
 /* título do hero — 2 linhas inteiras no topo do livro */
 .kbh-cover-title {
   top: 7%; z-index: 5; left: 50%; width: 88%; max-width: none;
@@ -601,7 +598,6 @@
 .banner-card figcaption { position: relative; z-index: 1; padding: 22px 18px 16px; width: 100%; background: linear-gradient(to top, rgba(10,14,32,.96) 14%, rgba(10,14,32,.7) 44%, rgba(10,14,32,0)); }
 .banner-card h3 { margin: 0 0 4px; color: #fff; font-size: 1.28rem; }
 .banner-card p { margin: 0; color: #dfe6fb; font-size: .95rem; line-height: 1.4; }
-.banner-card .banner-book-title { top: 8%; z-index: 2; }
 @keyframes bannerDrift {
   0% { transform: scale(1.05) translate3d(0, 0, 0); }
   100% { transform: scale(1.12) translate3d(0, -2.5%, 0); }

@@ -625,7 +625,6 @@ export function Landing() {
         {t.banners.map((b, i) => (
           <figure className="banner-card reveal" key={b.t}>
             <img src={exUrl(BANNER_IMGS[i])} alt={t.catalog[BANNER_CATALOG_I[i]].t} loading="lazy" />
-            <span className="banner-book-title">{t.catalog[BANNER_CATALOG_I[i]].t}</span>
             <figcaption><h3>{b.t}</h3><p>{b.p}</p></figcaption>
           </figure>
         ))}
