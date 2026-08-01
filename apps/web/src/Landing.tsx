@@ -44,8 +44,14 @@ const SHOTS: { img?: string; art?: "good" | "multi" | "side" | "covered"; ok: bo
   { img: "dica-lado.png", ok: false, focus: "center center" },
 ];
 const BOOK = Array.from({ length: 11 }, (_, i) => `ebook-${i + 1}.jpg`).filter((f) => f !== "ebook-2.jpg");
-/* capas sem título queimado — título CSS unificado (estilo Mundo dos Dinossauros) */
+/* capas sem título queimado — título CSS em 2 linhas (rosto livre) */
 const CATALOG_IMGS = ["capa-oceano.jpg", "capa-floresta2.jpg", "capa-dino2.jpg", "capa-circo.jpg"];
+const CATALOG_TITLE_LINES: { pt: [string, string]; en: [string, string] }[] = [
+  { pt: ["Lia e o Fundo", "do Mar"], en: ["Lia and the", "Deep Sea"] },
+  { pt: ["Sofia e a Floresta", "Encantada"], en: ["Sofia and the", "Enchanted Forest"] },
+  { pt: ["Matteo e o Mundo", "dos Dinossauros"], en: ["Matteo and the", "Dinosaur World"] },
+  { pt: ["Noah e o Circo", "das Luzes"], en: ["Noah and the", "Circus of Lights"] },
+];
 const CATALOG_THEMES = ["underwater", "fantasy", "dinosaurs", "adventure"];
 const SURPRISE_IMG = "capa-surpresa.jpg";
 /* livro 3D do catálogo: páginas internas (sem a 2ª página, p/ flip mais limpo) */
@@ -224,7 +230,17 @@ function Faq({ items }: { items: readonly { q: string; a: string }[] }) {
   );
 }
 
-function FlipBook({ pages, compact = false, coverTitle }: { pages: string[]; compact?: boolean; coverTitle?: string }) {
+function FlipBook({
+  pages,
+  compact = false,
+  coverTitle,
+  coverTitleLines,
+}: {
+  pages: string[];
+  compact?: boolean;
+  coverTitle?: string;
+  coverTitleLines?: readonly string[];
+}) {
   const [i, setI] = useState(0);
   const [anim, setAnim] = useState<"next" | "prev" | null>(null);
   const [target, setTarget] = useState(0);
@@ -261,7 +277,10 @@ function FlipBook({ pages, compact = false, coverTitle }: { pages: string[]; com
   }, [hover]);
   const underSrc = anim === "next" ? pages[target] : pages[i];
   const leafSrc = anim === "next" ? pages[i] : (anim === "prev" ? pages[target] : pages[i]);
-  const showCoverTitle = Boolean(coverTitle) && i === 0 && !anim;
+  const titleLines = coverTitleLines?.length
+    ? coverTitleLines
+    : (coverTitle ? [coverTitle] : null);
+  const showCoverTitle = Boolean(titleLines) && i === 0 && !anim;
   const onStage = (e: RMouseEvent<HTMLDivElement>) => {
     if (!hover) return;
     const r = e.currentTarget.getBoundingClientRect();
@@ -281,7 +300,13 @@ function FlipBook({ pages, compact = false, coverTitle }: { pages: string[]; com
           <img className="fb-page" src={exUrl(leafSrc)} alt={i === 0 ? "Capa" : `Página ${i}`} />
           <span className="fb-leaf-shade" aria-hidden />
         </div>
-        {showCoverTitle && <span className="fb-cover-title">{coverTitle}</span>}
+        {showCoverTitle && titleLines && (
+          <span className="fb-cover-title">
+            {titleLines.map((line) => (
+              <span key={line}>{line}</span>
+            ))}
+          </span>
+        )}
         <span className="fb-count">{i === 0 ? "Capa" : `${i} / ${pages.length - 1}`}</span>
       </div>
       {!compact && <button className="fb-nav" onClick={() => flip("next")} disabled={i === pages.length - 1 || !!anim} aria-label="Próxima página">›</button>}
@@ -481,9 +506,19 @@ export function Landing() {
   const t = I18N[lang];
   const navHrefs = ["#top", "#catalogo", "#como", "#videos"];
   const exampleBooks = [
-    { title: t.catalog[0].t, cover: CATALOG_IMGS[0], pages: [CATALOG_IMGS[0], ...BOOK3D[0].pages] },
-    { title: t.chloe_title, cover: "ebook-1.jpg", pages: BOOK },
-    ...t.catalog.slice(1).map((c, i) => ({ title: c.t, cover: CATALOG_IMGS[i + 1], pages: [CATALOG_IMGS[i + 1], ...BOOK3D[i + 1].pages] })),
+    {
+      title: t.catalog[0].t,
+      titleLines: CATALOG_TITLE_LINES[0][lang],
+      cover: CATALOG_IMGS[0],
+      pages: [CATALOG_IMGS[0], ...BOOK3D[0].pages],
+    },
+    { title: t.chloe_title, titleLines: undefined as [string, string] | undefined, cover: "ebook-1.jpg", pages: BOOK },
+    ...t.catalog.slice(1).map((c, i) => ({
+      title: c.t,
+      titleLines: CATALOG_TITLE_LINES[i + 1][lang],
+      cover: CATALOG_IMGS[i + 1],
+      pages: [CATALOG_IMGS[i + 1], ...BOOK3D[i + 1].pages],
+    })),
   ];
 
   // Auto-avanço do carrossel do hero
@@ -615,6 +650,7 @@ export function Landing() {
             key={exBook}
             pages={exampleBooks[exBook].pages}
             coverTitle={exampleBooks[exBook].title}
+            coverTitleLines={exampleBooks[exBook].titleLines}
           />
         </div>
         <p className="fb-hint reveal">{t.story_hint}</p>
@@ -642,6 +678,7 @@ export function Landing() {
                   pages={[CATALOG_IMGS[i], ...BOOK3D[i].pages]}
                   compact
                   coverTitle={c.t}
+                  coverTitleLines={CATALOG_TITLE_LINES[i][lang]}
                 />
                 <span className="cat-flip-off">{t.save}</span>
               </div>
@@ -679,7 +716,12 @@ export function Landing() {
               <figure className={`howex-card reveal${i === 2 ? " howex-card-book" : ""}`}>
                 {i === 2 ? (
                   <div className="howex-book">
-                    <FlipBook pages={HOW_OPEN_BOOK} compact coverTitle={t.catalog[2].t} />
+                    <FlipBook
+                      pages={HOW_OPEN_BOOK}
+                      compact
+                      coverTitle={t.catalog[2].t}
+                      coverTitleLines={CATALOG_TITLE_LINES[2][lang]}
+                    />
                   </div>
                 ) : (
                   <img src={exUrl(HOW_IMGS[i])} alt={h.t} loading="lazy" />

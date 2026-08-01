@@ -132,7 +132,15 @@
     0 5px 12px rgba(0,0,0,.45),
     0 0 18px rgba(255,214,90,.55);
 }
-.fb-cover-title { font-size: 12.5cqw; max-width: 90%; }
+.fb-cover-title {
+  font-size: 10.2cqw; max-width: 92%; top: 2%;
+  display: flex; flex-direction: column; align-items: center; gap: .02em;
+  line-height: .96;
+}
+.fb-cover-title > span {
+  display: block; width: max-content; max-width: 100%; text-align: center;
+  white-space: nowrap;
+}
 /* título do hero — 2 linhas inteiras no topo do livro */
 .kbh-cover-title {
   top: 7%; z-index: 5; left: 50%; width: 88%; max-width: none;
@@ -482,10 +490,7 @@
   font-family: 'Baloo 2', cursive; font-weight: 700; color: var(--ink); background: #fff;
   padding: 3px 15px; border-radius: 999px; box-shadow: 0 6px 14px rgba(0,0,0,.08); font-size: .95rem;
 }
-.fb-cover-title {
-  width: 90%; top: 2.8%; line-height: .98;
-  font-size: 11cqw;
-}
+.fb-cover-title { width: 92%; }
 .fb-hint { text-align: center; color: #6b6890; font-weight: 600; margin-top: 44px; }
 
 /* ---------- Como funciona com exemplos ---------- */
@@ -506,7 +511,10 @@
 .howex-card-book .howex-book .flipbook-mini { width: 94%; max-width: none; margin: 0; }
 .howex-card-book .howex-book .fb-stage { width: 100%; }
 .howex-card-book .howex-book .fb-cover-title {
-  top: 2.2%; width: 92%; font-size: 10.2cqw; line-height: .96;
+  top: 1.6%; width: 94%; font-size: 9.4cqw;
+}
+.featured-book .fb-cover-title {
+  top: 1.8%; font-size: 9.6cqw;
 }
 .howex-card-book .howex-book .fb-count { font-size: .72rem; padding: 2px 10px; }
 .howex-num { position: absolute; top: 10px; left: 10px; width: 30px; height: 30px; border-radius: 50%;
