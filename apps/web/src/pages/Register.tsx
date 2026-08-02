@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth";
+import logo from "../assets/logo.png";
 
 export function Register() {
   const { user, register } = useAuth();
@@ -29,11 +30,13 @@ export function Register() {
 
   return (
     <div className="auth-page">
+      <div className="auth-sky" aria-hidden />
       <div className="panel auth-panel">
-        <Link to="/" className="brand">
-          Story R Us
+        <Link to="/" className="auth-brand">
+          <img src={logo} alt="Story R Us" />
         </Link>
         <h1>Criar conta</h1>
+        <p className="auth-lead">Comece a transformar fotos em livros e vídeos mágicos.</p>
         <form className="form-grid" onSubmit={onSubmit}>
           <label>
             Seu nome
@@ -54,12 +57,12 @@ export function Register() {
             />
           </label>
           {error && <p className="error">{error}</p>}
-          <button className="btn btn-primary" disabled={busy} type="submit">
-            {busy ? "Criando..." : "Comecar"}
+          <button className="btn btn-primary auth-submit" disabled={busy} type="submit">
+            {busy ? "Criando..." : "Começar"}
           </button>
         </form>
         <p className="muted">
-          Ja tem conta? <Link to="/login">Entrar</Link>
+          Já tem conta? <Link to="/login">Entrar</Link>
         </p>
       </div>
     </div>
