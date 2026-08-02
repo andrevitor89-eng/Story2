@@ -40,7 +40,14 @@
   padding: 10px 22px; margin: 0 auto; max-width: 1180px;
   backdrop-filter: blur(8px);
 }
-.kbrand img { height: 132px; filter: drop-shadow(0.7px 0 0 #fff) drop-shadow(-0.7px 0 0 #fff) drop-shadow(0 0.7px 0 #fff) drop-shadow(0 -0.7px 0 #fff); }
+.kbrand img {
+  height: 132px;
+  filter:
+    drop-shadow(1.2px 0 0 #fff) drop-shadow(-1.2px 0 0 #fff)
+    drop-shadow(0 1.2px 0 #fff) drop-shadow(0 -1.2px 0 #fff)
+    drop-shadow(1.6px 1.6px 0 #fff) drop-shadow(-1.6px 1.6px 0 #fff)
+    drop-shadow(1.6px -1.6px 0 #fff) drop-shadow(-1.6px -1.6px 0 #fff);
+}
 .klinks { margin-left: auto; display: flex; align-items: center; gap: 4px; }
 .klinks a {
   display: inline-flex; align-items: center; gap: 7px;
