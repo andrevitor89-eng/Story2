@@ -719,16 +719,6 @@ export function Landing() {
         </div>
       </section>
 
-      {/* BANNERS NARRATIVOS */}
-      <section className="banners">
-        {t.banners.map((b, i) => (
-          <figure className="banner-card reveal" key={b.t}>
-            <img src={exUrl(BANNER_IMGS[i])} alt={t.catalog[BANNER_CATALOG_I[i]].t} loading="lazy" />
-            <figcaption><h3>{b.t}</h3><p>{b.p}</p></figcaption>
-          </figure>
-        ))}
-      </section>
-
       {/* VÍDEOS NARRADOS */}
       <section className="ksection" id="videos">
         <h2 className="ktitle reveal">{t.vid_title}</h2>
@@ -791,6 +781,16 @@ export function Landing() {
           />
         </div>
         <p className="fb-hint reveal">{t.story_hint}</p>
+      </section>
+
+      {/* BANNERS NARRATIVOS — abaixo do folheie */}
+      <section className="banners">
+        {t.banners.map((b, i) => (
+          <figure className="banner-card reveal" key={b.t}>
+            <img src={exUrl(BANNER_IMGS[i])} alt={t.catalog[BANNER_CATALOG_I[i]].t} loading="lazy" />
+            <figcaption><h3>{b.t}</h3><p>{b.p}</p></figcaption>
+          </figure>
+        ))}
       </section>
 
       {/* AVALIAÇÕES */}
