@@ -221,11 +221,18 @@
 .shot-tips .shot-sub { text-align: center; color: #6b6890; margin: 0 auto 24px; max-width: 46ch; font-size: 1.02rem; }
 .shot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
 .shot { text-align: center; display: flex; flex-direction: column; align-items: center; }
-.shot-ava-wrap { position: relative; width: 148px; max-width: 100%; margin: 0 auto 12px; }
+.shot-ava-wrap { position: relative; width: 168px; max-width: 100%; margin: 0 auto 12px; }
 .shot-ava { width: 100%; aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; border: 4px solid #d7dbe6; background: #fff; }
 .shot.ok .shot-ava { border-color: #2fa860; box-shadow: 0 0 0 5px rgba(47,168,96,.18); }
-.shot-ava img, .shot-ava .shot-svg { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center center; }
-.shot.ok .shot-ava img { object-position: 58% 52%; }
+.shot-ava img, .shot-ava .shot-svg {
+  width: 100%; height: 100%; display: block;
+  object-fit: cover; object-position: center center;
+}
+/* Matteo: foto retrato — ancora no rostinho inteiro (testa→queixo) */
+.shot.ok .shot-ava img {
+  object-fit: cover;
+  object-position: 58% 38%;
+}
 .shot:not(.ok) .shot-ava img,
 .shot:not(.ok) .shot-ava .shot-svg { filter: grayscale(1) contrast(.95) brightness(.96); }
 .shot-badge { position: absolute; left: 14px; top: 14px; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; color: #fff; box-shadow: 0 3px 10px rgba(0,0,0,.28); z-index: 2; transform: translate(-42%, -42%); border: 3px solid #f2faf3; }
