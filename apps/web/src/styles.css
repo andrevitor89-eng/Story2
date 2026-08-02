@@ -245,8 +245,10 @@ button:active,
   height: 96px;
   width: auto;
   filter:
-    drop-shadow(0.7px 0 0 #fff) drop-shadow(-0.7px 0 0 #fff)
-    drop-shadow(0 0.7px 0 #fff) drop-shadow(0 -0.7px 0 #fff);
+    drop-shadow(1.2px 0 0 #fff) drop-shadow(-1.2px 0 0 #fff)
+    drop-shadow(0 1.2px 0 #fff) drop-shadow(0 -1.2px 0 #fff)
+    drop-shadow(1.6px 1.6px 0 #fff) drop-shadow(-1.6px 1.6px 0 #fff)
+    drop-shadow(1.6px -1.6px 0 #fff) drop-shadow(-1.6px -1.6px 0 #fff);
 }
 
 .auth-panel h1 {
