@@ -229,8 +229,11 @@
   width: 100%; height: 100%; display: block;
   object-fit: cover; object-position: center center;
 }
+.shot.ok .shot-ava {
+  background: #d7c4a8;
+}
 .shot.ok .shot-ava img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
 }
 .shot:not(.ok) .shot-ava img,
