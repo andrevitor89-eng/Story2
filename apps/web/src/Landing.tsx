@@ -39,7 +39,7 @@ const HOW_OPEN_BOOK = ["capa-dino2.jpg", "dino-1.jpg", "dino-3.jpg", "dino-4.jpg
 // Dicas de enquadramento: 1 exemplo bom (verde) + 2 a evitar (X).
 // img = foto real local (public/exemplos/) ou URL externa; art = ilustração SVG de fallback.
 const SHOTS: { img?: string; art?: "good" | "multi" | "side" | "covered"; ok: boolean; focus?: string }[] = [
-  { img: "dica-boa.png", ok: true, focus: "38% 22%" },
+  { img: "dica-boa.png", ok: true, focus: "center center" },
   { img: "dica-multi.png", ok: false, focus: "center center" },
   { img: "dica-lado.png", ok: false, focus: "center center" },
 ];
