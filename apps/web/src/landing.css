@@ -42,11 +42,12 @@
 }
 .kbrand img {
   height: 132px;
+  /* contorno branco fino e uniforme (sem “bolhas” nos cantos) */
   filter:
-    drop-shadow(1.2px 0 0 #fff) drop-shadow(-1.2px 0 0 #fff)
-    drop-shadow(0 1.2px 0 #fff) drop-shadow(0 -1.2px 0 #fff)
-    drop-shadow(1.6px 1.6px 0 #fff) drop-shadow(-1.6px 1.6px 0 #fff)
-    drop-shadow(1.6px -1.6px 0 #fff) drop-shadow(-1.6px -1.6px 0 #fff);
+    drop-shadow(0.9px 0 0 #fff) drop-shadow(-0.9px 0 0 #fff)
+    drop-shadow(0 0.9px 0 #fff) drop-shadow(0 -0.9px 0 #fff)
+    drop-shadow(0.7px 0.7px 0 #fff) drop-shadow(-0.7px 0.7px 0 #fff)
+    drop-shadow(0.7px -0.7px 0 #fff) drop-shadow(-0.7px -0.7px 0 #fff);
 }
 .klinks { margin-left: auto; display: flex; align-items: center; gap: 4px; }
 .klinks a {
@@ -229,12 +230,9 @@
   width: 100%; height: 100%; display: block;
   object-fit: cover; object-position: center center;
 }
-.shot.ok .shot-ava {
-  background: #d7c4a8;
-}
 .shot.ok .shot-ava img {
-  object-fit: contain;
-  object-position: center center;
+  object-fit: cover;
+  object-position: 42% 34%;
 }
 .shot:not(.ok) .shot-ava img,
 .shot:not(.ok) .shot-ava .shot-svg { filter: grayscale(1) contrast(.95) brightness(.96); }
