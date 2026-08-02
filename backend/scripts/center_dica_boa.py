@@ -17,8 +17,8 @@ def main() -> None:
     im = Image.open(SRC).convert("RGB")
     w, h = im.size
     # Foto 236x352: rosto um pouco à direita; incluir testa → queixo
-    cx, cy = 138, 155  # ~58% x, ~44% y
-    side = 200
+    cx, cy = 152, 172  # puxa o rostinho para o centro do quadrado
+    side = 196
     left = max(0, min(w - side, cx - side // 2))
     top = max(0, min(h - side, cy - side // 2))
     crop = im.crop((left, top, left + side, top + side)).resize((640, 640), Image.LANCZOS)
