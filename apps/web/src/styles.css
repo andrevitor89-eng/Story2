@@ -1,21 +1,21 @@
 :root {
-  --ink: #1f3568;
-  --muted: #6b6890;
-  --cream: #fff7ec;
-  --sand: #fff2db;
-  --sea: #3a5fae;
-  --sea-deep: #2a4a96;
+  --ink: #e9eefb;
+  --muted: #9fabce;
+  --cream: #0e1832;
+  --sand: #172140;
+  --sea: #7fb2e3;
+  --sea-deep: #8fb8ff;
   --coral: #ef8f4b;
   --yellow: #f4b740;
   --blue: #7fb2e3;
   --mint: #3f8f7d;
   --purple: #3a5fae;
   --leaf: #3f8f7d;
-  --paper: #ffffff;
-  --shadow: 0 18px 50px rgba(31, 53, 104, 0.14);
+  --paper: #172140;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
   font-family: "Quicksand", system-ui, sans-serif;
   color: var(--ink);
-  background: var(--cream);
+  background: #0b1226;
   line-height: 1.5;
 }
 
@@ -32,9 +32,15 @@ body,
 
 body {
   background:
-    radial-gradient(1200px 520px at 50% -140px, #dcecfb 0%, transparent 70%),
-    linear-gradient(180deg, #f3f8ff 0%, #fff7ec 55%, #fff2db 100%);
+    radial-gradient(1200px 540px at 50% -160px, #17264d 0%, transparent 72%),
+    linear-gradient(180deg, #0e1832 0%, #0b1226 55%, #0a1022 100%);
   background-attachment: fixed;
+  color: var(--ink);
+}
+
+.app-shell {
+  min-height: 100vh;
+  color: var(--ink);
 }
 
 a {
@@ -84,7 +90,11 @@ button:active,
 .btn-ghost {
   background: transparent;
   color: var(--ink);
-  border: 1.5px solid rgba(28, 36, 56, 0.18);
+  border: 1.5px solid rgba(233, 238, 251, 0.22);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .btn-coral {
@@ -206,6 +216,8 @@ button:active,
   margin: 2rem auto 4rem;
   padding: 2rem;
   background: var(--paper);
+  border: 1px solid #26315a;
+  border-radius: 24px;
   box-shadow: var(--shadow);
   animation: rise 0.5s ease both;
 }
@@ -231,19 +243,21 @@ input,
 select {
   font: inherit;
   padding: 0.75rem 0.9rem;
-  border: 1.5px solid rgba(28, 36, 56, 0.15);
+  border: 1.5px solid rgba(233, 238, 251, 0.14);
   border-radius: 12px;
-  background: white;
+  background: #101a34;
+  color: var(--ink);
 }
 
 input:focus,
 select:focus {
-  outline: 2px solid rgba(58, 95, 174, 0.3);
-  border-color: var(--purple);
+  outline: 2px solid rgba(127, 178, 227, 0.35);
+  border-color: var(--blue);
+  background: #121f3f;
 }
 
 .error {
-  color: #b33;
+  color: #ff8f8f;
   font-weight: 600;
 }
 
@@ -257,14 +271,15 @@ select:focus {
   width: 100%;
   border-radius: 18px;
   padding: 1.25rem 1.4rem;
-  background: white;
-  border: 2px solid transparent;
-  box-shadow: 0 8px 24px rgba(28, 36, 56, 0.06);
+  background: #121c38;
+  border: 2px solid #26315a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  color: var(--ink);
 }
 
 .story-card:hover,
 .story-card.selected {
-  border-color: var(--sea);
+  border-color: var(--yellow);
   transform: translateY(-2px);
 }
 
@@ -285,12 +300,12 @@ select:focus {
   gap: 0.5rem;
   margin-top: 0.75rem;
   font-size: 0.8rem;
-  color: var(--sea-deep);
+  color: var(--blue);
   font-weight: 700;
 }
 
 .meta span {
-  background: rgba(47, 111, 143, 0.1);
+  background: rgba(127, 178, 227, 0.14);
   padding: 0.2rem 0.55rem;
   border-radius: 999px;
 }
@@ -298,9 +313,9 @@ select:focus {
 .age-band-box {
   margin: 1.25rem 0 1.75rem;
   padding: 1.1rem 1.25rem;
-  background: rgba(47, 111, 143, 0.06);
+  background: rgba(127, 178, 227, 0.08);
   border-radius: 16px;
-  border: 1px solid rgba(47, 111, 143, 0.12);
+  border: 1px solid rgba(127, 178, 227, 0.18);
 }
 
 .age-band-box h2 {
@@ -326,7 +341,7 @@ select:focus {
 
 .age-mode.on {
   opacity: 1;
-  color: var(--sea-deep);
+  color: var(--yellow);
 }
 
 .age-band-row {
@@ -338,8 +353,9 @@ select:focus {
 .age-chip {
   border-radius: 999px;
   padding: 0.55rem 0.95rem;
-  background: white;
-  border: 1.5px solid rgba(28, 36, 56, 0.14);
+  background: #101a34;
+  border: 1.5px solid rgba(233, 238, 251, 0.16);
+  color: var(--ink);
   font-weight: 700;
   font-size: 0.9rem;
 }
@@ -350,9 +366,9 @@ select:focus {
 }
 
 .age-chip.selected {
-  border-color: var(--sea);
-  background: rgba(47, 111, 143, 0.12);
-  color: var(--sea-deep);
+  border-color: var(--yellow);
+  background: rgba(244, 183, 64, 0.16);
+  color: var(--yellow);
 }
 
 .progress-wrap {
@@ -361,9 +377,10 @@ select:focus {
 
 .progress-track {
   height: 12px;
-  background: var(--sand);
+  background: #101a34;
   border-radius: 999px;
   overflow: hidden;
+  border: 1px solid #26315a;
 }
 
 .progress-fill {

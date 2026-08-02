@@ -11,9 +11,19 @@ import { Register } from "./pages/Register";
 
 function Protected() {
   const { user, loading } = useAuth();
-  if (loading) return <div className="panel">Carregando...</div>;
+  if (loading) {
+    return (
+      <div className="app-shell">
+        <div className="panel">Carregando...</div>
+      </div>
+    );
+  }
   if (!user) return <Navigate to="/login" replace />;
-  return <Outlet />;
+  return (
+    <div className="app-shell">
+      <Outlet />
+    </div>
+  );
 }
 
 export default function App() {
