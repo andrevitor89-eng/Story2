@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Recorta dica-boa.png em quadrado centrado no rosto do Matteo."""
+"""Recorta dica-boa.png em quadrado com o rosto do Matteo bem no centro."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -16,17 +16,14 @@ if not SRC.is_file():
 def main() -> None:
     im = Image.open(SRC).convert("RGB")
     w, h = im.size
-    # Matteo: olhos no centro vertical/horizontal do quadrado
-    cx = int(w * 0.55)
-    cy = int(h * 0.36)
-    side = int(min(w, h) * 0.90)
+    # Foto 236x352: rosto um pouco à direita; incluir testa → queixo
+    cx, cy = 138, 155  # ~58% x, ~44% y
+    side = 200
     left = max(0, min(w - side, cx - side // 2))
     top = max(0, min(h - side, cy - side // 2))
-    crop = im.crop((left, top, left + side, top + side))
-    # exporta em tamanho bom para retina
-    crop = crop.resize((512, 512), Image.LANCZOS)
+    crop = im.crop((left, top, left + side, top + side)).resize((640, 640), Image.LANCZOS)
     crop.save(OUT, optimize=True)
-    print(f"ok {OUT.name} from {SRC.name} focus=({cx},{cy}) box=({left},{top},{side}) -> {crop.size}")
+    print(f"ok {OUT.name} box=({left},{top},{side}) size={crop.size}")
 
 
 if __name__ == "__main__":
