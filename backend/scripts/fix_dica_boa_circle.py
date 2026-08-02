@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Completa SÓ o lado direito da foto do Matteo (remove adulto), sem alterar o rosto.
+"""Completa o lado cortado e centraliza o Matteo numa foto quadrada p/ a bolinha.
 
 Uso (Story2/backend):
   python scripts/fix_dica_boa_circle.py
@@ -25,40 +25,37 @@ from app.config import settings  # noqa: E402
 settings.gemini_ssl_verify = False
 
 EX = ROOT / "apps" / "web" / "public" / "exemplos"
-SRC = EX / "dica-boa.bak.png"
+# Prefer real bak if present; else current tip photo
+SRC = EX / "dica-boa.bak.png" if (EX / "dica-boa.bak.png").is_file() else EX / "dica-boa.png"
 OUT = EX / "dica-boa.png"
 PREV = EX / "_dica-boa-preview.png"
 
 PROMPT = """
-PHOTO EDIT — inpaint / outpaint ONLY the right edge.
+Create ONE square (1:1) photorealistic portrait for a circular avatar crop.
 
-SOURCE: real photo of a toddler boy (Matteo). On the RIGHT edge, an adult's tan cheek and hair are pressed against his face and cut him off.
+SOURCE PHOTO: toddler boy with bright blue eyes, wispy blond hair, soft smile with a small gap in his upper teeth, blue denim overalls. The RIGHT side of his head is cut off / blocked — complete that missing side (temple, ear area, hair) and remove any adult person if present.
 
-DO THIS:
-1) Remove the adult completely from the right side.
-2) Complete ONLY what is missing on Matteo's RIGHT side: right temple, right ear area, right side of blond hair, and a bit of outdoor background.
-3) Output a SQUARE 1:1 portrait with his face centered, full head visible with small margin — ready for a circular crop.
+COMPOSITION (critical):
+- His FACE must be PERFECTLY CENTERED in the square — equal margin left and right of the head.
+- Include full head with comfortable breathing room: top of hair, both ears, chin, a bit of shoulders — nothing cut by the frame edge.
+- Soft outdoor bokeh background continues naturally on both sides.
 
-ABSOLUTE RULES — DO NOT CHANGE HIS FACE:
-- Keep the LEFT side of his face, eyes, nose, mouth, teeth gap, cheeks, skin, hair color/texture PIXEL-IDENTICAL to the source.
-- Do NOT beautify, smooth, rejuvenate, restyle, or redraw his face.
-- Do NOT change eye color, eye shape, smile, or expression.
-- The result must look like the SAME photograph, only with the adult removed and the missing right edge filled.
+FACE IDENTITY (critical):
+- Keep his face looking like the SAME boy in the source: same eyes, nose, mouth, teeth gap, expression, skin, hair.
+- Do NOT beautify, restyle, or redraw a different child.
+- Photorealistic photo edit, not illustration.
 
-Photorealistic. No text, watermark, border, or circle mask.
+No text, watermark, border, or circle mask in the output.
 """.strip()
 
 
 def prepare_src(path: Path) -> bytes:
-    """Pad right side so the model has canvas to fill, keep face intact."""
     im = Image.open(path).convert("RGB")
-    w, h = im.size
-    # Extra canvas on the right (adult zone) + slight top/bottom for square room
-    pad_r = int(w * 0.28)
-    pad_tb = int(h * 0.06)
-    padded = ImageOps.expand(im, border=(0, pad_tb, pad_r, pad_tb), fill=(196, 170, 140))
-    # Upscale a bit for quality
-    scale = max(1.0, 900 / max(padded.size))
+    # Extra canvas on the right + slight all sides so model can center
+    pad_l, pad_r = int(im.width * 0.12), int(im.width * 0.35)
+    pad_tb = int(im.height * 0.10)
+    padded = ImageOps.expand(im, border=(pad_l, pad_tb, pad_r, pad_tb), fill=(190, 165, 135))
+    scale = max(1.0, 1000 / max(padded.size))
     if scale > 1:
         padded = padded.resize(
             (int(padded.width * scale), int(padded.height * scale)),
@@ -69,21 +66,34 @@ def prepare_src(path: Path) -> bytes:
     return buf.getvalue()
 
 
-def to_circle_assets(img_bytes: bytes) -> None:
+def center_square(img_bytes: bytes, size: int = 768) -> Image.Image:
+    """Force a centered square — trim uneven margins if Gemini left face off-center."""
     im = Image.open(io.BytesIO(img_bytes)).convert("RGBA")
     w, h = im.size
+    # Heuristic: face blob ≈ non-background mid tones near center; use simple luminance mass
+    # Prefer geometric center of the image content after mild inset
     side = min(w, h)
-    # Bias slightly left so completed right side has room but face stays center
-    left = max(0, min(w - side, (w - side) // 2 - int(side * 0.02)))
-    top = max(0, min(h - side, (h - side) // 2 - int(side * 0.03)))
+    # If wider than tall, bias crop toward where face usually is; then center
+    left = (w - side) // 2
+    top = (h - side) // 2
+    # Small upward bias so forehead has room in circle
+    top = max(0, top - int(side * 0.02))
+    if top + side > h:
+        top = h - side
     crop = im.crop((left, top, left + side, top + side))
-    crop = crop.resize((768, 768), Image.Resampling.LANCZOS)
-    crop.save(OUT, "PNG", optimize=True)
+    return crop.resize((size, size), Image.Resampling.LANCZOS)
 
-    mask = Image.new("L", (768, 768), 0)
-    ImageDraw.Draw(mask).ellipse((10, 10, 758, 758), fill=255)
-    circ = Image.new("RGBA", (768, 768), (14, 24, 50, 255))
-    circ.paste(crop, (0, 0), mask)
+
+def save_assets(square: Image.Image) -> None:
+    square.save(OUT, "PNG", optimize=True)
+    size = square.width
+    mask = Image.new("L", (size, size), 0)
+    ImageDraw.Draw(mask).ellipse((12, 12, size - 13, size - 13), fill=255)
+    circ = Image.new("RGBA", (size, size), (14, 24, 50, 255))
+    circ.paste(square, (0, 0), mask)
+    # green ring like the UI
+    draw = ImageDraw.Draw(circ)
+    draw.ellipse((8, 8, size - 9, size - 9), outline=(47, 168, 96, 255), width=6)
     circ.save(PREV, "PNG")
 
 
@@ -94,13 +104,13 @@ async def main() -> None:
         raise SystemExit(f"fonte ausente: {SRC}")
 
     os.environ.setdefault("GEMINI_FALLBACK_MODELS", "gemini-2.5-flash-image")
-    src_bytes = prepare_src(SRC)
-
-    print("completando lado direito (rosto intacto)...", flush=True)
+    print(f"fonte={SRC.name}", flush=True)
+    print("gerando retrato centrado p/ bolinha...", flush=True)
     out = await gemini._generate(
-        [{"text": PROMPT}, gemini._inline(src_bytes, "image/png")]
+        [{"text": PROMPT}, gemini._inline(prepare_src(SRC), "image/png")]
     )
-    to_circle_assets(out)
+    square = center_square(out)
+    save_assets(square)
     print(f"ok {OUT.name}")
     print(f"preview {PREV.name}")
 
