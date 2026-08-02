@@ -29,7 +29,7 @@ const IcPlay = ({ className }: IconProps) => (<Svg className={className}><rect x
 const IcCheck = ({ className }: IconProps) => (<svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M4 12.5l5 5L20 6.5" /></svg>);
 const IcClose = ({ className }: IconProps) => (<svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M6 6l12 12M18 6L6 18" /></svg>);
 
-const NAV_ICONS = [IcHome, IcBook, IcSparkle, IcPlay];
+const NAV_ICONS = [IcHome, IcSparkle, IcBook, IcPlay];
 const PROMISE_ICONS = [IcShield, IcGift, IcEye, IcTruck];
 
 /* ------- exemplos reais em apps/web/public/exemplos/ ------- */
@@ -316,7 +316,7 @@ function FlipBook({
 
 const I18N = {
   pt: {
-    nav: ["Início", "Livros", "Como funciona", "Vídeos"],
+    nav: ["Início", "Como funciona", "Livros", "Vídeos"],
     explore: "Explorar agora",
     eyebrow: "Sua foto vira uma história",
     h_pre: "Transforme uma foto em uma ", w1: "história", c1: " onde seu filho é o ", w2: "herói", h_suf: ".",
@@ -352,7 +352,7 @@ const I18N = {
     ],
     vid_soon: "Em breve",
     book_badge: "Exemplo real",
-    story_title: "Folheie um livro de verdade",
+    story_title: "Folheie nossos livros",
     story_sub: "Livros criados pela plataforma a partir de uma única foto — escolha um exemplo.",
     story_hint: "Clique nas laterais do livro (ou use as setas) para virar as páginas.",
     chloe_title: "A História de Chloe",
@@ -362,7 +362,7 @@ const I18N = {
       { t: "Vídeo narrado", price: "R$ 89", unit: "por vídeo", p: "A história ganha voz e trilha, perfeita para assistir em família.", feats: ["Narração encantadora", "Cenas ilustradas", "Fácil de compartilhar"], cta: "Criar meu vídeo", badge: "" },
       { t: "Animação", price: "R$ 149", unit: "por animação", p: "O personagem ganha vida numa animação cheia de magia.", feats: ["Movimento e magia", "Baseada na sua história", "Um presente diferente"], cta: "Criar animação", badge: "" },
     ],
-    cat_title: "Escolha um livro", cat_sub: "Cada tema vira uma história ilustrada com seu filho como protagonista.",
+    cat_title: "Nossos livros", cat_sub: "Cada tema vira uma história ilustrada com seu filho como protagonista.",
     price: "US$ 39,99", price_note: "digital ou impresso", personalize: "Personalizar",
     save: "ECONOMIZE 33%",
     catalog: [
@@ -404,7 +404,7 @@ const I18N = {
     foot_copy: "© 2026 Story R Us — Where Memories Become Magic.",
   },
   en: {
-    nav: ["Home", "Books", "How it works", "Videos"],
+    nav: ["Home", "How it works", "Books", "Videos"],
     explore: "Explore now",
     eyebrow: "Your photo becomes a story",
     h_pre: "Turn a photo into a ", w1: "story", c1: " where your child is the ", w2: "hero", h_suf: ".",
@@ -440,7 +440,7 @@ const I18N = {
     ],
     vid_soon: "Coming soon",
     book_badge: "Real example",
-    story_title: "Flip through a real book",
+    story_title: "Flip through our books",
     story_sub: "Books created by the platform from a single photo — pick an example.",
     story_hint: "Click the sides of the book (or use the arrows) to turn the pages.",
     chloe_title: "Chloe's Story",
@@ -450,7 +450,7 @@ const I18N = {
       { t: "Narrated video", price: "$49", unit: "per video", p: "The story gets a voice and music, perfect to watch together.", feats: ["Enchanting narration", "Illustrated scenes", "Easy to share"], cta: "Create my video", badge: "" },
       { t: "Animation", price: "$79", unit: "per animation", p: "The character comes alive in a magical animation.", feats: ["Movement and magic", "Based on your story", "A different gift"], cta: "Create animation", badge: "" },
     ],
-    cat_title: "Choose a book", cat_sub: "Each theme becomes an illustrated story with your child as the hero.",
+    cat_title: "Our books", cat_sub: "Each theme becomes an illustrated story with your child as the hero.",
     price: "$39.99", price_note: "digital or printed", personalize: "Personalize",
     save: "SAVE 33%",
     catalog: [
@@ -504,7 +504,7 @@ export function Landing() {
   const [heroI, setHeroI] = useState(0);
   const [exBook, setExBook] = useState(0);
   const t = I18N[lang];
-  const navHrefs = ["#top", "#catalogo", "#como", "#videos"];
+  const navHrefs = ["#top", "#como", "#catalogo", "#videos"];
   const exampleBooks = [
     {
       title: t.catalog[0].t,
@@ -625,48 +625,61 @@ export function Landing() {
         </div>
       </section>
 
-      {/* FLIPBOOK — destaque */}
-      <section className="ksection featured-book" id="historia-exemplo">
-        <span className="book-badge reveal"><IcStar className="bi" /> {t.book_badge}</span>
-        <h2 className="ktitle reveal">{t.story_title}</h2>
-        <p className="ksub reveal">{t.story_sub}</p>
-        <div className="ex-tabs reveal" role="tablist" aria-label={t.story_title}>
-          {exampleBooks.map((b, i) => (
-            <button
-              key={b.title}
-              type="button"
-              className={`ex-tab${i === exBook ? " on" : ""}`}
-              onClick={() => setExBook(i)}
-              role="tab"
-              aria-selected={i === exBook}
-            >
-              <img src={exUrl(b.cover)} alt={b.title} loading="lazy" />
-              <span>{b.title}</span>
-            </button>
+      {/* COMO FUNCIONA */}
+      <section className="ksection" id="como">
+        <h2 className="ktitle reveal">{t.hiw_title}</h2>
+        <p className="ksub reveal">{t.hiw_sub}</p>
+        <div className="howex">
+          {t.hiw.map((h, i) => (
+            <div className="howex-item" key={h.t}>
+              <figure className={`howex-card reveal${i === 2 ? " howex-card-book" : ""}`}>
+                {i === 2 ? (
+                  <div className="howex-book">
+                    <FlipBook
+                      pages={HOW_OPEN_BOOK}
+                      compact
+                      coverTitle={t.catalog[2].t}
+                      coverTitleLines={CATALOG_TITLE_LINES[2][lang]}
+                    />
+                  </div>
+                ) : (
+                  <img src={exUrl(HOW_IMGS[i])} alt={h.t} loading="lazy" />
+                )}
+                <span className="howex-num">{i + 1}</span>
+                <figcaption><h3>{h.t}</h3><p>{h.p}</p></figcaption>
+              </figure>
+              {i < t.hiw.length - 1 && <span className="howex-arrow" aria-hidden><IcArrow /></span>}
+            </div>
           ))}
         </div>
-        <div className="reveal">
-          <FlipBook
-            key={exBook}
-            pages={exampleBooks[exBook].pages}
-            coverTitle={exampleBooks[exBook].title}
-            coverTitleLines={exampleBooks[exBook].titleLines}
-          />
+      </section>
+
+      {/* FOTO PERFEITA */}
+      <section className="ksection" id="foto-perfeita">
+        <div className="shot-tips reveal">
+          <h2 className="ktitle">{t.shot_title}</h2>
+          <p className="shot-sub">{t.shot_sub}</p>
+          <div className="shot-grid">
+            {SHOTS.map((s, i) => (
+              <div className={`shot${s.ok ? " ok" : ""}`} key={i}>
+                <div className="shot-ava-wrap">
+                  <div className="shot-ava">
+                    {s.img ? (
+                      <img src={exUrl(s.img)} alt={t.shots[i]} loading="lazy" style={{ objectPosition: s.focus ?? "center center" }} />
+                    ) : (
+                      <ShotArt kind={s.art ?? "good"} />
+                    )}
+                  </div>
+                  <span className="shot-badge">{s.ok ? <IcCheck /> : <IcClose />}</span>
+                </div>
+                <p>{t.shots[i]}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <p className="fb-hint reveal">{t.story_hint}</p>
       </section>
 
-      {/* BANNERS NARRATIVOS */}
-      <section className="banners">
-        {t.banners.map((b, i) => (
-          <figure className="banner-card reveal" key={b.t}>
-            <img src={exUrl(BANNER_IMGS[i])} alt={t.catalog[BANNER_CATALOG_I[i]].t} loading="lazy" />
-            <figcaption><h3>{b.t}</h3><p>{b.p}</p></figcaption>
-          </figure>
-        ))}
-      </section>
-
-      {/* CATÁLOGO DE LIVROS */}
+      {/* NOSSOS LIVROS */}
       <section className="ksection" id="catalogo">
         <h2 className="ktitle reveal">{t.cat_title}</h2>
         <p className="ksub reveal">{t.cat_sub}</p>
@@ -706,55 +719,14 @@ export function Landing() {
         </div>
       </section>
 
-      {/* COMO FUNCIONA — com exemplos reais */}
-      <section className="ksection" id="como">
-        <h2 className="ktitle reveal">{t.hiw_title}</h2>
-        <p className="ksub reveal">{t.hiw_sub}</p>
-        <div className="howex">
-          {t.hiw.map((h, i) => (
-            <div className="howex-item" key={h.t}>
-              <figure className={`howex-card reveal${i === 2 ? " howex-card-book" : ""}`}>
-                {i === 2 ? (
-                  <div className="howex-book">
-                    <FlipBook
-                      pages={HOW_OPEN_BOOK}
-                      compact
-                      coverTitle={t.catalog[2].t}
-                      coverTitleLines={CATALOG_TITLE_LINES[2][lang]}
-                    />
-                  </div>
-                ) : (
-                  <img src={exUrl(HOW_IMGS[i])} alt={h.t} loading="lazy" />
-                )}
-                <span className="howex-num">{i + 1}</span>
-                <figcaption><h3>{h.t}</h3><p>{h.p}</p></figcaption>
-              </figure>
-              {i < t.hiw.length - 1 && <span className="howex-arrow" aria-hidden><IcArrow /></span>}
-            </div>
-          ))}
-        </div>
-
-        <div className="shot-tips reveal">
-          <h3>{t.shot_title}</h3>
-          <p className="shot-sub">{t.shot_sub}</p>
-          <div className="shot-grid">
-            {SHOTS.map((s, i) => (
-              <div className={`shot${s.ok ? " ok" : ""}`} key={i}>
-                <div className="shot-ava-wrap">
-                  <div className="shot-ava">
-                    {s.img ? (
-                      <img src={exUrl(s.img)} alt={t.shots[i]} loading="lazy" style={{ objectPosition: s.focus ?? "center center" }} />
-                    ) : (
-                      <ShotArt kind={s.art ?? "good"} />
-                    )}
-                  </div>
-                  <span className="shot-badge">{s.ok ? <IcCheck /> : <IcClose />}</span>
-                </div>
-                <p>{t.shots[i]}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* BANNERS NARRATIVOS */}
+      <section className="banners">
+        {t.banners.map((b, i) => (
+          <figure className="banner-card reveal" key={b.t}>
+            <img src={exUrl(BANNER_IMGS[i])} alt={t.catalog[BANNER_CATALOG_I[i]].t} loading="lazy" />
+            <figcaption><h3>{b.t}</h3><p>{b.p}</p></figcaption>
+          </figure>
+        ))}
       </section>
 
       {/* VÍDEOS NARRADOS */}
@@ -788,6 +760,37 @@ export function Landing() {
           })}
         </div>
         <div className="vid-cta"><Link to="/app" className="kbtn kbtn-primary big">{t.vid_cta}</Link></div>
+      </section>
+
+      {/* FOLHEIE NOSSOS LIVROS */}
+      <section className="ksection featured-book" id="historia-exemplo">
+        <span className="book-badge reveal"><IcStar className="bi" /> {t.book_badge}</span>
+        <h2 className="ktitle reveal">{t.story_title}</h2>
+        <p className="ksub reveal">{t.story_sub}</p>
+        <div className="ex-tabs reveal" role="tablist" aria-label={t.story_title}>
+          {exampleBooks.map((b, i) => (
+            <button
+              key={b.title}
+              type="button"
+              className={`ex-tab${i === exBook ? " on" : ""}`}
+              onClick={() => setExBook(i)}
+              role="tab"
+              aria-selected={i === exBook}
+            >
+              <img src={exUrl(b.cover)} alt={b.title} loading="lazy" />
+              <span>{b.title}</span>
+            </button>
+          ))}
+        </div>
+        <div className="reveal">
+          <FlipBook
+            key={exBook}
+            pages={exampleBooks[exBook].pages}
+            coverTitle={exampleBooks[exBook].title}
+            coverTitleLines={exampleBooks[exBook].titleLines}
+          />
+        </div>
+        <p className="fb-hint reveal">{t.story_hint}</p>
       </section>
 
       {/* AVALIAÇÕES */}
