@@ -232,7 +232,7 @@
 }
 .shot.ok .shot-ava img {
   object-fit: cover;
-  object-position: 42% 34%;
+  object-position: center center;
 }
 .shot:not(.ok) .shot-ava img,
 .shot:not(.ok) .shot-ava .shot-svg { filter: grayscale(1) contrast(.95) brightness(.96); }
