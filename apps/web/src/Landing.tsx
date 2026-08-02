@@ -28,8 +28,20 @@ const IcTruck = ({ className }: IconProps) => (<Svg className={className}><path 
 const IcPlay = ({ className }: IconProps) => (<Svg className={className}><rect x="3" y="5.5" width="18" height="13" rx="2.5" /><path d="M10 9.5l4.5 2.5-4.5 2.5z" fill="currentColor" stroke="none" /></Svg>);
 const IcCheck = ({ className }: IconProps) => (<svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M4 12.5l5 5L20 6.5" /></svg>);
 const IcClose = ({ className }: IconProps) => (<svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M6 6l12 12M18 6L6 18" /></svg>);
+const IcMail = ({ className }: IconProps) => (
+  <Svg className={className}><rect x="3" y="5.5" width="18" height="13" rx="2" /><path d="M3.5 7.5 12 13l8.5-5.5" /></Svg>
+);
+const IcInstagram = ({ className }: IconProps) => (
+  <Svg className={className}>
+    <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
+  </Svg>
+);
 
 const NAV_ICONS = [IcHome, IcSparkle, IcBook, IcPlay];
+const CONTACT_EMAIL = "Storyrus@outlook.com";
+const CONTACT_INSTA = "storyrusbr";
 const PROMISE_ICONS = [IcShield, IcGift, IcEye, IcTruck];
 
 /* ------- exemplos reais em apps/web/public/exemplos/ ------- */
@@ -852,6 +864,21 @@ export function Landing() {
       <footer className="kfoot">
         <div className="kfoot-nav">
           {t.nav.map((label, i) => { const Icon = NAV_ICONS[i]; return (<a key={label} href={navHrefs[i]}><Icon className="ni" />{label}</a>); })}
+        </div>
+        <div className="kfoot-contacts">
+          <a href={`mailto:${CONTACT_EMAIL}`} className="kfoot-contact">
+            <IcMail className="ni" />
+            <span>{CONTACT_EMAIL}</span>
+          </a>
+          <a
+            href={`https://instagram.com/${CONTACT_INSTA}`}
+            className="kfoot-contact"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IcInstagram className="ni" />
+            <span>@{CONTACT_INSTA}</span>
+          </a>
         </div>
         <p className="kfoot-tag"><IcHeart className="ci" /> {t.tagline}</p>
         <p className="kfoot-copy">{t.foot_copy}</p>
